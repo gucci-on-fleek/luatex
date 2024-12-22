@@ -2823,8 +2823,9 @@ am__DIST_COMMON = $(dist_man_MANS) $(srcdir)/../../am/bin_links.am \
 	$(srcdir)/pdftexdir/am/ttf2afm.am \
 	$(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/ptexdir/am/ptex.am \
 	$(srcdir)/silent-sh.in $(srcdir)/synctexdir/am/synctex.am \
-	$(srcdir)/tangle-sh.in $(srcdir)/uptexdir/am/uptex.am \
-	$(srcdir)/web2c-sh.in $(srcdir)/xetexdir/am/xetex.am \
+	$(srcdir)/tangle-sh.in $(srcdir)/texprofdir/am/texprof.am \
+	$(srcdir)/uptexdir/am/uptex.am $(srcdir)/web2c-sh.in \
+	$(srcdir)/xetexdir/am/xetex.am \
 	$(top_srcdir)/../../build-aux/ar-lib \
 	$(top_srcdir)/../../build-aux/compile \
 	$(top_srcdir)/../../build-aux/config.guess \
@@ -3176,14 +3177,15 @@ EXTRA_DIST = PROJECTS cftests cpascal.h help.h w2c/config.h \
 	tests/auxinclude.bbl tests/auxinclude.bib tests/auxinclude.tex \
 	tests/auxinclude2.aux tests/auxinclude2.tex \
 	tests/fn-generate.perl tests/fn-utf8.txt tests/fn-euc.txt \
-	tests/fn-sjis.txt tests/allbib.aux tests/allbib.tex \
-	tests/apalike.bst tests/badpl.pl tests/badtfm.tfm \
-	tests/badvf.tfm tests/badvf.vf tests/badvpl.vpl \
-	tests/batch.tex tests/check.log tests/cmr10.600gf \
-	tests/cmr10.pk tests/cmr10.pl tests/cmr10.tfm tests/cmr7.tfm \
-	tests/cmr8.tfm tests/cmti10.tfm tests/cmtt10.tfm \
-	tests/cmtt8.tfm tests/dict tests/eight.tex tests/end.tex \
-	tests/exampl.aux tests/exampl.tex tests/gray.tfm \
+	tests/fn-sjis.txt tests/uctt10x.opl tests/uctt10x.ofm \
+	tests/uctt10x.ovp tests/uctt10x.ovf tests/allbib.aux \
+	tests/allbib.tex tests/apalike.bst tests/badpl.pl \
+	tests/badtfm.tfm tests/badvf.tfm tests/badvf.vf \
+	tests/badvpl.vpl tests/batch.tex tests/check.log \
+	tests/cmr10.600gf tests/cmr10.pk tests/cmr10.pl \
+	tests/cmr10.tfm tests/cmr7.tfm tests/cmr8.tfm tests/cmti10.tfm \
+	tests/cmtt10.tfm tests/cmtt8.tfm tests/dict tests/eight.tex \
+	tests/end.tex tests/exampl.aux tests/exampl.tex tests/gray.tfm \
 	tests/hello.tex tests/io.mf tests/just.texi tests/label.mp \
 	tests/label.mpx tests/logo8.tfm tests/longline.aux \
 	tests/longline.bib tests/longline.tex tests/longtfm.tex \
@@ -3266,6 +3268,16 @@ EXTRA_DIST = PROJECTS cftests cpascal.h help.h w2c/config.h \
 	ptexdir/tests/chcode-euc.pl ptexdir/tests/chcode-sjis.pl \
 	ptexdir/tests/skipjfmp.pl ptexdir/tests/skipjfmp.tfm \
 	ptexdir/ptrip/ptrip.diffs ptexdir/ptrip/texmf.cnf \
+	ptexdir/tests/ctrlsym.tex ptexdir/tests/ctrlsym.log \
+	ptexdir/tests/endlinechar.tex ptexdir/tests/endline.log \
+	ptexdir/tests/control-symbol.tex ptexdir/tests/jctrlsym.log \
+	ptexdir/tests/p-endlinea.typ ptexdir/tests/p-jctrlsyma.typ \
+	ptexdir/tests/let_char_token.tex ptexdir/tests/chartoken.log \
+	ptexdir/tests/ptexlineendmode.tex ptexdir/tests/p-lineenda.typ \
+	ptexdir/tests/printkanji.tex ptexdir/tests/pknj-s.log \
+	ptexdir/tests/pknj-e.log ptexdir/tests/p-pknj-sa.typ \
+	ptexdir/tests/p-pknj-ea.typ ptexdir/tests/ucs.tex \
+	ptexdir/tests/ucs-s.log ptexdir/tests/ucs-e.log \
 	$(uptex_web_srcs) $(uptex_ch_srcs) uptexdir/uptex.defines \
 	uptexdir/upbibtex.ch uptexdir/updvitype.ch \
 	uptexdir/uppltotf.ch uptexdir/uptftopl.ch uptexdir/COPYRIGHT \
@@ -3284,32 +3296,57 @@ EXTRA_DIST = PROJECTS cftests cpascal.h help.h w2c/config.h \
 	uptexdir/tests/gkhugeok.tfm uptexdir/tests/gkhugeng.tfm \
 	uptexdir/tests/gkhugeng.err uptexdir/tests/gk256g.tfm \
 	uptexdir/tests/gk256k.tfm uptexdir/uptrip/uptrip.diffs \
-	uptexdir/uptrip/texmf.cnf $(euptex_web_srcs) $(euptex_ch_srcs) \
-	euptexdir/euptex.defines euptexdir/COPYRIGHT \
-	euptexdir/COPYRIGHT.jis euptexdir/ChangeLog \
-	euptexdir/EUPTEX.txt $(euptex_tests) \
+	uptexdir/uptrip/texmf.cnf uptexdir/tests/up-ofm.tex \
+	uptexdir/tests/up-ofm.log uptexdir/tests/up-ofma.typ \
+	uptexdir/tests/up-prim.tex uptexdir/tests/up-prim.log \
+	uptexdir/tests/lmr1.tex uptexdir/tests/up-lmr1.log \
+	uptexdir/tests/lmr2.tex uptexdir/tests/up-lmr2.log \
+	uptexdir/tests/noto1.tex uptexdir/tests/up-noto1.log \
+	$(euptex_web_srcs) $(euptex_ch_srcs) euptexdir/euptex.defines \
+	euptexdir/COPYRIGHT euptexdir/COPYRIGHT.jis \
+	euptexdir/ChangeLog euptexdir/EUPTEX.txt $(euptex_tests) \
 	euptexdir/eptrip/eptrip.log euptexdir/eptrip/eptrip.tex \
 	euptexdir/euptrip/euptrip.diffs euptexdir/euptrip/texmf.cnf \
 	euptexdir/pdfprimitive.test \
 	euptexdir/tests/pdfprimitive-test.tex \
 	euptexdir/tests/pdfprimitive-euptex.log \
-	euptexdir/tests/ctrlsym.log euptexdir/tests/ctrlsym.tex \
-	hitexdir/ChangeLog $(hitex_web) $(hitex_tests) \
-	hitexdir/tests/hello.tex hitexdir/tests/rule.tex \
-	pdftexdir/regex/COPYING.LIB pdftexdir/regex/README \
-	$(pdftex_ch_srcs) pdftexdir/pdftex.defines pdftexdir/ChangeLog \
-	pdftexdir/NEWS pdftexdir/README pdftexdir/change-files.txt \
-	$(pdftex_tests) tests/wprob.tex pdftexdir/tests/pdfimage.tex \
-	tests/1-4.jpg tests/B.pdf tests/basic.tex \
-	tests/lily-ledger-broken.png tests/expanded.tex \
-	tests/expanded.txt tests/cnfline.tex tests/partoken-ok.tex \
-	tests/partoken-xfail.tex $(ttf2afm_tests) \
-	pdftexdir/tests/postV3.afm pdftexdir/tests/postV3.ttf \
-	pdftexdir/tests/postV7.afm pdftexdir/tests/postV7.ttf \
-	$(pdftosrc_tests) pdftexdir/tests/test-13.pdf \
-	pdftexdir/tests/test-13.xref pdftexdir/tests/test-15.pdf \
-	pdftexdir/tests/test-15.xref $(libluasocket_sources) \
-	luatexdir/luasocket/src/ftp_lua.c \
+	euptexdir/tests/ctrlsym.tex euptexdir/tests/ctrlsym.log \
+	euptexdir/tests/endlinechar.tex euptexdir/tests/endline.log \
+	euptexdir/tests/control-symbol.tex \
+	euptexdir/tests/jctrlsym.log euptexdir/tests/eup-endlinea.typ \
+	euptexdir/tests/eup-jctrlsyma.typ \
+	euptexdir/tests/printkanji.tex euptexdir/tests/pknj-s.log \
+	euptexdir/tests/pknj-e.log euptexdir/tests/pknj-u.log \
+	euptexdir/tests/eup-pknj-sa.typ \
+	euptexdir/tests/eup-pknj-ea.typ \
+	euptexdir/tests/eup-pknj-ua.typ euptexdir/tests/postpena.tex \
+	euptexdir/tests/postpena.log euptexdir/tests/free_ixsp.tex \
+	euptexdir/tests/free_ixsp.log euptexdir/tests/free_pena.tex \
+	euptexdir/tests/free_pena.log euptexdir/tests/inhibitglue.tex \
+	euptexdir/tests/eup-inhibitgluea.typ \
+	euptexdir/tests/kinsoku-table.tex \
+	euptexdir/tests/kinsoku-table.log \
+	euptexdir/tests/kinsoku-search.tex \
+	euptexdir/tests/kinsoku-search.log euptexdir/tests/eup-ofm.tex \
+	euptexdir/tests/eup-ofm.log euptexdir/tests/eup-prim.tex \
+	euptexdir/tests/eup-prim.log euptexdir/tests/ucs.tex \
+	euptexdir/tests/ucs-s.log euptexdir/tests/ucs-e.log \
+	euptexdir/tests/ucs-u.log hitexdir/ChangeLog $(hitex_web) \
+	$(hitex_tests) hitexdir/tests/hello.tex \
+	hitexdir/tests/rule.tex pdftexdir/regex/COPYING.LIB \
+	pdftexdir/regex/README $(pdftex_ch_srcs) \
+	pdftexdir/pdftex.defines pdftexdir/ChangeLog pdftexdir/NEWS \
+	pdftexdir/README pdftexdir/change-files.txt $(pdftex_tests) \
+	tests/wprob.tex pdftexdir/tests/pdfimage.tex tests/1-4.jpg \
+	tests/B.pdf tests/basic.tex tests/lily-ledger-broken.png \
+	tests/expanded.tex tests/expanded.txt tests/cnfline.tex \
+	tests/partoken-ok.tex tests/partoken-xfail.tex \
+	$(ttf2afm_tests) pdftexdir/tests/postV3.afm \
+	pdftexdir/tests/postV3.ttf pdftexdir/tests/postV7.afm \
+	pdftexdir/tests/postV7.ttf $(pdftosrc_tests) \
+	pdftexdir/tests/test-13.pdf pdftexdir/tests/test-13.xref \
+	pdftexdir/tests/test-15.pdf pdftexdir/tests/test-15.xref \
+	$(libluasocket_sources) luatexdir/luasocket/src/ftp_lua.c \
 	luatexdir/luasocket/src/headers_lua.c \
 	luatexdir/luasocket/src/http_lua.c \
 	luatexdir/luasocket/src/ltn12_lua.c \
@@ -3547,6 +3584,8 @@ EXTRA_DIST = PROJECTS cftests cpascal.h help.h w2c/config.h \
 	omegaware/tests/arabic.ovp $(aleph_web_srcs) $(aleph_ch_srcs) \
 	alephdir/ChangeLog alephdir/aleph.defines \
 	alephdir/aleph.version $(aleph_tests) \
+	alephdir/tests/al-ofm.tex alephdir/tests/al-ofm.log \
+	alephdir/tests/lmr1.tex alephdir/tests/al-lmr1.log \
 	synctexdir/synctex_parser_c-auto.h synctexdir/ChangeLog \
 	synctexdir/README.txt synctexdir/synctex_parser_readme.txt \
 	synctexdir/synctex_parser_version.txt synctexdir/tests \
@@ -3604,7 +3643,9 @@ DISTCLEANFILES = CXXLD.sh tangle.c tangle.h tangle.p tangle-web2c \
 	ptests/memtest.bib ptests/memtest?.* ptests/xstory.dvityp \
 	ptests/xpagenum.typ ptests/xptex[34]*.typ ptests/xcmr10.tfm \
 	ptests/xcmr10.pl ptests/xsample*.typ ptests/x*min10.* \
-	ptests/xchcode*.* ptests/xskipjfmp.* ptrip.diffs \
+	ptests/xchcode*.* ptests/xskipjfmp.* ptrip.diffs p-ctrlsym.log \
+	p-ctrlsym.out p-ctrlsym.tex p-endline*.* p-jctrlsym*.* \
+	p-chartoken.* p-lineend.* p-pknj-*.* p-ucs*.* \
 	$(nodist_uptex_SOURCES) uptex.web uptex.ch uptex-web2c uptex.p \
 	uptex.pool uptex-tangle $(upweb_programs:=.c) \
 	$(upweb_programs:=.h) $(upweb_programs:=.p) \
@@ -3616,24 +3657,26 @@ DISTCLEANFILES = CXXLD.sh tangle.c tangle.h tangle.p tangle-web2c \
 	uptests/xcmr10.tfm uptests/xcmr10.pl uptests/xsample*.typ \
 	uptests/x*min10.* uptests/xchcode*.* uptests/xtestnewu*.* \
 	uptests/xuparse.* uptests/yuparse.* uptests/ygkhuge*.* \
-	uptests/ygk256*.* uptests/xskipjfmp.* uptrip.diffs \
-	$(nodist_euptex_SOURCES) euptex.web euptex.ch euptex-web2c \
-	euptex.p euptex.pool euptex-tangle euptrip.diffs \
-	pdfprimitive-euptex.* eup-ctrlsym.fmt eup-ctrlsym.log \
-	eup-ctrlsym.out eup-ctrlsym.tex $(nodist_hitex_SOURCES) \
-	$(nodist_hishrink_SOURCES) $(nodist_histretch_SOURCES) \
-	hiformat-tangle hitex-tangle hello.log rule.log \
-	$(nodist_pdftex_SOURCES) pdftex-final.ch pdftex-web2c pdftex.p \
-	pdftex.pool pdftex-tangle pwprob.log pwprob.tex pdfimage.fmt \
-	pdfimage.log pdfimage.pdf expanded.log cnfline.log \
-	partoken-ok.log partoken-xfail.log pdftests/fn*.* postV3.afm \
-	postV7.afm test-13.pdf test-13.xref test-15.pdf test-15.xref \
-	$(nodist_libluatex_sources) luaimage.* luajitimage.* \
-	$(nodist_xetex_SOURCES) xetex.web xetex-final.ch xetex-web2c \
-	xetex.p xetex.pool xetex-tangle bug73.fmt bug73.log bug73.out \
-	bug73.tex filedump.log filedump.out filedump.tex \
-	xe-ctrlsym.fmt xe-ctrlsym.log xe-ctrlsym.out xe-ctrlsym.tex \
-	xetests/fn*.* $(omegaware_programs:=.c) \
+	uptests/ygk256*.* uptests/xskipjfmp.* uptrip.diffs up-ofm.* \
+	up-prim.* up-lmr*.* up-noto*.* $(nodist_euptex_SOURCES) \
+	euptex.web euptex.ch euptex-web2c euptex.p euptex.pool \
+	euptex-tangle euptrip.diffs pdfprimitive-euptex.* \
+	eup-ctrlsym.log eup-ctrlsym.out eup-ctrlsym.tex eup-endline*.* \
+	eup-jctrlsym*.* eup-pknj-*.* eup-postpena*.* eup-free_*.* \
+	eup-inhibitglue*.* eup-kinsoku*.* eup-ofm.* eup-prim.* \
+	eup-ucs*.* $(nodist_hitex_SOURCES) $(nodist_hishrink_SOURCES) \
+	$(nodist_histretch_SOURCES) hiformat-tangle hitex-tangle \
+	hello.log rule.log $(nodist_pdftex_SOURCES) pdftex-final.ch \
+	pdftex-web2c pdftex.p pdftex.pool pdftex-tangle pwprob.log \
+	pwprob.tex pdfimage.fmt pdfimage.log pdfimage.pdf expanded.log \
+	cnfline.log partoken-ok.log partoken-xfail.log pdftests/fn*.* \
+	postV3.afm postV7.afm test-13.pdf test-13.xref test-15.pdf \
+	test-15.xref $(nodist_libluatex_sources) luaimage.* \
+	luajitimage.* $(nodist_xetex_SOURCES) xetex.web xetex-final.ch \
+	xetex-web2c xetex.p xetex.pool xetex-tangle bug73.fmt \
+	bug73.log bug73.out bug73.tex filedump.log filedump.out \
+	filedump.tex xe-ctrlsym.fmt xe-ctrlsym.log xe-ctrlsym.out \
+	xe-ctrlsym.tex xetests/fn*.* $(omegaware_programs:=.c) \
 	$(omegaware_programs:=.h) $(omegaware_programs:=.p) \
 	$(omegaware_programs:=-web2c) ofm2opl.web opl2ofm.web \
 	ovf2ovp.web ovp2ovf.web omegaware/bad*.* \
@@ -3652,7 +3695,7 @@ DISTCLEANFILES = CXXLD.sh tangle.c tangle.h tangle.p tangle-web2c \
 	omegaware/tests/specialhex.ovf omegaware/tests/xspecialhex.* \
 	omegaware/tests/yrepeat* omegaware/tests/*yarabic* \
 	$(nodist_aleph_SOURCES) aleph.web aleph.ch aleph-web2c aleph.p \
-	aleph.pool aleph-tangle
+	aleph.pool aleph-tangle al-ofm.* al-lmr*.*
 CLEANFILES = $(EXTRA_PROGRAMS) $(EXTRA_LIBRARIES) $(EXTRA_LTLIBRARIES)
 TRIPTRAP_CLEAN = $(am__append_8) $(am__append_18) $(am__append_27) \
 	$(am__append_36) $(am__append_44) $(am__append_60) \
@@ -4441,7 +4484,10 @@ ptex_ch_srcs = \
 ptex_tests = \
 	ptexdir/ptriptest.test \
 	ptexdir/pver.test \
-	ptexdir/wcfname.test
+	ptexdir/wcfname.test \
+	ptexdir/ptex-ctrlsym.test \
+	ptexdir/ptex-prntknj.test \
+	ptexdir/ptex-ucs.test
 
 uptex_cppflags = $(PTEXENC_INCLUDES) $(AM_CPPFLAGS) $(ZLIB_INCLUDES)
 uptex_ldadd = libukanji.a $(pproglib) $(PTEXENC_LIBS) $(LDADD) $(ZLIB_LIBS)
@@ -4504,7 +4550,9 @@ uptex_tests = \
 	uptexdir/uptriptest.test uptexdir/ptriptest.test \
 	uptexdir/upver.test \
 	uptexdir/upkcat.test \
-	uptexdir/wcfname.test uptexdir/wcfname0.test
+	uptexdir/wcfname.test uptexdir/wcfname0.test \
+	uptexdir/uptex-ofm.test uptexdir/uptex-prim.test \
+	uptexdir/uptex-lmr.test uptexdir/uptex-noto.test
 
 # uppPLtoTF/upTFtoPL
 upweb_tests = uptexdir/upbibtex.test uptexdir/updvitype.test \
@@ -4565,10 +4613,14 @@ euptex_ch_srcs = \
 euptex_tests = \
 	euptexdir/euptriptest.test euptexdir/eptriptest.test \
 	euptexdir/pdfprimitive.test \
-	euptexdir/euptex-ctrlsym.test \
 	euptexdir/eupver.test \
 	euptexdir/upkcat.test \
-	euptexdir/wcfname.test euptexdir/wcfname0.test
+	euptexdir/wcfname.test euptexdir/wcfname0.test \
+	euptexdir/euptex-ctrlsym.test \
+	euptexdir/euptex-prntknj.test \
+	euptexdir/euptex-kinsoku.test \
+	euptexdir/euptex-ofm.test euptexdir/euptex-prim.test \
+	euptexdir/euptex-ucs.test
 
 
 # At the moment, these are the only man pages handled in the
@@ -5518,7 +5570,9 @@ aleph_ch_srcs = \
 
 # Aleph Tests
 #
-aleph_tests = alephdir/aleph.test
+aleph_tests = alephdir/aleph.test \
+	alephdir/aleph-ofm.test alephdir/aleph-lmr.test
+
 synctex_SOURCES = \
 	synctexdir/synctex_main.c
 
@@ -5610,7 +5664,7 @@ all: ff-config.h
 .SUFFIXES: .c .cc .cin .cpp .cxx .h .hin .lo .log .mm .o .obj .p .pin .pl .pl$(EXEEXT) .test .test$(EXEEXT) .trs
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluadir/am/mfluaotfcc.am $(srcdir)/mfluadir/am/mfluapotrace.am $(srcdir)/mfluadir/am/mflualpeg.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mfluajitdir/am/mfluajitlpeg.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/hitexdir/am/hitex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/luatexdir/am/luaharfbuzz.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluadir/am/mfluaotfcc.am $(srcdir)/mfluadir/am/mfluapotrace.am $(srcdir)/mfluadir/am/mflualpeg.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mfluajitdir/am/mfluajitlpeg.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/hitexdir/am/hitex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/luatexdir/am/luaharfbuzz.am $(srcdir)/texprofdir/am/texprof.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -5632,7 +5686,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles);; \
 	esac;
-$(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluadir/am/mfluaotfcc.am $(srcdir)/mfluadir/am/mfluapotrace.am $(srcdir)/mfluadir/am/mflualpeg.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mfluajitdir/am/mfluajitlpeg.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/hitexdir/am/hitex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/luatexdir/am/luaharfbuzz.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__empty):
+$(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluadir/am/mfluaotfcc.am $(srcdir)/mfluadir/am/mfluapotrace.am $(srcdir)/mfluadir/am/mflualpeg.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mfluajitdir/am/mfluajitlpeg.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/hitexdir/am/hitex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/luatexdir/am/luaharfbuzz.am $(srcdir)/texprofdir/am/texprof.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
@@ -21868,8 +21922,8 @@ svgout-tangle: ctangle$(EXEEXT) mplibdir/svgout.w tangle-sh
 $(nodist_libmplibcore_a_SOURCES): $(mpmathbinary_c_h) $(mpmathinterval_c_h) $(svgout_c_h) $(pngout_c_h)
 
 $(libmplibcore_a_OBJECTS): $(nodist_libmplibcore_a_SOURCES) $(KPATHSEA_DEPEND)  
-$(libmplibextramath_a_OBJECTS): $(nodist_libmplibextramath_a_SOURCES) $(KPATHSEA_DEPEND)  $(MPFI_DEPEND) $(MPFR_DEPEND)
-$(libmplibbackends_a_OBJECTS): $(nodist_libmplibbackends_a_SOURCES) $(KPATHSEA_DEPEND) $(CAIRO_DEPEND) $(MPFI_DEPEND) $(MPFR_DEPEND)
+$(libmplibextramath_a_OBJECTS): $(nodist_libmplibextramath_a_SOURCES) $(KPATHSEA_DEPEND)  $(MPFI_DEPEND) $(MPFR_DEPEND) mplib.h
+$(libmplibbackends_a_OBJECTS): $(nodist_libmplibbackends_a_SOURCES) $(KPATHSEA_DEPEND) $(CAIRO_DEPEND) $(MPFI_DEPEND) $(MPFR_DEPEND) mplib.h
 
 # (end of libmplib.am)
 $(etex_OBJECTS): $(etex_prereq)
@@ -21941,7 +21995,10 @@ ptex.web: tie$(EXEEXT) $(ptex_web_srcs)
 ptex.ch: tie$(EXEEXT) ptex.web $(ptex_ch_srcs)
 	$(tie_c) ptex.web $(ptex_ch_srcs)
 ptexdir/ptriptest.log: ptex$(EXEEXT) dvitype$(EXEEXT) pltotf$(EXEEXT) tftopl$(EXEEXT)
-ptexdir/pver.log ptexdir/wcfname.log: ptex$(EXEEXT)
+ptexdir/pver.log ptexdir/wcfname.log \
+	ptexdir/ptex-ctrlsym.log ptexdir/ptex-prntknj.log \
+	ptexdir/ptex-ucs.log: ptex$(EXEEXT)
+
 ptrip.diffs: ptex$(EXEEXT) dvitype$(EXEEXT) pltotf$(EXEEXT) tftopl$(EXEEXT)
 	$(triptrap_diffs) $@
 .PHONY: ptrip-clean
@@ -22012,7 +22069,9 @@ uptftopl.web: tie$(EXEEXT) tftopl.web tftopl.ch
 uptexdir/uptriptest.log uptexdir/ptriptest.log: \
 	uptex$(EXEEXT) dvitype$(EXEEXT) pltotf$(EXEEXT) tftopl$(EXEEXT)
 uptexdir/upver.log uptexdir/upkcat.log \
-	uptexdir/wcfname.log uptexdir/wcfname0.log: uptex$(EXEEXT)
+	uptexdir/wcfname.log uptexdir/wcfname0.log \
+	uptexdir/uptex-ofm.log uptexdir/uptex-prim.log \
+	uptexdir/uptex-lmr.log uptexdir/uptex-noto.log: uptex$(EXEEXT)
 uptexdir/upbibtex.log: upbibtex$(EXEEXT)
 uptexdir/updvitype.log: updvitype$(EXEEXT)
 uptexdir/uppltotf.log: uppltotf$(EXEEXT)
@@ -22024,6 +22083,7 @@ uptexdir/sample.log: updvitype$(EXEEXT)
 uptexdir/yokotate.log uptexdir/skipjfmp.log \
 	uptexdir/newjfm.log uptexdir/uparse.log \
 	uptexdir/gkhuge.log uptexdir/gk256.log: uppltotf$(EXEEXT) uptftopl$(EXEEXT)
+
 uptrip.diffs: uptex$(EXEEXT) dvitype$(EXEEXT) pltotf$(EXEEXT) tftopl$(EXEEXT)
 	$(triptrap_diffs) $@
 .PHONY: uptrip-clean
@@ -22057,9 +22117,13 @@ euptex.ch: tie$(EXEEXT) euptex.web $(euptex_ch_srcs)
 euptexdir/euptriptest.log euptexdir/eptriptest.log: \
 	euptex$(EXEEXT) dvitype$(EXEEXT) pltotf$(EXEEXT) tftopl$(EXEEXT)
 euptexdir/pdfprimitive.log: euptex$(EXEEXT)
-euptexdir/euptex-ctrlsym.log \
-	euptexdir/eupver.log euptexdir/upkcat.log \
-	euptexdir/wcfname.log euptexdir/wcfname0.log: euptex$(EXEEXT)
+euptexdir/eupver.log euptexdir/upkcat.log \
+	euptexdir/wcfname.log euptexdir/wcfname0.log \
+	euptexdir/euptex-ctrlsym.log euptexdir/euptex-prntknj.log \
+	euptexdir/euptex-kinsoku.log \
+	euptexdir/euptex-ofm.log euptexdir/euptex-prim.log \
+	euptexdir/euptex-ucs.log: euptex$(EXEEXT)
+
 euptrip.diffs: euptex$(EXEEXT) dvitype$(EXEEXT) pltotf$(EXEEXT) tftopl$(EXEEXT)
 	$(triptrap_diffs) $@
 .PHONY: euptrip-clean
@@ -22370,7 +22434,9 @@ aleph.web: tie$(EXEEXT) $(aleph_web_srcs)
 	$(tie_m) $(aleph_web_srcs)
 aleph.ch: tie$(EXEEXT) aleph.web $(aleph_ch_srcs)
 	$(tie_c) aleph.web $(aleph_ch_srcs)
-alephdir/aleph.log: aleph$(EXEEXT)
+alephdir/aleph.log \
+	alephdir/aleph-ofm.log alephdir/aleph-lmr.log \
+	: aleph$(EXEEXT)
 
 # (end of aleph.am)
 

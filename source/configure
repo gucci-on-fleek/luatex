@@ -813,23 +813,6 @@ enable_native_texlive_build
 enable_multiplatform
 enable_cxx_runtime_hack
 enable_libtool_hack
-enable_autosp
-enable_axodraw2
-enable_devnag
-enable_lacheck
-enable_m_tx
-enable_pmx
-enable_ps2eps
-enable_t1utils
-enable_texdoctk
-enable_tpic2pdftex
-enable_vlna
-enable_xindy
-enable_xindy_rules
-enable_xindy_docs
-with_clisp_runtime
-enable_xml2pmx
-enable_xpdfopen
 enable_web2c
 with_banner_add
 with_editor
@@ -856,6 +839,7 @@ enable_luahbtex
 enable_luajithbtex
 enable_mp
 enable_pmp
+enable_texprof
 enable_upmp
 enable_xetex
 enable_xetex_synctex
@@ -876,87 +860,15 @@ enable_tektronixwin
 enable_unitermwin
 enable_web_progs
 enable_synctex
-enable_afm2pl
-enable_bibtex_x
-enable_bibtex8
-enable_bibtexu
-enable_chktex
-enable_cjkutils
-enable_detex
-enable_dtl
-enable_dvi2tty
-enable_dvidvi
-enable_dviljk
-enable_dviout_util
-enable_dvipdfm_x
-enable_dvipng
-enable_debug
-enable_timing
-with_gs
-enable_dvipos
-enable_dvipsk
-enable_dvisvgm
-enable_gregorio
-enable_gsftopk
-enable_lcdf_typetools
-enable_cfftot1
-enable_mmafm
-enable_mmpfb
-enable_otfinfo
-enable_otftotfm
-enable_t1dotlessj
-enable_t1lint
-enable_t1rawafm
-enable_t1reencode
-enable_t1testpage
-enable_ttftotype42
-enable_updmap
-enable_makeindexk
-enable_makejvf
-enable_mendexk
-enable_musixtnt
-enable_ps2pk
-enable_psutils
-enable_seetexk
-enable_tex4htk
-enable_ttf2pk2
-enable_ttfdump
-enable_upmendex
-enable_xdvik
-with_xdvi_x_toolkit
 enable_texlive
 enable_linked_scripts
 with_system_harfbuzz
-with_system_icu
-with_system_teckit
 with_system_graphite2
 with_system_zziplib
-with_system_mpfi
-with_mpfi_includes
-with_mpfi_libdir
-with_system_mpfr
-with_mpfr_includes
-with_mpfr_libdir
-with_system_gmp
-with_gmp_includes
-with_gmp_libdir
-with_system_cairo
-with_system_pixman
-with_system_gd
-with_gd_includes
-with_gd_libdir
-with_system_potrace
-with_potrace_includes
-with_potrace_libdir
-with_system_freetype2
 with_system_libpng
-with_system_libpaper
-with_libpaper_includes
-with_libpaper_libdir
 with_system_zlib
 with_zlib_includes
 with_zlib_libdir
-with_system_ptexenc
 with_system_kpathsea
 enable_mktexmf_default
 enable_mktexpk_default
@@ -971,8 +883,10 @@ enable_maintainer_mode
 enable_compiler_warnings
 enable_shared
 enable_static
+enable_pic
 with_pic
 enable_fast_install
+enable_aix_soname
 with_aix_soname
 with_gnu_ld
 with_sysroot
@@ -1637,22 +1551,6 @@ Optional Features:
                           lib/PLATFORM
   --enable-cxx-runtime-hack  link C++ runtime statically
   --enable-libtool-hack   ignore libtool dependency_libs
-  --disable-autosp        do not build the autosp package
-  --disable-axodraw2      do not build the axodraw2 package
-  --disable-devnag        do not build the devnag package
-  --disable-lacheck       do not build the lacheck package
-  --disable-m-tx          do not build the m-tx package
-  --disable-pmx           do not build the pmx package
-  --disable-ps2eps        do not build the ps2eps package
-  --disable-t1utils       do not build the t1utils package
-  --disable-texdoctk      do not build the texdoctk package
-  --disable-tpic2pdftex   do not build the tpic2pdftex package
-  --disable-vlna          do not build the vlna package
-  --enable-xindy          build the xindy package
-  --enable-xindy-rules      build and install make-rules package
-  --enable-xindy-docs       build and install documentation
-  --disable-xml2pmx       do not build the xml2pmx package
-  --disable-xpdfopen      do not build the xpdfopen package
   --disable-web2c         do not build the web2c (TeX & Co.) package
   --enable-auto-core        cause TeX&MF to dump core, given a certain
                             filename
@@ -1679,6 +1577,7 @@ Optional Features:
   --disable-luajithbtex     do not compile and install LuaHBJITTeX
   --disable-mp              do not compile and install MetaPost
   --disable-pmp             do not compile and install pMetaPost
+  --disable-texprof         do not compile and install TeXprof
   --disable-upmp            do not compile and install upMetaPost
   --disable-xetex           do not compile and install XeTeX
   --disable-xetex-synctex     build XeTeX without SyncTeX support
@@ -1699,57 +1598,6 @@ Optional Features:
   --enable-unitermwin         include Uniterm window support
   --disable-web-progs       do not build WEB programs bibtex ... weave
   --disable-synctex         do not build the SyncTeX library and tool
-  --disable-afm2pl        do not build the afm2pl package
-  --disable-bibtex-x      do not build the bibtex-x package
-  --disable-bibtex8         do not build the bibtex8 program
-  --disable-bibtexu         do not build the bibtexu program
-  --disable-chktex        do not build the chktex package
-  --disable-cjkutils      do not build the cjkutils package
-  --disable-detex         do not build the detex package
-  --disable-dtl           do not build the dtl package
-  --disable-dvi2tty       do not build the dvi2tty package
-  --disable-dvidvi        do not build the dvidvi package
-  --disable-dviljk        do not build the dviljk package
-  --disable-dviout-util   do not build the dviout-util package
-  --disable-dvipdfm-x     do not build the dvipdfm-x package
-  --disable-dvipng        do not build the dvipng package
-  --disable-debug           Compile without debug (-d) option
-  --enable-timing           Output execution time of dvipng
-  --disable-dvipos        do not build the dvipos package
-  --disable-dvipsk        do not build the dvipsk package
-  --disable-dvisvgm       do not build the dvisvgm package
-  --disable-gregorio      do not build the gregorio package
-  --disable-gsftopk       do not build the gsftopk package
-  --disable-lcdf-typetools
-                          do not build the lcdf-typetools package
-  --disable-cfftot1         do not build the cfftot1 program
-  --disable-mmafm           do not build the mmafm program
-  --disable-mmpfb           do not build the mmpfb program
-  --disable-otfinfo         do not build the otfinfo program
-  --disable-otftotfm        do not build the otftotfm program
-  --disable-t1dotlessj      do not build the t1dotlessj program
-  --disable-t1lint          do not build the t1lint program
-  --disable-t1rawafm        do not build the t1rawafm program
-  --disable-t1reencode      do not build the t1reencode program
-  --disable-t1testpage      do not build the t1testpage program
-  --disable-ttftotype42     do not build the ttftotype42 program
-  --disable-auto-cfftot1    disable running cfftot1 from otftotfm
-  --disable-auto-t1dotlessj disable running t1dotlessj from otftotfm
-  --disable-auto-ttftotype42
-                            disable running ttftotype42 from otftotfm
-  --disable-auto-updmap     disable running updmap from otftotfm
-  --disable-makeindexk    do not build the makeindexk package
-  --disable-makejvf       do not build the makejvf package
-  --disable-mendexk       do not build the mendexk package
-  --disable-musixtnt      do not build the musixtnt package
-  --disable-ps2pk         do not build the ps2pk package
-  --disable-psutils       do not build the psutils package
-  --disable-seetexk       do not build the seetexk package
-  --disable-tex4htk       do not build the tex4htk package
-  --disable-ttf2pk2       do not build the ttf2pk2 package
-  --disable-ttfdump       do not build the ttfdump package
-  --disable-upmendex      do not build the upmendex package
-  --disable-xdvik         do not build the xdvik package
   --disable-texlive       do not build the texlive (TeX Live scripts) package
   --disable-linked-scripts  do not install the linked scripts
   --disable-mktexmf-default   do not run mktexmf if MF source missing
@@ -1773,8 +1621,13 @@ Optional Features:
                           maintainer-mode, min otherwise]
   --enable-shared[=PKGS]  build shared libraries [default=yes]
   --enable-static[=PKGS]  build static libraries [default=yes]
+  --enable-pic[=PKGS]     try to use only PIC/non-PIC objects [default=use
+                          both]
   --enable-fast-install[=PKGS]
                           optimize for fast installation [default=yes]
+  --enable-aix-soname=aix|svr4|both
+                          shared library versioning (aka "SONAME") variant to
+                          provide on AIX, [default=aix].
   --disable-libtool-lock  avoid locking (might break parallel builds)
   --disable-largefile     omit support for large files
   --enable-year2038       support timestamps after 2038
@@ -1782,73 +1635,24 @@ Optional Features:
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
-  --with-clisp-runtime=PATH
-                          pathname of clisp runtime to install for `xindy',
-                          `default' to derive from clisp, or `system' to use
-                          installed version
   --with-banner-add=STR   add STR to version string appended to banner lines
   --with-editor=CMD       invoke CMD from the `e' option [vi +%d '%s'] or
                           [texworks --position=%d "%s"]
   --with-mf-x-toolkit     use X toolkit for METAFONT
-  --with-gs=/PATH/TO/gs   Hard-wire the location of GhostScript
-  --with-xdvi-x-toolkit=KIT
-                          Use toolkit KIT (xaw/motif/xaw3d/neXtaw) for xdvi
-                          [default: Xaw]
   --with-system-harfbuzz  use installed harfbuzz headers and library (requires
-                          pkg-config)
-  --with-system-icu       use installed ICU headers and libraries (requires
-                          pkg-config or icu-config)
-  --with-system-teckit    use installed teckit headers and library (requires
                           pkg-config)
   --with-system-graphite2 use installed graphite2 headers and library
                           (requires pkg-config)
   --with-system-zziplib   use installed zziplib headers and library (requires
                           pkg-config)
-  --with-system-mpfi      use installed mpfi headers and library
-  --with-mpfi-includes=DIR
-                          mpfi headers installed in DIR
-  --with-mpfi-libdir=DIR  mpfi library installed in DIR
-  --with-system-mpfr      use installed mpfr headers and library
-  --with-mpfr-includes=DIR
-                          mpfr headers installed in DIR
-  --with-mpfr-libdir=DIR  mpfr library installed in DIR
-  --with-system-gmp       use installed gmp headers and library
-  --with-gmp-includes=DIR gmp headers installed in DIR
-  --with-gmp-libdir=DIR   gmp library installed in DIR
-  --with-system-cairo     use installed cairo headers and library (requires
-                          pkg-config)
-  --with-system-pixman    use installed pixman headers and library (requires
-                          pkg-config)
-  --with-system-gd        use installed gd headers and library
-  --with-gd-includes=DIR  gd headers installed in DIR
-  --with-gd-libdir=DIR    gd library installed in DIR
-  --with-system-potrace   use installed potrace headers and library
-  --with-potrace-includes=DIR
-                          potrace headers installed in DIR
-  --with-potrace-libdir=DIR
-                          potrace library installed in DIR
-  --with-system-freetype2 use installed freetype2 headers and library
-                          (requires freetype-config)
   --with-system-libpng    use installed libpng headers and library (requires
                           pkg-config)
-  --with-system-libpaper  use installed libpaper headers and library
-  --with-libpaper-includes=DIR
-                          libpaper headers installed in DIR
-  --with-libpaper-libdir=DIR
-                          libpaper library installed in DIR
   --with-system-zlib      use installed zlib headers and library
   --with-zlib-includes=DIR
                           zlib headers installed in DIR
   --with-zlib-libdir=DIR  zlib library installed in DIR
-  --with-system-ptexenc   use installed ptexenc headers and library (requires
-                          pkg-config)
   --with-system-kpathsea  use installed kpathsea headers and library (requires
                           pkg-config)
-  --with-pic[=PKGS]       try to use only PIC/non-PIC objects [default=use
-                          both]
-  --with-aix-soname=aix|svr4|both
-                          shared library versioning (aka "SONAME") variant to
-                          provide on AIX, [default=aix].
   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
   --with-sysroot[=DIR]    Search for dependent libraries within DIR (or the
                           compiler's sysroot if not specified).
@@ -5258,333 +5062,6 @@ printf "%s\n" "$as_me: $host -> \`--disable-mfluajit-nowin'" >&6;}
 esac ;;
 esac
 
-## utils/autosp/ac/withenable.ac: configure.ac fragment for Tl subdir
-## configure options and TL libraries required for autosp.
-# Check whether --enable-autosp was given.
-if test ${enable_autosp+y}
-then :
-  enableval=$enable_autosp;
-fi
-case $enable_autosp in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_autosp=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-autosp=$enable_autosp'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-autosp=$enable_autosp'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-autosp=$enable_autosp'"
-    ;;
-esac
-
-## utils/axodraw2/ac/withenable.ac: configure.ac fragment for TL subdir
-## configure options and TL libraries for axodraw2.
-# Check whether --enable-axodraw2 was given.
-if test ${enable_axodraw2+y}
-then :
-  enableval=$enable_axodraw2;
-fi
-case $enable_axodraw2 in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_axodraw2=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-axodraw2=$enable_axodraw2'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-axodraw2=$enable_axodraw2'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-axodraw2=$enable_axodraw2'"
-    ;;
-esac
-
-## utils/devnag/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/devnag/
-## configure options and TL libraries required for devnag
-# Check whether --enable-devnag was given.
-if test ${enable_devnag+y}
-then :
-  enableval=$enable_devnag;
-fi
-case $enable_devnag in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_devnag=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-devnag=$enable_devnag'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-devnag=$enable_devnag'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-devnag=$enable_devnag'"
-    ;;
-esac
-
-## utils/lacheck/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/lacheck/
-## configure options and TL libraries required for lacheck
-# Check whether --enable-lacheck was given.
-if test ${enable_lacheck+y}
-then :
-  enableval=$enable_lacheck;
-fi
-case $enable_lacheck in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_lacheck=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-lacheck=$enable_lacheck'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-lacheck=$enable_lacheck'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-lacheck=$enable_lacheck'"
-    ;;
-esac
-
-## utils/m-tx/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/m-tx/
-## configure options and TL libraries required for mtx
-# Check whether --enable-m-tx was given.
-if test ${enable_m_tx+y}
-then :
-  enableval=$enable_m_tx;
-fi
-case $enable_m_tx in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_m_tx=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-m-tx=$enable_m_tx'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-m-tx=$enable_m_tx'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-m-tx=$enable_m_tx'"
-    ;;
-esac
-
-## utils/pmx/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/pmx/
-## configure options and TL libraries required for pmx
-# Check whether --enable-pmx was given.
-if test ${enable_pmx+y}
-then :
-  enableval=$enable_pmx;
-fi
-case $enable_pmx in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_pmx=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-pmx=$enable_pmx'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-pmx=$enable_pmx'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-pmx=$enable_pmx'"
-    ;;
-esac
-
-## utils/ps2eps/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/ps2eps/
-## configure options and TL libraries required for ps2eps
-# Check whether --enable-ps2eps was given.
-if test ${enable_ps2eps+y}
-then :
-  enableval=$enable_ps2eps;
-fi
-case $enable_ps2eps in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_ps2eps=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-ps2eps=$enable_ps2eps'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-ps2eps=$enable_ps2eps'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-ps2eps=$enable_ps2eps'"
-    ;;
-esac
-
-## utils/t1utils/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/t1utils/
-## configure options and TL libraries required for t1utils
-# Check whether --enable-t1utils was given.
-if test ${enable_t1utils+y}
-then :
-  enableval=$enable_t1utils;
-fi
-case $enable_t1utils in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_t1utils=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-t1utils=$enable_t1utils'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-t1utils=$enable_t1utils'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-t1utils=$enable_t1utils'"
-    ;;
-esac
-
-## utils/texdoctk/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/texdoctk/
-## configure options and TL libraries required for texdoctk
-# Check whether --enable-texdoctk was given.
-if test ${enable_texdoctk+y}
-then :
-  enableval=$enable_texdoctk;
-fi
-case $enable_texdoctk in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_texdoctk=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-texdoctk=$enable_texdoctk'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-texdoctk=$enable_texdoctk'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-texdoctk=$enable_texdoctk'"
-    ;;
-esac
-
-## utils/tpic2pdftex/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/tpic2pdftex/
-## configure options and TL libraries required for tpic2pdftex
-# Check whether --enable-tpic2pdftex was given.
-if test ${enable_tpic2pdftex+y}
-then :
-  enableval=$enable_tpic2pdftex;
-fi
-case $enable_tpic2pdftex in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_tpic2pdftex=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-tpic2pdftex=$enable_tpic2pdftex'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-tpic2pdftex=$enable_tpic2pdftex'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-tpic2pdftex=$enable_tpic2pdftex'"
-    ;;
-esac
-
-## utils/vlna/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/vlna/
-## configure options and TL libraries required for vlna
-# Check whether --enable-vlna was given.
-if test ${enable_vlna+y}
-then :
-  enableval=$enable_vlna;
-fi
-case $enable_vlna in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_vlna=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-vlna=$enable_vlna'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-vlna=$enable_vlna'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-vlna=$enable_vlna'"
-    ;;
-esac
-
-## utils/xindy/ac/withenable.ac: configure.ac fragment for TL subdir
-## configure options and TL libraries required for xindy.
-# Check whether --enable-xindy was given.
-if test ${enable_xindy+y}
-then :
-  enableval=$enable_xindy;
-fi
-case $enable_xindy in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_xindy=no
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-xindy=$enable_xindy'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-xindy=$enable_xindy'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-xindy=$enable_xindy'"
-    ;;
-esac
-
-## utils/xindy/ac/xindy.ac: configure.ac fragment for the TeX Live subdirectory utils/xindy/
-## configure options for xindy
-# Check whether --enable-xindy-rules was given.
-if test ${enable_xindy_rules+y}
-then :
-  enableval=$enable_xindy_rules;
-fi
-# Check whether --enable-xindy-docs was given.
-if test ${enable_xindy_docs+y}
-then :
-  enableval=$enable_xindy_docs;
-fi
-
-# Check whether --with-clisp-runtime was given.
-if test ${with_clisp_runtime+y}
-then :
-  withval=$with_clisp_runtime;
-fi
-
-## utils/xindy/ac/clisp.ac: configure.ac fragment for the TeX Live subdirectory utils/xindy/
-## configure checks for xindy and clisp
-case $with_clisp_runtime in #(
-  default) :
-     ;; #(
-  system) :
-    if test "x$enable_native_texlive_build" = xyes
-then :
-  as_fn_error $? "you can not use the installed clisp for a native TeX Live build" "$LINENO" 5
-fi ;; #(
-  "") :
-    if test "x$enable_native_texlive_build" = xyes
-then :
-  with_clisp_runtime=default
-else case e in #(
-  e) with_clisp_runtime=system ;;
-esac
-fi
-               { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--with-clisp-runtime=$with_clisp_runtime'" >&5
-printf "%s\n" "$as_me: Assuming \`--with-clisp-runtime=$with_clisp_runtime'" >&6;}
-               ac_configure_args="$ac_configure_args '--with-clisp-runtime=$with_clisp_runtime'" ;; #(
-  *) :
-    if test ! -f "$with_clisp_runtime"
-then :
-  as_fn_error $? "no such file: \"$with_clisp_runtime\"" "$LINENO" 5
-fi ;;
-esac
-
-## utils/xml2pmx/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/xml2pmx/
-## configure options and TL libraries required for xml2pmx
-# Check whether --enable-xml2pmx was given.
-if test ${enable_xml2pmx+y}
-then :
-  enableval=$enable_xml2pmx;
-fi
-case $enable_xml2pmx in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_xml2pmx=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-xml2pmx=$enable_xml2pmx'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-xml2pmx=$enable_xml2pmx'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-xml2pmx=$enable_xml2pmx'"
-    ;;
-esac
-
-## utils/xpdfopen/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory utils/xpdfopen/
-## configure options and TL libraries required for xpdfopen
-# Check whether --enable-xpdfopen was given.
-if test ${enable_xpdfopen+y}
-then :
-  enableval=$enable_xpdfopen;
-fi
-if test "x$with_x" = xno
-then :
-  case $enable_xpdfopen in #(
-  "") :
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \`--without-x' -> \`--disable-xpdfopen'" >&5
-printf "%s\n" "$as_me: \`--without-x' -> \`--disable-xpdfopen'" >&6;}
-                      enable_xpdfopen=no
-                      ac_configure_args="$ac_configure_args '--disable-xpdfopen'" ;; #(
-  yes) :
-    as_fn_error $? "Sorry, incompatible options \`--without-x' and \`--enable-xpdfopen'" "$LINENO" 5 ;; #(
-  *) :
-     ;;
-esac
-fi
-case $enable_xpdfopen in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_xpdfopen=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-xpdfopen=$enable_xpdfopen'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-xpdfopen=$enable_xpdfopen'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-xpdfopen=$enable_xpdfopen'"
-    ;;
-esac
-
 
 ## texk/web2c/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/web2c/
 ## configure options and TL libraries required for web2c
@@ -5904,6 +5381,17 @@ test "x$enable_web2c:$enable_pmp" = xyes:yes && {
   need_libpng=yes
   need_ptexenc=yes
 }
+# Check whether --enable-texprof was given.
+if test ${enable_texprof+y}
+then :
+  enableval=$enable_texprof;
+fi
+case $enable_texprof in #(
+  yes | no) :
+     ;; #(
+  *) :
+    enable_texprof=yes ;;
+esac
 # Check whether --enable-upmp was given.
 if test ${enable_upmp+y}
 then :
@@ -6088,864 +5576,6 @@ then :
 fi
 
 
-## texk/afm2pl/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/afm2pl/
-## configure options and TL libraries required for afm2pl
-# Check whether --enable-afm2pl was given.
-if test ${enable_afm2pl+y}
-then :
-  enableval=$enable_afm2pl;
-fi
-case $enable_afm2pl in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_afm2pl=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-afm2pl=$enable_afm2pl'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-afm2pl=$enable_afm2pl'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-afm2pl=$enable_afm2pl'"
-    ;;
-esac
-
-test "x$enable_afm2pl" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/bibtex-x/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/bibtex-x/
-## configure options and TL libraries required for bibtex-x
-# Check whether --enable-bibtex-x was given.
-if test ${enable_bibtex_x+y}
-then :
-  enableval=$enable_bibtex_x;
-fi
-case $enable_bibtex_x in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_bibtex_x=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-bibtex-x=$enable_bibtex_x'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-bibtex-x=$enable_bibtex_x'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-bibtex-x=$enable_bibtex_x'"
-    ;;
-esac
-
-test "x$enable_bibtex_x" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/bibtex-x/ac/bibtex-x.ac: configure.ac fragment for the TeX Live subdirectory texk/bibtex-x/
-## configure options for bibtex-x
-# Check whether --enable-bibtex8 was given.
-if test ${enable_bibtex8+y}
-then :
-  enableval=$enable_bibtex8;
-fi
-
-case $enable_bibtex8 in #(
-  yes | no) :
-     ;; #(
-  *) :
-    enable_bibtex8=yes ;;
-esac
-# Check whether --enable-bibtexu was given.
-if test ${enable_bibtexu+y}
-then :
-  enableval=$enable_bibtexu;
-fi
-
-case $enable_bibtexu in #(
-  yes | no) :
-     ;; #(
-  *) :
-    enable_bibtexu=yes ;;
-esac
-
-test "x$enable_bibtex_x:$enable_bibtexu" = xyes:yes && need_icu=yes
-
-## texk/chktex/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/chktex/
-## configure options and TL libraries required for chktex
-# Check whether --enable-chktex was given.
-if test ${enable_chktex+y}
-then :
-  enableval=$enable_chktex;
-fi
-case $enable_chktex in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_chktex=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-chktex=$enable_chktex'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-chktex=$enable_chktex'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-chktex=$enable_chktex'"
-    ;;
-esac
-
-test "x$enable_chktex" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/cjkutils/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/cjkutils/
-## configure options and TL libraries required for cjkutils
-# Check whether --enable-cjkutils was given.
-if test ${enable_cjkutils+y}
-then :
-  enableval=$enable_cjkutils;
-fi
-case $enable_cjkutils in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_cjkutils=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-cjkutils=$enable_cjkutils'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-cjkutils=$enable_cjkutils'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-cjkutils=$enable_cjkutils'"
-    ;;
-esac
-
-test "x$enable_cjkutils" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/detex/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/detex/
-## configure options and TL libraries required for detex
-# Check whether --enable-detex was given.
-if test ${enable_detex+y}
-then :
-  enableval=$enable_detex;
-fi
-case $enable_detex in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_detex=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-detex=$enable_detex'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-detex=$enable_detex'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-detex=$enable_detex'"
-    ;;
-esac
-
-test "x$enable_detex" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/dtl/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/dtl/
-## configure options and TL libraries required for dtl
-# Check whether --enable-dtl was given.
-if test ${enable_dtl+y}
-then :
-  enableval=$enable_dtl;
-fi
-case $enable_dtl in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dtl=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dtl=$enable_dtl'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dtl=$enable_dtl'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dtl=$enable_dtl'"
-    ;;
-esac
-
-test "x$enable_dtl" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/dvi2tty/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/dvi2tty/
-## configure options and TL libraries required for dvi2tty
-# Check whether --enable-dvi2tty was given.
-if test ${enable_dvi2tty+y}
-then :
-  enableval=$enable_dvi2tty;
-fi
-case $enable_dvi2tty in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dvi2tty=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dvi2tty=$enable_dvi2tty'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dvi2tty=$enable_dvi2tty'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dvi2tty=$enable_dvi2tty'"
-    ;;
-esac
-
-test "x$enable_dvi2tty" = xno || {
-  need_ptexenc=yes
-}
-
-## texk/dvidvi/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/dvidvi/
-## configure options and TL libraries required for dvidvi
-# Check whether --enable-dvidvi was given.
-if test ${enable_dvidvi+y}
-then :
-  enableval=$enable_dvidvi;
-fi
-case $enable_dvidvi in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dvidvi=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dvidvi=$enable_dvidvi'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dvidvi=$enable_dvidvi'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dvidvi=$enable_dvidvi'"
-    ;;
-esac
-
-test "x$enable_dvidvi" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/dviljk/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/dviljk/
-## configure options and TL libraries required for dviljk
-# Check whether --enable-dviljk was given.
-if test ${enable_dviljk+y}
-then :
-  enableval=$enable_dviljk;
-fi
-case $enable_dviljk in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dviljk=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dviljk=$enable_dviljk'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dviljk=$enable_dviljk'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dviljk=$enable_dviljk'"
-    ;;
-esac
-
-test "x$enable_dviljk" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/dviout-util/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/dviout-util/
-## configure options and TL libraries required for dviout-util
-# Check whether --enable-dviout-util was given.
-if test ${enable_dviout_util+y}
-then :
-  enableval=$enable_dviout_util;
-fi
-case $enable_dviout_util in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dviout_util=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dviout-util=$enable_dviout_util'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dviout-util=$enable_dviout_util'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dviout-util=$enable_dviout_util'"
-    ;;
-esac
-
-test "x$enable_dviout_util" = xno || {
-  need_ptexenc=yes
-}
-
-## texk/dvipdfm-x/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/dvipdfm-x/
-## configure options and TL libraries required for dvipdfm-x
-# Check whether --enable-dvipdfm-x was given.
-if test ${enable_dvipdfm_x+y}
-then :
-  enableval=$enable_dvipdfm_x;
-fi
-case $enable_dvipdfm_x in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dvipdfm_x=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dvipdfm-x=$enable_dvipdfm_x'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dvipdfm-x=$enable_dvipdfm_x'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dvipdfm-x=$enable_dvipdfm_x'"
-    ;;
-esac
-
-test "x$enable_dvipdfm_x" = xno || {
-  need_kpathsea=yes
-  need_libpng=yes
-  need_libpaper=yes
-}
-
-## texk/dvipng/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/dvipng/
-## configure options and TL libraries required for dvipng
-# Check whether --enable-dvipng was given.
-if test ${enable_dvipng+y}
-then :
-  enableval=$enable_dvipng;
-fi
-case $enable_dvipng in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dvipng=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dvipng=$enable_dvipng'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dvipng=$enable_dvipng'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dvipng=$enable_dvipng'"
-    ;;
-esac
-
-test "x$enable_dvipng" = xno || {
-  need_kpathsea=yes
-  need_gd=yes
-}
-
-## texk/dvipng/ac/dvipng.ac: configure.ac fragment for the TeX Live subdirectory texk/dvipng/
-## configure options for dvipng
-# Check whether --enable-debug was given.
-if test ${enable_debug+y}
-then :
-  enableval=$enable_debug;
-fi
-
-# Check whether --enable-timing was given.
-if test ${enable_timing+y}
-then :
-  enableval=$enable_timing;
-fi
-
-
-# Check whether --with-gs was given.
-if test ${with_gs+y}
-then :
-  withval=$with_gs;
-fi
-
-
-## texk/dvipos/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/dvipos/
-## configure options and TL libraries required for dvipos
-# Check whether --enable-dvipos was given.
-if test ${enable_dvipos+y}
-then :
-  enableval=$enable_dvipos;
-fi
-case $enable_dvipos in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dvipos=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dvipos=$enable_dvipos'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dvipos=$enable_dvipos'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dvipos=$enable_dvipos'"
-    ;;
-esac
-
-test "x$enable_dvipos" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/dvipsk/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/dvipsk/
-## configure options and TL libraries required for dvipsk
-# Check whether --enable-dvipsk was given.
-if test ${enable_dvipsk+y}
-then :
-  enableval=$enable_dvipsk;
-fi
-case $enable_dvipsk in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dvipsk=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dvipsk=$enable_dvipsk'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dvipsk=$enable_dvipsk'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dvipsk=$enable_dvipsk'"
-    ;;
-esac
-
-test "x$enable_dvipsk" = xno || {
-  need_kpathsea=yes
-}
-
-# texk/dvisvgm/ac/withenable.ac: configure.ac fragment
-## configure options and TL libraries required for dvisvgm
-# Check whether --enable-dvisvgm was given.
-if test ${enable_dvisvgm+y}
-then :
-  enableval=$enable_dvisvgm;
-fi
-case $enable_dvisvgm in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_dvisvgm=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-dvisvgm=$enable_dvisvgm'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-dvisvgm=$enable_dvisvgm'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-dvisvgm=$enable_dvisvgm'"
-    ;;
-esac
-
-test "x$enable_dvisvgm" = xno || {
-  need_kpathsea=yes
-  need_potrace=yes
-  need_freetype2=yes
-  need_zlib=yes
-}
-
-## texk/gregorio/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/gregorio/
-## configure options and TL libraries required for gregorio
-# Check whether --enable-gregorio was given.
-if test ${enable_gregorio+y}
-then :
-  enableval=$enable_gregorio;
-fi
-case $enable_gregorio in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_gregorio=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-gregorio=$enable_gregorio'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-gregorio=$enable_gregorio'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-gregorio=$enable_gregorio'"
-    ;;
-esac
-
-test "x$enable_gregorio" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/gsftopk/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/gsftopk/
-## configure options and TL libraries required for gsftopk
-# Check whether --enable-gsftopk was given.
-if test ${enable_gsftopk+y}
-then :
-  enableval=$enable_gsftopk;
-fi
-case $enable_gsftopk in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_gsftopk=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-gsftopk=$enable_gsftopk'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-gsftopk=$enable_gsftopk'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-gsftopk=$enable_gsftopk'"
-    ;;
-esac
-
-test "x$enable_gsftopk" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/lcdf-typetools/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/lcdf-typetools/
-## configure options and TL libraries required for lcdf-typetools
-# Check whether --enable-lcdf-typetools was given.
-if test ${enable_lcdf_typetools+y}
-then :
-  enableval=$enable_lcdf_typetools;
-fi
-case $enable_lcdf_typetools in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_lcdf_typetools=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-lcdf-typetools=$enable_lcdf_typetools'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-lcdf-typetools=$enable_lcdf_typetools'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-lcdf-typetools=$enable_lcdf_typetools'"
-    ;;
-esac
-
-test "x$enable_lcdf_typetools" = xno || {
-  need_kpathsea=yes
-}
-
-# Define configure options for lcdf-typetools.  Extracted from configure.ac
-# for ease of building TeX Live.
-#
-#
-# Check whether --enable-cfftot1 was given.
-if test ${enable_cfftot1+y}
-then :
-  enableval=$enable_cfftot1;
-fi
-# Check whether --enable-mmafm was given.
-if test ${enable_mmafm+y}
-then :
-  enableval=$enable_mmafm;
-fi
-# Check whether --enable-mmpfb was given.
-if test ${enable_mmpfb+y}
-then :
-  enableval=$enable_mmpfb;
-fi
-# Check whether --enable-otfinfo was given.
-if test ${enable_otfinfo+y}
-then :
-  enableval=$enable_otfinfo;
-fi
-# Check whether --enable-otftotfm was given.
-if test ${enable_otftotfm+y}
-then :
-  enableval=$enable_otftotfm;
-fi
-# Check whether --enable-t1dotlessj was given.
-if test ${enable_t1dotlessj+y}
-then :
-  enableval=$enable_t1dotlessj;
-fi
-# Check whether --enable-t1lint was given.
-if test ${enable_t1lint+y}
-then :
-  enableval=$enable_t1lint;
-fi
-# Check whether --enable-t1rawafm was given.
-if test ${enable_t1rawafm+y}
-then :
-  enableval=$enable_t1rawafm;
-fi
-# Check whether --enable-t1reencode was given.
-if test ${enable_t1reencode+y}
-then :
-  enableval=$enable_t1reencode;
-fi
-# Check whether --enable-t1testpage was given.
-if test ${enable_t1testpage+y}
-then :
-  enableval=$enable_t1testpage;
-fi
-# Check whether --enable-ttftotype42 was given.
-if test ${enable_ttftotype42+y}
-then :
-  enableval=$enable_ttftotype42;
-fi
-
-#
-# Check whether --enable-cfftot1 was given.
-if test ${enable_cfftot1+y}
-then :
-  enableval=$enable_cfftot1;
-fi
-# Check whether --enable-t1dotlessj was given.
-if test ${enable_t1dotlessj+y}
-then :
-  enableval=$enable_t1dotlessj;
-fi
-# Check whether --enable-ttftotype42 was given.
-if test ${enable_ttftotype42+y}
-then :
-  enableval=$enable_ttftotype42;
-fi
-# Check whether --enable-updmap was given.
-if test ${enable_updmap+y}
-then :
-  enableval=$enable_updmap;
-fi
-
-
-## texk/makeindexk/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/makeindexk/
-## configure options and TL libraries required for makeindexk
-# Check whether --enable-makeindexk was given.
-if test ${enable_makeindexk+y}
-then :
-  enableval=$enable_makeindexk;
-fi
-case $enable_makeindexk in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_makeindexk=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-makeindexk=$enable_makeindexk'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-makeindexk=$enable_makeindexk'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-makeindexk=$enable_makeindexk'"
-    ;;
-esac
-
-test "x$enable_makeindexk" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/makejvf/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/makejvf/
-## configure options and TL libraries required for makejvf
-# Check whether --enable-makejvf was given.
-if test ${enable_makejvf+y}
-then :
-  enableval=$enable_makejvf;
-fi
-case $enable_makejvf in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_makejvf=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-makejvf=$enable_makejvf'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-makejvf=$enable_makejvf'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-makejvf=$enable_makejvf'"
-    ;;
-esac
-
-test "x$enable_makejvf" = xno || {
-  need_ptexenc=yes
-}
-
-## texk/mendexk/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/mendexk/
-## configure options and TL libraries required for mendexk
-# Check whether --enable-mendexk was given.
-if test ${enable_mendexk+y}
-then :
-  enableval=$enable_mendexk;
-fi
-case $enable_mendexk in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_mendexk=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-mendexk=$enable_mendexk'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-mendexk=$enable_mendexk'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-mendexk=$enable_mendexk'"
-    ;;
-esac
-
-test "x$enable_mendexk" = xno || {
-  need_ptexenc=yes
-}
-
-## texk/musixtnt/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/musixtnt/
-## configure options and TL libraries required for musixtnt
-# Check whether --enable-musixtnt was given.
-if test ${enable_musixtnt+y}
-then :
-  enableval=$enable_musixtnt;
-fi
-case $enable_musixtnt in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_musixtnt=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-musixtnt=$enable_musixtnt'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-musixtnt=$enable_musixtnt'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-musixtnt=$enable_musixtnt'"
-    ;;
-esac
-
-test "x$enable_musixtnt" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/ps2pk/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/ps2pk/
-## configure options and TL libraries required for ps2pk
-# Check whether --enable-ps2pk was given.
-if test ${enable_ps2pk+y}
-then :
-  enableval=$enable_ps2pk;
-fi
-case $enable_ps2pk in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_ps2pk=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-ps2pk=$enable_ps2pk'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-ps2pk=$enable_ps2pk'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-ps2pk=$enable_ps2pk'"
-    ;;
-esac
-
-test "x$enable_ps2pk" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/psutils/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/psutils/
-## configure options and TL libraries required for psutils
-# Check whether --enable-psutils was given.
-if test ${enable_psutils+y}
-then :
-  enableval=$enable_psutils;
-fi
-case $enable_psutils in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_psutils=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-psutils=$enable_psutils'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-psutils=$enable_psutils'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-psutils=$enable_psutils'"
-    ;;
-esac
-
-test "x$enable_psutils" = xno || {
-  need_kpathsea=yes
-  need_libpaper=yes
-}
-
-## texk/seetexk/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/seetexk/
-## configure options and TL libraries required for seetexk
-# Check whether --enable-seetexk was given.
-if test ${enable_seetexk+y}
-then :
-  enableval=$enable_seetexk;
-fi
-case $enable_seetexk in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_seetexk=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-seetexk=$enable_seetexk'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-seetexk=$enable_seetexk'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-seetexk=$enable_seetexk'"
-    ;;
-esac
-
-test "x$enable_seetexk" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/tex4htk/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/tex4htk/
-## configure options and TL libraries required for tex4htk
-# Check whether --enable-tex4htk was given.
-if test ${enable_tex4htk+y}
-then :
-  enableval=$enable_tex4htk;
-fi
-case $enable_tex4htk in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_tex4htk=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-tex4htk=$enable_tex4htk'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-tex4htk=$enable_tex4htk'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-tex4htk=$enable_tex4htk'"
-    ;;
-esac
-
-test "x$enable_tex4htk" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/ttf2pk2/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/ttf2pk2/
-## configure options and TL libraries required for ttf2pk
-# Check whether --enable-ttf2pk2 was given.
-if test ${enable_ttf2pk2+y}
-then :
-  enableval=$enable_ttf2pk2;
-fi
-case $enable_ttf2pk2 in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_ttf2pk2=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-ttf2pk2=$enable_ttf2pk2'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-ttf2pk2=$enable_ttf2pk2'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-ttf2pk2=$enable_ttf2pk2'"
-    ;;
-esac
-
-test "x$enable_ttf2pk2" = xno || {
-  need_kpathsea=yes
-  need_freetype2=yes
-}
-
-## texk/ttfdump/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/ttfdump/
-## configure options and TL libraries required for ttfdump
-# Check whether --enable-ttfdump was given.
-if test ${enable_ttfdump+y}
-then :
-  enableval=$enable_ttfdump;
-fi
-case $enable_ttfdump in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_ttfdump=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-ttfdump=$enable_ttfdump'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-ttfdump=$enable_ttfdump'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-ttfdump=$enable_ttfdump'"
-    ;;
-esac
-
-test "x$enable_ttfdump" = xno || {
-  need_kpathsea=yes
-}
-
-## texk/upmendex/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/upmendex/
-## configure options and TL libraries required for upmendex
-# Check whether --enable-upmendex was given.
-if test ${enable_upmendex+y}
-then :
-  enableval=$enable_upmendex;
-fi
-case $enable_upmendex in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_upmendex=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-upmendex=$enable_upmendex'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-upmendex=$enable_upmendex'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-upmendex=$enable_upmendex'"
-    ;;
-esac
-
-test "x$enable_upmendex" = xno || {
-  need_kpathsea=yes
-  need_icu=yes
-}
-
-## texk/xdvik/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/xdvik/
-## configure options and TL libraries required for xdvik
-# Check whether --enable-xdvik was given.
-if test ${enable_xdvik+y}
-then :
-  enableval=$enable_xdvik;
-fi
-if test "x$with_x" = xno
-then :
-  case $enable_xdvik in #(
-  "") :
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \`--without-x' -> \`--disable-xdvik'" >&5
-printf "%s\n" "$as_me: \`--without-x' -> \`--disable-xdvik'" >&6;}
-                      enable_xdvik=no
-                      ac_configure_args="$ac_configure_args '--disable-xdvik'" ;; #(
-  yes) :
-    as_fn_error $? "Sorry, incompatible options \`--without-x' and \`--enable-xdvik'" "$LINENO" 5 ;; #(
-  *) :
-     ;;
-esac
-fi
-case $enable_xdvik in #(
-  yes|no) :
-     ;; #(
-  *) :
-
-   enable_xdvik=$enable_all_pkgs
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`--enable-xdvik=$enable_xdvik'" >&5
-printf "%s\n" "$as_me: Assuming \`--enable-xdvik=$enable_xdvik'" >&6;}
-     ac_configure_args="$ac_configure_args '--enable-xdvik=$enable_xdvik'"
-    ;;
-esac
-
-test "x$enable_xdvik" = xno || {
-  need_kpathsea=yes
-  need_freetype2=yes
-}
-
-## texk/xdvik/ac/xdvik.ac: configure.ac fragment for the TeX Live subdirectory texk/xdvik/
-## configure options for xdvik
-
-# Check whether --with-xdvi-x-toolkit was given.
-if test ${with_xdvi_x_toolkit+y}
-then :
-  withval=$with_xdvi_x_toolkit;
-fi
-
-
 ## texk/texlive/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/texlive/
 ## configure options and TL libraries required for texlive
 # Check whether --enable-texlive was given.
@@ -7031,82 +5661,6 @@ test "x$need_harfbuzz" = xyes && {
   need_icu=yes
 }
 
-## libs/icu/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/icu/
-## configure options and TL libraries required for icu (modified for XeTeX)
-
-# Check whether --with-system-icu was given.
-if test ${with_system_icu+y}
-then :
-  withval=$with_system_icu;
-fi
-if test "x$with_system_icu" = x; then
-  if test -f $srcdir/libs/icu/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`icu' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`icu' headers and library from TL tree" >&6;}
-    with_system_icu=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`icu' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`icu' headers and library" >&6;}
-    with_system_icu=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-icu=$with_system_icu'"
-elif test "x$with_system_icu" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`icu' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`icu' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`icu' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`icu' headers and library from TL tree" >&6;}
-  if test "x$with_system_icu" != xno; then
-    with_system_icu=no
-    ac_configure_args="$ac_configure_args '--without-system-icu'"
-  fi
-fi
-
-## libs/teckit/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/teckit/
-## configure options and TL libraries required for teckit
-
-# Check whether --with-system-teckit was given.
-if test ${with_system_teckit+y}
-then :
-  withval=$with_system_teckit;
-fi
-if test "x$with_system_teckit" = x; then
-  if test -f $srcdir/libs/teckit/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`teckit' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`teckit' headers and library from TL tree" >&6;}
-    with_system_teckit=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`teckit' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`teckit' headers and library" >&6;}
-    with_system_teckit=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-teckit=$with_system_teckit'"
-elif test "x$with_system_teckit" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`teckit' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`teckit' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`teckit' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`teckit' headers and library from TL tree" >&6;}
-  if test "x$with_system_teckit" != xno; then
-    with_system_teckit=no
-    ac_configure_args="$ac_configure_args '--without-system-teckit'"
-  fi
-fi
-if test "x$with_system_teckit" = xyes; then
-  if test "x$with_system_zlib" = x; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   ->  installed \`zlib' headers and library" >&5
-printf "%s\n" "$as_me:   ->  installed \`zlib' headers and library" >&6;}
-    with_system_zlib=yes
-    ac_configure_args="$ac_configure_args '--with-system-zlib'"
-  elif test "x$with_system_zlib" != xyes; then
-    as_fn_error $? "Sorry, \`--with-system-teckit' requires \`--with-system-zlib'" "$LINENO" 5
-  fi
-fi
-
-test "x$need_teckit" = xyes && {
-  need_zlib=yes
-}
-
 ## libs/graphite2/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/graphite2/
 ## configure options and TL libraries required for graphite2
 
@@ -7183,419 +5737,6 @@ test "x$need_zziplib" = xyes && {
   need_zlib=yes
 }
 
-## libs/xpdf/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/xpdf/
-## configure options and TL libraries required for xpdf
-: "kpse_xpdf_options - no-op"
-if test "x$with_system_xpdf" = x; then
-  if test -f $srcdir/libs/xpdf/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`xpdf' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`xpdf' headers and library from TL tree" >&6;}
-    with_system_xpdf=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`xpdf' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`xpdf' headers and library" >&6;}
-    with_system_xpdf=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-xpdf=$with_system_xpdf'"
-elif test "x$with_system_xpdf" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`xpdf' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`xpdf' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`xpdf' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`xpdf' headers and library from TL tree" >&6;}
-  if test "x$with_system_xpdf" != xno; then
-    with_system_xpdf=no
-    ac_configure_args="$ac_configure_args '--without-system-xpdf'"
-  fi
-fi
-
-## libs/mpfi/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/mpfi/
-## configure options and TL libraries required for mpfi
-
-# Check whether --with-system-mpfi was given.
-if test ${with_system_mpfi+y}
-then :
-  withval=$with_system_mpfi;
-fi
-
-# Check whether --with-mpfi-includes was given.
-if test ${with_mpfi_includes+y}
-then :
-  withval=$with_mpfi_includes;
-fi
-
-# Check whether --with-mpfi-libdir was given.
-if test ${with_mpfi_libdir+y}
-then :
-  withval=$with_mpfi_libdir;
-fi
-if test "x$with_system_mpfi" = x; then
-  if test -f $srcdir/libs/mpfi/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`mpfi' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`mpfi' headers and library from TL tree" >&6;}
-    with_system_mpfi=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`mpfi' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`mpfi' headers and library" >&6;}
-    with_system_mpfi=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-mpfi=$with_system_mpfi'"
-elif test "x$with_system_mpfi" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`mpfi' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`mpfi' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`mpfi' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`mpfi' headers and library from TL tree" >&6;}
-  if test "x$with_system_mpfi" != xno; then
-    with_system_mpfi=no
-    ac_configure_args="$ac_configure_args '--without-system-mpfi'"
-  fi
-fi
-if test "x$with_system_mpfi" = xyes; then
-  if test "x$with_system_mpfr" = x; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   ->  installed \`mpfr' headers and library" >&5
-printf "%s\n" "$as_me:   ->  installed \`mpfr' headers and library" >&6;}
-    with_system_mpfr=yes
-    ac_configure_args="$ac_configure_args '--with-system-mpfr'"
-  elif test "x$with_system_mpfr" != xyes; then
-    as_fn_error $? "Sorry, \`--with-system-mpfi' requires \`--with-system-mpfr'" "$LINENO" 5
-  fi
-fi
-
-test "x$need_mpfi" = xyes && {
-  need_mpfr=yes
-}
-
-## libs/mpfr/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/mpfr/
-## configure options and TL libraries required for mpfr
-
-# Check whether --with-system-mpfr was given.
-if test ${with_system_mpfr+y}
-then :
-  withval=$with_system_mpfr;
-fi
-
-# Check whether --with-mpfr-includes was given.
-if test ${with_mpfr_includes+y}
-then :
-  withval=$with_mpfr_includes;
-fi
-
-# Check whether --with-mpfr-libdir was given.
-if test ${with_mpfr_libdir+y}
-then :
-  withval=$with_mpfr_libdir;
-fi
-if test "x$with_system_mpfr" = x; then
-  if test -f $srcdir/libs/mpfr/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`mpfr' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`mpfr' headers and library from TL tree" >&6;}
-    with_system_mpfr=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`mpfr' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`mpfr' headers and library" >&6;}
-    with_system_mpfr=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-mpfr=$with_system_mpfr'"
-elif test "x$with_system_mpfr" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`mpfr' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`mpfr' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`mpfr' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`mpfr' headers and library from TL tree" >&6;}
-  if test "x$with_system_mpfr" != xno; then
-    with_system_mpfr=no
-    ac_configure_args="$ac_configure_args '--without-system-mpfr'"
-  fi
-fi
-if test "x$with_system_mpfr" = xyes; then
-  if test "x$with_system_gmp" = x; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   ->  installed \`gmp' headers and library" >&5
-printf "%s\n" "$as_me:   ->  installed \`gmp' headers and library" >&6;}
-    with_system_gmp=yes
-    ac_configure_args="$ac_configure_args '--with-system-gmp'"
-  elif test "x$with_system_gmp" != xyes; then
-    as_fn_error $? "Sorry, \`--with-system-mpfr' requires \`--with-system-gmp'" "$LINENO" 5
-  fi
-fi
-
-test "x$need_mpfr" = xyes && {
-  need_gmp=yes
-}
-
-## libs/gmp/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/gmp/
-## configure options and TL libraries required for gmp
-
-# Check whether --with-system-gmp was given.
-if test ${with_system_gmp+y}
-then :
-  withval=$with_system_gmp;
-fi
-
-# Check whether --with-gmp-includes was given.
-if test ${with_gmp_includes+y}
-then :
-  withval=$with_gmp_includes;
-fi
-
-# Check whether --with-gmp-libdir was given.
-if test ${with_gmp_libdir+y}
-then :
-  withval=$with_gmp_libdir;
-fi
-if test "x$with_system_gmp" = x; then
-  if test -f $srcdir/libs/gmp/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`gmp' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`gmp' headers and library from TL tree" >&6;}
-    with_system_gmp=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`gmp' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`gmp' headers and library" >&6;}
-    with_system_gmp=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-gmp=$with_system_gmp'"
-elif test "x$with_system_gmp" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`gmp' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`gmp' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`gmp' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`gmp' headers and library from TL tree" >&6;}
-  if test "x$with_system_gmp" != xno; then
-    with_system_gmp=no
-    ac_configure_args="$ac_configure_args '--without-system-gmp'"
-  fi
-fi
-
-## libs/cairo/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/cairo/
-## configure options and TL libraries required for cairo
-
-# Check whether --with-system-cairo was given.
-if test ${with_system_cairo+y}
-then :
-  withval=$with_system_cairo;
-fi
-if test "x$with_system_cairo" = x; then
-  if test -f $srcdir/libs/cairo/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`cairo' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`cairo' headers and library from TL tree" >&6;}
-    with_system_cairo=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`cairo' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`cairo' headers and library" >&6;}
-    with_system_cairo=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-cairo=$with_system_cairo'"
-elif test "x$with_system_cairo" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`cairo' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`cairo' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`cairo' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`cairo' headers and library from TL tree" >&6;}
-  if test "x$with_system_cairo" != xno; then
-    with_system_cairo=no
-    ac_configure_args="$ac_configure_args '--without-system-cairo'"
-  fi
-fi
-if test "x$with_system_cairo" = xyes; then
-  if test "x$with_system_pixman" = x; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   ->  installed \`pixman' headers and library" >&5
-printf "%s\n" "$as_me:   ->  installed \`pixman' headers and library" >&6;}
-    with_system_pixman=yes
-    ac_configure_args="$ac_configure_args '--with-system-pixman'"
-  elif test "x$with_system_pixman" != xyes; then
-    as_fn_error $? "Sorry, \`--with-system-cairo' requires \`--with-system-pixman'" "$LINENO" 5
-  fi
-fi
-
-test "x$need_cairo" = xyes && {
-  need_pixman=yes
-}
-
-## libs/pixman/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/pixman/
-## configure options and TL libraries required for pixman
-
-# Check whether --with-system-pixman was given.
-if test ${with_system_pixman+y}
-then :
-  withval=$with_system_pixman;
-fi
-if test "x$with_system_pixman" = x; then
-  if test -f $srcdir/libs/pixman/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`pixman' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`pixman' headers and library from TL tree" >&6;}
-    with_system_pixman=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`pixman' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`pixman' headers and library" >&6;}
-    with_system_pixman=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-pixman=$with_system_pixman'"
-elif test "x$with_system_pixman" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`pixman' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`pixman' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`pixman' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`pixman' headers and library from TL tree" >&6;}
-  if test "x$with_system_pixman" != xno; then
-    with_system_pixman=no
-    ac_configure_args="$ac_configure_args '--without-system-pixman'"
-  fi
-fi
-
-## libs/gd/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/gd/
-## configure options and TL libraries required for gd
-
-# Check whether --with-system-gd was given.
-if test ${with_system_gd+y}
-then :
-  withval=$with_system_gd;
-fi
-
-# Check whether --with-gd-includes was given.
-if test ${with_gd_includes+y}
-then :
-  withval=$with_gd_includes;
-fi
-
-# Check whether --with-gd-libdir was given.
-if test ${with_gd_libdir+y}
-then :
-  withval=$with_gd_libdir;
-fi
-if test "x$with_system_gd" = x; then
-  if test -f $srcdir/libs/gd/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`gd' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`gd' headers and library from TL tree" >&6;}
-    with_system_gd=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`gd' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`gd' headers and library" >&6;}
-    with_system_gd=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-gd=$with_system_gd'"
-elif test "x$with_system_gd" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`gd' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`gd' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`gd' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`gd' headers and library from TL tree" >&6;}
-  if test "x$with_system_gd" != xno; then
-    with_system_gd=no
-    ac_configure_args="$ac_configure_args '--without-system-gd'"
-  fi
-fi
-if test "x$with_system_gd" = xyes; then
-  if test "x$with_system_libpng" = x; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   ->  installed \`libpng' headers and library" >&5
-printf "%s\n" "$as_me:   ->  installed \`libpng' headers and library" >&6;}
-    with_system_libpng=yes
-    ac_configure_args="$ac_configure_args '--with-system-libpng'"
-  elif test "x$with_system_libpng" != xyes; then
-    as_fn_error $? "Sorry, \`--with-system-gd' requires \`--with-system-libpng'" "$LINENO" 5
-  fi
-  if test "x$with_system_freetype2" = x; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   ->  installed \`freetype2' headers and library" >&5
-printf "%s\n" "$as_me:   ->  installed \`freetype2' headers and library" >&6;}
-    with_system_freetype2=yes
-    ac_configure_args="$ac_configure_args '--with-system-freetype2'"
-  elif test "x$with_system_freetype2" != xyes; then
-    as_fn_error $? "Sorry, \`--with-system-gd' requires \`--with-system-freetype2'" "$LINENO" 5
-  fi
-fi
-
-test "x$need_gd" = xyes && {
-  need_libpng=yes
-  need_freetype2=yes
-}
-
-## libs/potrace/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/potrace/
-## configure options and TL libraries required for potrace
-
-# Check whether --with-system-potrace was given.
-if test ${with_system_potrace+y}
-then :
-  withval=$with_system_potrace;
-fi
-
-# Check whether --with-potrace-includes was given.
-if test ${with_potrace_includes+y}
-then :
-  withval=$with_potrace_includes;
-fi
-
-# Check whether --with-potrace-libdir was given.
-if test ${with_potrace_libdir+y}
-then :
-  withval=$with_potrace_libdir;
-fi
-if test "x$with_system_potrace" = x; then
-  if test -f $srcdir/libs/potrace/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`potrace' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`potrace' headers and library from TL tree" >&6;}
-    with_system_potrace=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`potrace' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`potrace' headers and library" >&6;}
-    with_system_potrace=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-potrace=$with_system_potrace'"
-elif test "x$with_system_potrace" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`potrace' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`potrace' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`potrace' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`potrace' headers and library from TL tree" >&6;}
-  if test "x$with_system_potrace" != xno; then
-    with_system_potrace=no
-    ac_configure_args="$ac_configure_args '--without-system-potrace'"
-  fi
-fi
-
-## libs/freetype2/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/freetype2/
-## configure options and TL libraries required for freetype2
-
-# Check whether --with-system-freetype2 was given.
-if test ${with_system_freetype2+y}
-then :
-  withval=$with_system_freetype2;
-fi
-if test "x$with_system_freetype2" = x; then
-  if test -f $srcdir/libs/freetype2/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`freetype2' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`freetype2' headers and library from TL tree" >&6;}
-    with_system_freetype2=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`freetype2' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`freetype2' headers and library" >&6;}
-    with_system_freetype2=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-freetype2=$with_system_freetype2'"
-elif test "x$with_system_freetype2" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`freetype2' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`freetype2' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`freetype2' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`freetype2' headers and library from TL tree" >&6;}
-  if test "x$with_system_freetype2" != xno; then
-    with_system_freetype2=no
-    ac_configure_args="$ac_configure_args '--without-system-freetype2'"
-  fi
-fi
-if test "x$with_system_freetype2" = xyes; then
-  if test "x$with_system_zlib" = x; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   ->  installed \`zlib' headers and library" >&5
-printf "%s\n" "$as_me:   ->  installed \`zlib' headers and library" >&6;}
-    with_system_zlib=yes
-    ac_configure_args="$ac_configure_args '--with-system-zlib'"
-  elif test "x$with_system_zlib" != xyes; then
-    as_fn_error $? "Sorry, \`--with-system-freetype2' requires \`--with-system-zlib'" "$LINENO" 5
-  fi
-fi
-
-test "x$need_freetype2" = xyes && {
-  need_zlib=yes
-}
-
 ## libs/libpng/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/libpng/
 ## configure options and TL libraries required for libpng
 
@@ -7640,49 +5781,6 @@ fi
 test "x$need_libpng" = xyes && {
   need_zlib=yes
 }
-
-## libs/libpaper/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/libpaper/
-## configure options and TL libraries required for libpaper
-
-# Check whether --with-system-libpaper was given.
-if test ${with_system_libpaper+y}
-then :
-  withval=$with_system_libpaper;
-fi
-
-# Check whether --with-libpaper-includes was given.
-if test ${with_libpaper_includes+y}
-then :
-  withval=$with_libpaper_includes;
-fi
-
-# Check whether --with-libpaper-libdir was given.
-if test ${with_libpaper_libdir+y}
-then :
-  withval=$with_libpaper_libdir;
-fi
-if test "x$with_system_libpaper" = x; then
-  if test -f $srcdir/libs/libpaper/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`libpaper' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`libpaper' headers and library from TL tree" >&6;}
-    with_system_libpaper=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`libpaper' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`libpaper' headers and library" >&6;}
-    with_system_libpaper=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-libpaper=$with_system_libpaper'"
-elif test "x$with_system_libpaper" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`libpaper' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`libpaper' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`libpaper' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`libpaper' headers and library from TL tree" >&6;}
-  if test "x$with_system_libpaper" != xno; then
-    with_system_libpaper=no
-    ac_configure_args="$ac_configure_args '--without-system-libpaper'"
-  fi
-fi
 
 ## libs/luajit/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory libs/luajit/
 ## configure options and TL libraries required for luajit
@@ -7733,51 +5831,6 @@ printf "%s\n" "$as_me: Using \`zlib' headers and library from TL tree" >&6;}
   fi
 fi
 
-
-## texk/ptexenc/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/ptexenc/
-## configure options and TL libraries required for ptexenc
-
-# Check whether --with-system-ptexenc was given.
-if test ${with_system_ptexenc+y}
-then :
-  withval=$with_system_ptexenc;
-fi
-if test "x$with_system_ptexenc" = x; then
-  if test -f $srcdir/texk/ptexenc/configure; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming \`ptexenc' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Assuming \`ptexenc' headers and library from TL tree" >&6;}
-    with_system_ptexenc=no
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Assuming installed \`ptexenc' headers and library" >&5
-printf "%s\n" "$as_me: Assuming installed \`ptexenc' headers and library" >&6;}
-    with_system_ptexenc=yes
-  fi
-  ac_configure_args="$ac_configure_args '--with-system-ptexenc=$with_system_ptexenc'"
-elif test "x$with_system_ptexenc" = xyes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using installed \`ptexenc' headers and library" >&5
-printf "%s\n" "$as_me: Using installed \`ptexenc' headers and library" >&6;}
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Using \`ptexenc' headers and library from TL tree" >&5
-printf "%s\n" "$as_me: Using \`ptexenc' headers and library from TL tree" >&6;}
-  if test "x$with_system_ptexenc" != xno; then
-    with_system_ptexenc=no
-    ac_configure_args="$ac_configure_args '--without-system-ptexenc'"
-  fi
-fi
-if test "x$with_system_ptexenc" = xyes; then
-  if test "x$with_system_kpathsea" = x; then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}:   ->  installed \`kpathsea' headers and library" >&5
-printf "%s\n" "$as_me:   ->  installed \`kpathsea' headers and library" >&6;}
-    with_system_kpathsea=yes
-    ac_configure_args="$ac_configure_args '--with-system-kpathsea'"
-  elif test "x$with_system_kpathsea" != xyes; then
-    as_fn_error $? "Sorry, \`--with-system-ptexenc' requires \`--with-system-kpathsea'" "$LINENO" 5
-  fi
-fi
-
-test "x$need_ptexenc" = xyes && {
-  need_kpathsea=yes
-}
 
 ## texk/kpathsea/ac/withenable.ac: configure.ac fragment for the TeX Live subdirectory texk/kpathsea/
 ## configure options and TL libraries required for kpathsea
@@ -8618,8 +6671,8 @@ esac
 
 
 
-macro_version='2.4.7'
-macro_revision='2.4.7'
+macro_version='2.5.4'
+macro_revision='2.5.4'
 
 
 
@@ -9053,7 +7106,7 @@ if test yes = "$GCC"; then
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for ld used by $CC" >&5
 printf %s "checking for ld used by $CC... " >&6; }
   case $host in
-  *-*-mingw*)
+  *-*-mingw* | *-*-windows*)
     # gcc leaves a trailing carriage return, which upsets mingw
     ac_prog=`($CC -print-prog-name=ld) 2>&5 | tr -d '\015'` ;;
   *)
@@ -9182,7 +7235,7 @@ else
 	# Tru64's nm complains that /dev/null is an invalid object file
 	# MSYS converts /dev/null to NUL, MinGW nm treats NUL as empty
 	case $build_os in
-	mingw*) lt_bad_file=conftest.nm/nofile ;;
+	mingw* | windows*) lt_bad_file=conftest.nm/nofile ;;
 	*) lt_bad_file=/dev/null ;;
 	esac
 	case `"$tmp_nm" -B $lt_bad_file 2>&1 | $SED '1q'` in
@@ -9408,14 +7461,14 @@ else case e in #(
     lt_cv_sys_max_cmd_len=12288;    # 12K is about right
     ;;
 
-  gnu*)
-    # Under GNU Hurd, this test is not required because there is
-    # no limit to the length of command line arguments.
+  gnu* | ironclad*)
+    # Under GNU Hurd and Ironclad, this test is not required because there
+    # is no limit to the length of command line arguments.
     # Libtool will interpret -1 as no limit whatsoever
     lt_cv_sys_max_cmd_len=-1;
     ;;
 
-  cygwin* | mingw* | cegcc*)
+  cygwin* | mingw* | windows* | cegcc*)
     # On Win9x/ME, this test blows up -- it succeeds, but takes
     # about 5 minutes as the teststring grows exponentially.
     # Worse, since 9x/ME are not pre-emptively multitasking,
@@ -9437,7 +7490,7 @@ else case e in #(
     lt_cv_sys_max_cmd_len=8192;
     ;;
 
-  bitrig* | darwin* | dragonfly* | freebsd* | midnightbsd* | netbsd* | openbsd*)
+  darwin* | dragonfly* | freebsd* | midnightbsd* | netbsd* | openbsd*)
     # This has been around since 386BSD, at least.  Likely further.
     if test -x /sbin/sysctl; then
       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
@@ -9580,7 +7633,7 @@ else case e in #(
   e) case $host in
   *-*-mingw* )
     case $build in
-      *-*-mingw* ) # actually msys
+      *-*-mingw* | *-*-windows* ) # actually msys
         lt_cv_to_host_file_cmd=func_convert_file_msys_to_w32
         ;;
       *-*-cygwin* )
@@ -9593,7 +7646,7 @@ else case e in #(
     ;;
   *-*-cygwin* )
     case $build in
-      *-*-mingw* ) # actually msys
+      *-*-mingw* | *-*-windows* ) # actually msys
         lt_cv_to_host_file_cmd=func_convert_file_msys_to_cygwin
         ;;
       *-*-cygwin* )
@@ -9629,9 +7682,9 @@ else case e in #(
   e) #assume ordinary cross tools, or native build.
 lt_cv_to_tool_file_cmd=func_convert_file_noop
 case $host in
-  *-*-mingw* )
+  *-*-mingw* | *-*-windows* )
     case $build in
-      *-*-mingw* ) # actually msys
+      *-*-mingw* | *-*-windows* ) # actually msys
         lt_cv_to_tool_file_cmd=func_convert_file_msys_to_w32
         ;;
     esac
@@ -9667,7 +7720,7 @@ case $reload_flag in
 esac
 reload_cmds='$LD$reload_flag -o $output$reload_objs'
 case $host_os in
-  cygwin* | mingw* | pw32* | cegcc*)
+  cygwin* | mingw* | windows* | pw32* | cegcc*)
     if test yes != "$GCC"; then
       reload_cmds=false
     fi
@@ -9689,9 +7742,8 @@ esac
 
 
 
-if test -n "$ac_tool_prefix"; then
-  # Extract the first word of "${ac_tool_prefix}file", so it can be a program name with args.
-set dummy ${ac_tool_prefix}file; ac_word=$2
+# Extract the first word of "file", so it can be a program name with args.
+set dummy file; ac_word=$2
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 printf %s "checking for $ac_word... " >&6; }
 if test ${ac_cv_prog_FILECMD+y}
@@ -9712,7 +7764,7 @@ do
   esac
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_FILECMD="${ac_tool_prefix}file"
+    ac_cv_prog_FILECMD="file"
     printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -9720,6 +7772,7 @@ done
   done
 IFS=$as_save_IFS
 
+  test -z "$ac_cv_prog_FILECMD" && ac_cv_prog_FILECMD=":"
 fi ;;
 esac
 fi
@@ -9732,66 +7785,6 @@ else
 printf "%s\n" "no" >&6; }
 fi
 
-
-fi
-if test -z "$ac_cv_prog_FILECMD"; then
-  ac_ct_FILECMD=$FILECMD
-  # Extract the first word of "file", so it can be a program name with args.
-set dummy file; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_ac_ct_FILECMD+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) if test -n "$ac_ct_FILECMD"; then
-  ac_cv_prog_ac_ct_FILECMD="$ac_ct_FILECMD" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_ac_ct_FILECMD="file"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-fi ;;
-esac
-fi
-ac_ct_FILECMD=$ac_cv_prog_ac_ct_FILECMD
-if test -n "$ac_ct_FILECMD"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_ct_FILECMD" >&5
-printf "%s\n" "$ac_ct_FILECMD" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-  if test "x$ac_ct_FILECMD" = x; then
-    FILECMD=":"
-  else
-    case $cross_compiling:$ac_tool_warned in
-yes:)
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
-printf "%s\n" "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
-ac_tool_warned=yes ;;
-esac
-    FILECMD=$ac_ct_FILECMD
-  fi
-else
-  FILECMD="$ac_cv_prog_FILECMD"
-fi
 
 
 
@@ -9924,7 +7917,6 @@ lt_cv_deplibs_check_method='unknown'
 # 'none' -- dependencies not supported.
 # 'unknown' -- same as none, but documents that we really don't know.
 # 'pass_all' -- all dependencies passed with no checks.
-# 'test_compile' -- check by making test program.
 # 'file_magic [[regex]]' -- check by looking for files in library path
 # that responds to the $file_magic_cmd with a given extended regex.
 # If you have 'file' or equivalent on your system and you're not sure
@@ -9951,7 +7943,7 @@ cygwin*)
   lt_cv_file_magic_cmd='func_win32_libid'
   ;;
 
-mingw* | pw32*)
+mingw* | windows* | pw32*)
   # Base MSYS/MinGW do not provide the 'file' command needed by
   # func_win32_libid shell function, so use a weaker test based on 'objdump',
   # unless we find 'file', for example because we are cross-compiling.
@@ -9960,7 +7952,7 @@ mingw* | pw32*)
     lt_cv_file_magic_cmd='func_win32_libid'
   else
     # Keep this pattern in sync with the one in func_win32_libid.
-    lt_cv_deplibs_check_method='file_magic file format (pei*-i386(.*architecture: i386)?|pe-arm-wince|pe-x86-64)'
+    lt_cv_deplibs_check_method='file_magic file format (pei*-i386(.*architecture: i386)?|pe-arm-wince|pe-x86-64|pe-aarch64)'
     lt_cv_file_magic_cmd='$OBJDUMP -f'
   fi
   ;;
@@ -10033,7 +8025,11 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu | gnu*)
   lt_cv_deplibs_check_method=pass_all
   ;;
 
-netbsd*)
+*-mlibc)
+  lt_cv_deplibs_check_method=pass_all
+  ;;
+
+netbsd* | netbsdelf*-gnu)
   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
     lt_cv_deplibs_check_method='match_pattern /lib[^/]+(\.so\.[0-9]+\.[0-9]+|_pic\.a)$'
   else
@@ -10051,7 +8047,7 @@ newos6*)
   lt_cv_deplibs_check_method=pass_all
   ;;
 
-openbsd* | bitrig*)
+openbsd*)
   if test -z "`echo __ELF__ | $CC -E - | $GREP __ELF__`"; then
     lt_cv_deplibs_check_method='match_pattern /lib[^/]+(\.so\.[0-9]+\.[0-9]+|\.so|_pic\.a)$'
   else
@@ -10064,6 +8060,10 @@ osf3* | osf4* | osf5*)
   ;;
 
 rdos*)
+  lt_cv_deplibs_check_method=pass_all
+  ;;
+
+serenity*)
   lt_cv_deplibs_check_method=pass_all
   ;;
 
@@ -10119,7 +8119,7 @@ file_magic_glob=
 want_nocaseglob=no
 if test "$build" = "$host"; then
   case $host_os in
-  mingw* | pw32*)
+  mingw* | windows* | pw32*)
     if ( shopt | grep nocaseglob ) >/dev/null 2>&1; then
       want_nocaseglob=yes
     else
@@ -10275,7 +8275,7 @@ else case e in #(
   e) lt_cv_sharedlib_from_linklib_cmd='unknown'
 
 case $host_os in
-cygwin* | mingw* | pw32* | cegcc*)
+cygwin* | mingw* | windows* | pw32* | cegcc*)
   # two different shell functions defined in ltmain.sh;
   # decide which one to use based on capabilities of $DLLTOOL
   case `$DLLTOOL --help 2>&1` in
@@ -10305,6 +8305,110 @@ test -z "$sharedlib_from_linklib_cmd" && sharedlib_from_linklib_cmd=$ECHO
 
 
 
+
+if test -n "$ac_tool_prefix"; then
+  # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
+set dummy ${ac_tool_prefix}ranlib; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_prog_RANLIB+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) if test -n "$RANLIB"; then
+  ac_cv_prog_RANLIB="$RANLIB" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_prog_RANLIB="${ac_tool_prefix}ranlib"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+fi ;;
+esac
+fi
+RANLIB=$ac_cv_prog_RANLIB
+if test -n "$RANLIB"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $RANLIB" >&5
+printf "%s\n" "$RANLIB" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+fi
+if test -z "$ac_cv_prog_RANLIB"; then
+  ac_ct_RANLIB=$RANLIB
+  # Extract the first word of "ranlib", so it can be a program name with args.
+set dummy ranlib; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_prog_ac_ct_RANLIB+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) if test -n "$ac_ct_RANLIB"; then
+  ac_cv_prog_ac_ct_RANLIB="$ac_ct_RANLIB" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_prog_ac_ct_RANLIB="ranlib"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+fi ;;
+esac
+fi
+ac_ct_RANLIB=$ac_cv_prog_ac_ct_RANLIB
+if test -n "$ac_ct_RANLIB"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_ct_RANLIB" >&5
+printf "%s\n" "$ac_ct_RANLIB" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+  if test "x$ac_ct_RANLIB" = x; then
+    RANLIB=":"
+  else
+    case $cross_compiling:$ac_tool_warned in
+yes:)
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
+printf "%s\n" "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
+ac_tool_warned=yes ;;
+esac
+    RANLIB=$ac_ct_RANLIB
+  fi
+else
+  RANLIB="$ac_cv_prog_RANLIB"
+fi
 
 if test -n "$ac_tool_prefix"; then
   for ac_prog in ar
@@ -10427,7 +8531,7 @@ fi
 
 # Use ARFLAGS variable as AR's operation code to sync the variable naming with
 # Automake.  If both AR_FLAGS and ARFLAGS are specified, AR_FLAGS should have
-# higher priority because thats what people were doing historically (setting
+# higher priority because that's what people were doing historically (setting
 # ARFLAGS for automake and AR_FLAGS for libtool).  FIXME: Make the AR_FLAGS
 # variable obsoleted/removed.
 
@@ -10619,109 +8723,6 @@ test -z "$STRIP" && STRIP=:
 
 
 
-if test -n "$ac_tool_prefix"; then
-  # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
-set dummy ${ac_tool_prefix}ranlib; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_RANLIB+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) if test -n "$RANLIB"; then
-  ac_cv_prog_RANLIB="$RANLIB" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_RANLIB="${ac_tool_prefix}ranlib"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-fi ;;
-esac
-fi
-RANLIB=$ac_cv_prog_RANLIB
-if test -n "$RANLIB"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $RANLIB" >&5
-printf "%s\n" "$RANLIB" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-
-fi
-if test -z "$ac_cv_prog_RANLIB"; then
-  ac_ct_RANLIB=$RANLIB
-  # Extract the first word of "ranlib", so it can be a program name with args.
-set dummy ranlib; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_ac_ct_RANLIB+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) if test -n "$ac_ct_RANLIB"; then
-  ac_cv_prog_ac_ct_RANLIB="$ac_ct_RANLIB" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_ac_ct_RANLIB="ranlib"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-fi ;;
-esac
-fi
-ac_ct_RANLIB=$ac_cv_prog_ac_ct_RANLIB
-if test -n "$ac_ct_RANLIB"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_ct_RANLIB" >&5
-printf "%s\n" "$ac_ct_RANLIB" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-  if test "x$ac_ct_RANLIB" = x; then
-    RANLIB=":"
-  else
-    case $cross_compiling:$ac_tool_warned in
-yes:)
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
-printf "%s\n" "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
-ac_tool_warned=yes ;;
-esac
-    RANLIB=$ac_ct_RANLIB
-  fi
-else
-  RANLIB="$ac_cv_prog_RANLIB"
-fi
 
 test -z "$RANLIB" && RANLIB=:
 
@@ -10736,15 +8737,8 @@ old_postinstall_cmds='chmod 644 $oldlib'
 old_postuninstall_cmds=
 
 if test -n "$RANLIB"; then
-  case $host_os in
-  bitrig* | openbsd*)
-    old_postinstall_cmds="$old_postinstall_cmds~\$RANLIB -t \$tool_oldlib"
-    ;;
-  *)
-    old_postinstall_cmds="$old_postinstall_cmds~\$RANLIB \$tool_oldlib"
-    ;;
-  esac
   old_archive_cmds="$old_archive_cmds~\$RANLIB \$tool_oldlib"
+  old_postinstall_cmds="$old_postinstall_cmds~\$RANLIB \$tool_oldlib"
 fi
 
 case $host_os in
@@ -10824,7 +8818,7 @@ case $host_os in
 aix*)
   symcode='[BCDT]'
   ;;
-cygwin* | mingw* | pw32* | cegcc*)
+cygwin* | mingw* | windows* | pw32* | cegcc*)
   symcode='[ABCDGISTW]'
   ;;
 hpux*)
@@ -10839,7 +8833,7 @@ osf*)
   symcode='[BCDEGQRST]'
   ;;
 solaris*)
-  symcode='[BDRT]'
+  symcode='[BCDRT]'
   ;;
 sco3.2v5*)
   symcode='[DT]'
@@ -10903,7 +8897,7 @@ $lt_c_name_lib_hook\
 # Handle CRLF in mingw tool chain
 opt_cr=
 case $build_os in
-mingw*)
+mingw* | windows*)
   opt_cr=`$ECHO 'x\{0,1\}' | tr x '\015'` # option cr in regexp
   ;;
 esac
@@ -10954,7 +8948,7 @@ void nm_test_func(void){}
 #ifdef __cplusplus
 }
 #endif
-int main(){nm_test_var='a';nm_test_func();return(0);}
+int main(void){nm_test_var='a';nm_test_func();return(0);}
 _LT_EOF
 
   if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
@@ -10964,11 +8958,8 @@ _LT_EOF
   test $ac_status = 0; }; then
     # Now try to grab the symbols.
     nlist=conftest.nm
-    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$NM conftest.$ac_objext \| "$lt_cv_sys_global_symbol_pipe" \> $nlist\""; } >&5
-  (eval $NM conftest.$ac_objext \| "$lt_cv_sys_global_symbol_pipe" \> $nlist) 2>&5
-  ac_status=$?
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; } && test -s "$nlist"; then
+    $ECHO "$as_me:$LINENO: $NM conftest.$ac_objext | $lt_cv_sys_global_symbol_pipe > $nlist" >&5
+    if eval "$NM" conftest.$ac_objext \| "$lt_cv_sys_global_symbol_pipe" \> $nlist 2>&5 && test -s "$nlist"; then
       # Try sorting and uniquifying the output.
       if sort "$nlist" | uniq > "$nlist"T; then
 	mv -f "$nlist"T "$nlist"
@@ -11139,7 +9130,9 @@ lt_sysroot=
 case $with_sysroot in #(
  yes)
    if test yes = "$GCC"; then
-     lt_sysroot=`$CC --print-sysroot 2>/dev/null`
+     # Trim trailing / since we'll always append absolute paths and we want
+     # to avoid //, if only for less confusing output for the user.
+     lt_sysroot=`$CC --print-sysroot 2>/dev/null | $SED 's:/\+$::'`
    fi
    ;; #(
  /*)
@@ -11356,7 +9349,7 @@ mips64*-*linux*)
   ;;
 
 x86_64-*kfreebsd*-gnu|x86_64-*linux*|powerpc*-*linux*| \
-s390*-*linux*|s390*-*tpf*|sparc*-*linux*)
+s390*-*linux*|s390*-*tpf*|sparc*-*linux*|x86_64-gnu*)
   # Find out what ABI is being produced by ac_compile, and set linker
   # options accordingly.  Note that the listed cases only cover the
   # situations where additional linker options are needed (such as when
@@ -11375,7 +9368,7 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*)
 	  x86_64-*kfreebsd*-gnu)
 	    LD="${LD-ld} -m elf_i386_fbsd"
 	    ;;
-	  x86_64-*linux*)
+	  x86_64-*linux*|x86_64-gnu*)
 	    case `$FILECMD conftest.o` in
 	      *x86-64*)
 		LD="${LD-ld} -m elf32_x86_64"
@@ -11404,7 +9397,7 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*)
 	  x86_64-*kfreebsd*-gnu)
 	    LD="${LD-ld} -m elf_x86_64_fbsd"
 	    ;;
-	  x86_64-*linux*)
+	  x86_64-*linux*|x86_64-gnu*)
 	    LD="${LD-ld} -m elf_x86_64"
 	    ;;
 	  powerpcle-*linux*)
@@ -11625,23 +9618,23 @@ fi
 test -z "$MANIFEST_TOOL" && MANIFEST_TOOL=mt
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if $MANIFEST_TOOL is a manifest tool" >&5
 printf %s "checking if $MANIFEST_TOOL is a manifest tool... " >&6; }
-if test ${lt_cv_path_mainfest_tool+y}
+if test ${lt_cv_path_manifest_tool+y}
 then :
   printf %s "(cached) " >&6
 else case e in #(
-  e) lt_cv_path_mainfest_tool=no
+  e) lt_cv_path_manifest_tool=no
   echo "$as_me:$LINENO: $MANIFEST_TOOL '-?'" >&5
   $MANIFEST_TOOL '-?' 2>conftest.err > conftest.out
   cat conftest.err >&5
   if $GREP 'Manifest Tool' conftest.out > /dev/null; then
-    lt_cv_path_mainfest_tool=yes
+    lt_cv_path_manifest_tool=yes
   fi
   rm -f conftest* ;;
 esac
 fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_path_mainfest_tool" >&5
-printf "%s\n" "$lt_cv_path_mainfest_tool" >&6; }
-if test yes != "$lt_cv_path_mainfest_tool"; then
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_path_manifest_tool" >&5
+printf "%s\n" "$lt_cv_path_manifest_tool" >&6; }
+if test yes != "$lt_cv_path_manifest_tool"; then
   MANIFEST_TOOL=:
 fi
 
@@ -12236,6 +10229,45 @@ fi
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_apple_cc_single_mod" >&5
 printf "%s\n" "$lt_cv_apple_cc_single_mod" >&6; }
 
+    # Feature test to disable chained fixups since it is not
+    # compatible with '-undefined dynamic_lookup'
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for -no_fixup_chains linker flag" >&5
+printf %s "checking for -no_fixup_chains linker flag... " >&6; }
+if test ${lt_cv_support_no_fixup_chains+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e)  save_LDFLAGS=$LDFLAGS
+        LDFLAGS="$LDFLAGS -Wl,-no_fixup_chains"
+        cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"
+then :
+  lt_cv_support_no_fixup_chains=yes
+else case e in #(
+  e) lt_cv_support_no_fixup_chains=no
+         ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+        LDFLAGS=$save_LDFLAGS
+
+     ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_support_no_fixup_chains" >&5
+printf "%s\n" "$lt_cv_support_no_fixup_chains" >&6; }
+
     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for -exported_symbols_list linker flag" >&5
 printf %s "checking for -exported_symbols_list linker flag... " >&6; }
 if test ${lt_cv_ld_exported_symbols_list+y}
@@ -12290,7 +10322,7 @@ _LT_EOF
       echo "$RANLIB libconftest.a" >&5
       $RANLIB libconftest.a 2>&5
       cat > conftest.c << _LT_EOF
-int main() { return 0;}
+int main(void) { return 0;}
 _LT_EOF
       echo "$LTCC $LTCFLAGS $LDFLAGS -o conftest conftest.c -Wl,-force_load,./libconftest.a" >&5
       $LTCC $LTCFLAGS $LDFLAGS -o conftest conftest.c -Wl,-force_load,./libconftest.a 2>conftest.err
@@ -12319,13 +10351,32 @@ printf "%s\n" "$lt_cv_ld_force_load" >&6; }
         10.[012],*|,*powerpc*-darwin[5-8]*)
           _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
         *)
-          _lt_dar_allow_undefined='$wl-undefined ${wl}dynamic_lookup' ;;
+          _lt_dar_allow_undefined='$wl-undefined ${wl}dynamic_lookup'
+          if test yes = "$lt_cv_support_no_fixup_chains"; then
+            as_fn_append _lt_dar_allow_undefined ' $wl-no_fixup_chains'
+          fi
+        ;;
       esac
     ;;
   esac
     if test yes = "$lt_cv_apple_cc_single_mod"; then
       _lt_dar_single_mod='$single_module'
     fi
+    _lt_dar_needs_single_mod=no
+    case $host_os in
+    rhapsody* | darwin1.*)
+      _lt_dar_needs_single_mod=yes ;;
+    darwin*)
+      # When targeting Mac OS X 10.4 (darwin 8) or later,
+      # -single_module is the default and -multi_module is unsupported.
+      # The toolchain on macOS 10.14 (darwin 18) and later cannot
+      # target any OS version that needs -single_module.
+      case ${MACOSX_DEPLOYMENT_TARGET-10.0},$host in
+      10.0,*-darwin[567].*|10.[0-3],*-darwin[5-9].*|10.[0-3],*-darwin1[0-7].*)
+        _lt_dar_needs_single_mod=yes ;;
+      esac
+    ;;
+    esac
     if test yes = "$lt_cv_ld_exported_symbols_list"; then
       _lt_dar_export_syms=' $wl-exported_symbols_list,$output_objdir/$libname-symbols.expsym'
     else
@@ -13101,7 +11152,7 @@ esac
 enable_win32_dll=yes
 
 case $host in
-*-*-cygwin* | *-*-mingw* | *-*-pw32* | *-*-cegcc*)
+*-*-cygwin* | *-*-mingw* | *-*-windows* | *-*-pw32* | *-*-cegcc*)
   if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}as", so it can be a program name with args.
 set dummy ${ac_tool_prefix}as; ac_word=$2
@@ -13507,28 +11558,51 @@ fi
 
 
 
-
-# Check whether --with-pic was given.
+  # Check whether --enable-pic was given.
+if test ${enable_pic+y}
+then :
+  enableval=$enable_pic; lt_p=${PACKAGE-default}
+     case $enableval in
+     yes|no) pic_mode=$enableval ;;
+     *)
+       pic_mode=default
+       # Look at the argument we got.  We use all the common list separators.
+       lt_save_ifs=$IFS; IFS=$IFS$PATH_SEPARATOR,
+       for lt_pkg in $enableval; do
+	 IFS=$lt_save_ifs
+	 if test "X$lt_pkg" = "X$lt_p"; then
+	   pic_mode=yes
+	 fi
+       done
+       IFS=$lt_save_ifs
+       ;;
+     esac
+else case e in #(
+  e)           # Check whether --with-pic was given.
 if test ${with_pic+y}
 then :
   withval=$with_pic; lt_p=${PACKAGE-default}
-    case $withval in
-    yes|no) pic_mode=$withval ;;
-    *)
-      pic_mode=default
-      # Look at the argument we got.  We use all the common list separators.
-      lt_save_ifs=$IFS; IFS=$IFS$PATH_SEPARATOR,
-      for lt_pkg in $withval; do
-	IFS=$lt_save_ifs
-	if test "X$lt_pkg" = "X$lt_p"; then
-	  pic_mode=yes
-	fi
-      done
-      IFS=$lt_save_ifs
-      ;;
-    esac
+	 case $withval in
+	 yes|no) pic_mode=$withval ;;
+	 *)
+	   pic_mode=default
+	   # Look at the argument we got.  We use all the common list separators.
+	   lt_save_ifs=$IFS; IFS=$IFS$PATH_SEPARATOR,
+	   for lt_pkg in $withval; do
+	     IFS=$lt_save_ifs
+	     if test "X$lt_pkg" = "X$lt_p"; then
+	       pic_mode=yes
+	     fi
+	   done
+	   IFS=$lt_save_ifs
+	   ;;
+	 esac
 else case e in #(
   e) pic_mode=default ;;
+esac
+fi
+
+     ;;
 esac
 fi
 
@@ -13576,18 +11650,29 @@ case $host,$enable_shared in
 power*-*-aix[5-9]*,yes)
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking which variant of shared library versioning to provide" >&5
 printf %s "checking which variant of shared library versioning to provide... " >&6; }
-
-# Check whether --with-aix-soname was given.
+  # Check whether --enable-aix-soname was given.
+if test ${enable_aix_soname+y}
+then :
+  enableval=$enable_aix_soname; case $enableval in
+     aix|svr4|both)
+       ;;
+     *)
+       as_fn_error $? "Unknown argument to --enable-aix-soname" "$LINENO" 5
+       ;;
+     esac
+     lt_cv_with_aix_soname=$enable_aix_soname
+else case e in #(
+  e) # Check whether --with-aix-soname was given.
 if test ${with_aix_soname+y}
 then :
   withval=$with_aix_soname; case $withval in
-    aix|svr4|both)
-      ;;
-    *)
-      as_fn_error $? "Unknown argument to --with-aix-soname" "$LINENO" 5
-      ;;
-    esac
-    lt_cv_with_aix_soname=$with_aix_soname
+         aix|svr4|both)
+           ;;
+         *)
+           as_fn_error $? "Unknown argument to --with-aix-soname" "$LINENO" 5
+           ;;
+         esac
+         lt_cv_with_aix_soname=$with_aix_soname
 else case e in #(
   e) if test ${lt_cv_with_aix_soname+y}
 then :
@@ -13596,11 +11681,15 @@ else case e in #(
   e) lt_cv_with_aix_soname=aix ;;
 esac
 fi
-
-    with_aix_soname=$lt_cv_with_aix_soname ;;
+ ;;
 esac
 fi
 
+     enable_aix_soname=$lt_cv_with_aix_soname ;;
+esac
+fi
+
+  with_aix_soname=$enable_aix_soname
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $with_aix_soname" >&5
 printf "%s\n" "$with_aix_soname" >&6; }
   if test aix != "$with_aix_soname"; then
@@ -13916,7 +12005,7 @@ objext=$objext
 lt_simple_compile_test_code="int some_variable = 0;"
 
 # Code to be used in simple link tests
-lt_simple_link_test_code='int main(){return(0);}'
+lt_simple_link_test_code='int main(void){return(0);}'
 
 
 
@@ -14058,7 +12147,7 @@ lt_prog_compiler_static=
       # PIC is the default for these OSes.
       ;;
 
-    mingw* | cygwin* | pw32* | os2* | cegcc*)
+    mingw* | windows* | cygwin* | pw32* | os2* | cegcc*)
       # This hack is so that the source file can tell whether it is being
       # built for inclusion in a dll (and should export symbols for example).
       # Although the cygwin gcc ignores -fPIC, still need this for old-style
@@ -14161,7 +12250,7 @@ lt_prog_compiler_static=
       esac
       ;;
 
-    mingw* | cygwin* | pw32* | os2* | cegcc*)
+    mingw* | windows* | cygwin* | pw32* | os2* | cegcc*)
       # This hack is so that the source file can tell whether it is being
       # built for inclusion in a dll (and should export symbols for example).
       lt_prog_compiler_pic='-DDLL_EXPORT'
@@ -14200,6 +12289,12 @@ lt_prog_compiler_static=
       ecc*)
 	lt_prog_compiler_wl='-Wl,'
 	lt_prog_compiler_pic='-KPIC'
+	lt_prog_compiler_static='-static'
+        ;;
+      *flang* | ftn | f18* | f95*)
+        # Flang compiler.
+	lt_prog_compiler_wl='-Wl,'
+	lt_prog_compiler_pic='-fPIC'
 	lt_prog_compiler_static='-static'
         ;;
       # icc used to be incompatible with GCC.
@@ -14284,6 +12379,12 @@ lt_prog_compiler_static=
       lt_prog_compiler_static='-Bstatic'
       ;;
 
+    *-mlibc)
+      lt_prog_compiler_wl='-Wl,'
+      lt_prog_compiler_pic='-fPIC'
+      lt_prog_compiler_static='-static'
+      ;;
+
     *nto* | *qnx*)
       # QNX uses GNU C++, but need to define -shared option too, otherwise
       # it will coredump.
@@ -14298,6 +12399,9 @@ lt_prog_compiler_static=
 
     rdos*)
       lt_prog_compiler_static='-non_shared'
+      ;;
+
+    serenity*)
       ;;
 
     solaris*)
@@ -14673,7 +12777,7 @@ printf %s "checking whether the $compiler linker ($LD) supports shared libraries
   extract_expsyms_cmds=
 
   case $host_os in
-  cygwin* | mingw* | pw32* | cegcc*)
+  cygwin* | mingw* | windows* | pw32* | cegcc*)
     # FIXME: the MSVC++ and ICC port hasn't been tested in a loooong time
     # When not using gcc, we currently assume that we are using
     # Microsoft Visual C++ or Intel C++ Compiler.
@@ -14684,9 +12788,6 @@ printf %s "checking whether the $compiler linker ($LD) supports shared libraries
   interix*)
     # we just hope/assume this is gcc and not c89 (= MSVC++ or ICC)
     with_gnu_ld=yes
-    ;;
-  openbsd* | bitrig*)
-    with_gnu_ld=no
     ;;
   esac
 
@@ -14788,7 +12889,7 @@ _LT_EOF
       fi
       ;;
 
-    cygwin* | mingw* | pw32* | cegcc*)
+    cygwin* | mingw* | windows* | pw32* | cegcc*)
       # _LT_TAGVAR(hardcode_libdir_flag_spec, ) is actually meaningless,
       # as there is no search path for DLLs.
       hardcode_libdir_flag_spec='-L$libdir'
@@ -14798,6 +12899,7 @@ _LT_EOF
       enable_shared_with_static_runtimes=yes
       export_symbols_cmds='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[BCDGRS][ ]/s/.*[ ]\([^ ]*\)/\1 DATA/;s/^.*[ ]__nm__\([^ ]*\)[ ][^ ]*/\1 DATA/;/^I[ ]/d;/^[AITW][ ]/s/.* //'\'' | sort | uniq > $export_symbols'
       exclude_expsyms='[_]+GLOBAL_OFFSET_TABLE_|[_]+GLOBAL__[FID]_.*|[_]+head_[A-Za-z0-9_]+_dll|[A-Za-z0-9_]+_dll_iname'
+      file_list_spec='@'
 
       if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
         archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
@@ -14817,7 +12919,7 @@ _LT_EOF
 
     haiku*)
       archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
-      link_all_deplibs=yes
+      link_all_deplibs=no
       ;;
 
     os2*)
@@ -14844,7 +12946,7 @@ _LT_EOF
 	cat $export_symbols | $prefix_cmds >> $output_objdir/$libname.def~
 	$CC -Zdll -Zcrtdll -o $output_objdir/$soname $libobjs $deplibs $compiler_flags $output_objdir/$libname.def~
 	emximp -o $lib $output_objdir/$libname.def'
-      old_archive_From_new_cmds='emximp -o $output_objdir/${libname}_dll.a $output_objdir/$libname.def'
+      old_archive_from_new_cmds='emximp -o $output_objdir/${libname}_dll.a $output_objdir/$libname.def'
       enable_shared_with_static_runtimes=yes
       file_list_spec='@'
       ;;
@@ -14923,6 +13025,7 @@ _LT_EOF
 
 	case $cc_basename in
 	tcc*)
+	  hardcode_libdir_flag_spec='$wl-rpath $wl$libdir'
 	  export_dynamic_flag_spec='-rdynamic'
 	  ;;
 	xlf* | bgf* | bgxlf* | mpixlf*)
@@ -14943,7 +13046,12 @@ _LT_EOF
       fi
       ;;
 
-    netbsd*)
+    *-mlibc)
+	archive_cmds='$CC -shared $pic_flag $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
+	archive_expsym_cmds='$CC -shared $pic_flag $libobjs $deplibs $compiler_flags $wl-soname $wl$soname $wl-retain-symbols-file $wl$export_symbols -o $lib'
+      ;;
+
+    netbsd* | netbsdelf*-gnu)
       if echo __ELF__ | $CC -E - | $GREP __ELF__ >/dev/null; then
 	archive_cmds='$LD -Bshareable $libobjs $deplibs $linker_flags -o $lib'
 	wlarc=
@@ -15335,7 +13443,7 @@ fi
       export_dynamic_flag_spec=-rdynamic
       ;;
 
-    cygwin* | mingw* | pw32* | cegcc*)
+    cygwin* | mingw* | windows* | pw32* | cegcc*)
       # When not using gcc, we currently assume that we are using
       # Microsoft Visual C++ or Intel C++ Compiler.
       # hardcode_libdir_flag_spec is actually meaningless, as there is
@@ -15352,14 +13460,14 @@ fi
 	# Tell ltmain to make .dll files, not .so files.
 	shrext_cmds=.dll
 	# FIXME: Setting linknames here is a bad hack.
-	archive_cmds='$CC -o $output_objdir/$soname $libobjs $compiler_flags $deplibs -Wl,-DLL,-IMPLIB:"$tool_output_objdir$libname.dll.lib"~linknames='
+	archive_cmds='$CC -Fe$output_objdir/$soname $libobjs $compiler_flags $deplibs -Wl,-DLL,-IMPLIB:"$tool_output_objdir$libname.dll.lib"~linknames='
 	archive_expsym_cmds='if   test DEF = "`$SED -n     -e '\''s/^[	 ]*//'\''     -e '\''/^\(;.*\)*$/d'\''     -e '\''s/^\(EXPORTS\|LIBRARY\)\([	 ].*\)*$/DEF/p'\''     -e q     $export_symbols`" ; then
             cp "$export_symbols" "$output_objdir/$soname.def";
             echo "$tool_output_objdir$soname.def" > "$output_objdir/$soname.exp";
           else
             $SED -e '\''s/^/-link -EXPORT:/'\'' < $export_symbols > $output_objdir/$soname.exp;
           fi~
-          $CC -o $tool_output_objdir$soname $libobjs $compiler_flags $deplibs "@$tool_output_objdir$soname.exp" -Wl,-DLL,-IMPLIB:"$tool_output_objdir$libname.dll.lib"~
+          $CC -Fe$tool_output_objdir$soname $libobjs $compiler_flags $deplibs "@$tool_output_objdir$soname.exp" -Wl,-DLL,-IMPLIB:"$tool_output_objdir$libname.dll.lib"~
           linknames='
 	# The linker will not automatically build a static lib if we build a DLL.
 	# _LT_TAGVAR(old_archive_from_new_cmds, )='true'
@@ -15642,11 +13750,15 @@ printf "%s\n" "$lt_cv_irix_exported_symbol" >&6; }
 	# Fabrice Bellard et al's Tiny C Compiler
 	ld_shlibs=yes
 	archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+	hardcode_libdir_flag_spec='$wl-rpath $wl$libdir'
 	;;
       esac
       ;;
 
-    netbsd*)
+    *-mlibc)
+      ;;
+
+    netbsd* | netbsdelf*-gnu)
       if echo __ELF__ | $CC -E - | $GREP __ELF__ >/dev/null; then
 	archive_cmds='$LD -Bshareable -o $lib $libobjs $deplibs $linker_flags'  # a.out
       else
@@ -15668,7 +13780,7 @@ printf "%s\n" "$lt_cv_irix_exported_symbol" >&6; }
     *nto* | *qnx*)
       ;;
 
-    openbsd* | bitrig*)
+    openbsd*)
       if test -f /usr/libexec/ld.so; then
 	hardcode_direct=yes
 	hardcode_shlibpath_var=no
@@ -15711,7 +13823,7 @@ printf "%s\n" "$lt_cv_irix_exported_symbol" >&6; }
 	cat $export_symbols | $prefix_cmds >> $output_objdir/$libname.def~
 	$CC -Zdll -Zcrtdll -o $output_objdir/$soname $libobjs $deplibs $compiler_flags $output_objdir/$libname.def~
 	emximp -o $lib $output_objdir/$libname.def'
-      old_archive_From_new_cmds='emximp -o $output_objdir/${libname}_dll.a $output_objdir/$libname.def'
+      old_archive_from_new_cmds='emximp -o $output_objdir/${libname}_dll.a $output_objdir/$libname.def'
       enable_shared_with_static_runtimes=yes
       file_list_spec='@'
       ;;
@@ -15745,6 +13857,9 @@ printf "%s\n" "$lt_cv_irix_exported_symbol" >&6; }
       fi
       archive_cmds_need_lc='no'
       hardcode_libdir_separator=:
+      ;;
+
+    serenity*)
       ;;
 
     solaris*)
@@ -16153,7 +14268,7 @@ if test yes = "$GCC"; then
     *) lt_awk_arg='/^libraries:/' ;;
   esac
   case $host_os in
-    mingw* | cegcc*) lt_sed_strip_eq='s|=\([A-Za-z]:\)|\1|g' ;;
+    mingw* | windows* | cegcc*) lt_sed_strip_eq='s|=\([A-Za-z]:\)|\1|g' ;;
     *) lt_sed_strip_eq='s|=/|/|g' ;;
   esac
   lt_search_path_spec=`$CC -print-search-dirs | awk $lt_awk_arg | $SED -e "s/^libraries://" -e $lt_sed_strip_eq`
@@ -16211,7 +14326,7 @@ BEGIN {RS = " "; FS = "/|\n";} {
   # AWK program above erroneously prepends '/' to C:/dos/paths
   # for these hosts.
   case $host_os in
-    mingw* | cegcc*) lt_search_path_spec=`$ECHO "$lt_search_path_spec" |\
+    mingw* | windows* | cegcc*) lt_search_path_spec=`$ECHO "$lt_search_path_spec" |\
       $SED 's|/\([A-Za-z]:\)|\1|g'` ;;
   esac
   sys_lib_search_path_spec=`$ECHO "$lt_search_path_spec" | $lt_NL2SP`
@@ -16285,7 +14400,7 @@ aix[4-9]*)
     # Unfortunately, runtime linking may impact performance, so we do
     # not want this to be the default eventually. Also, we use the
     # versioned .so libs for executables only if there is the -brtl
-    # linker flag in LDFLAGS as well, or --with-aix-soname=svr4 only.
+    # linker flag in LDFLAGS as well, or --enable-aix-soname=svr4 only.
     # To allow for filename-based versioning support, we need to create
     # libNAME.so.V as an archive file, containing:
     # *) an Import File, referring to the versioned filename of the
@@ -16379,7 +14494,7 @@ bsdi[45]*)
   # libtool to hard-code these into programs
   ;;
 
-cygwin* | mingw* | pw32* | cegcc*)
+cygwin* | mingw* | windows* | pw32* | cegcc*)
   version_type=windows
   shrext_cmds=.dll
   need_version=no
@@ -16390,15 +14505,29 @@ cygwin* | mingw* | pw32* | cegcc*)
     # gcc
     library_names_spec='$libname.dll.a'
     # DLL is installed to $(libdir)/../bin by postinstall_cmds
-    postinstall_cmds='base_file=`basename \$file`~
-      dlpath=`$SHELL 2>&1 -c '\''. $dir/'\''\$base_file'\''i; echo \$dlname'\''`~
-      dldir=$destdir/`dirname \$dlpath`~
-      test -d \$dldir || mkdir -p \$dldir~
-      $install_prog $dir/$dlname \$dldir/$dlname~
-      chmod a+x \$dldir/$dlname~
-      if test -n '\''$stripme'\'' && test -n '\''$striplib'\''; then
-        eval '\''$striplib \$dldir/$dlname'\'' || exit \$?;
-      fi'
+    # If user builds GCC with multilib enabled,
+    # it should just install on $(libdir)
+    # not on $(libdir)/../bin or 32 bits dlls would override 64 bit ones.
+    if test xyes = x"$multilib"; then
+      postinstall_cmds='base_file=`basename \$file`~
+        dlpath=`$SHELL 2>&1 -c '\''. $dir/'\''\$base_file'\''i; echo \$dlname'\''`~
+        dldir=$destdir/`dirname \$dlpath`~
+        $install_prog $dir/$dlname $destdir/$dlname~
+        chmod a+x $destdir/$dlname~
+        if test -n '\''$stripme'\'' && test -n '\''$striplib'\''; then
+          eval '\''$striplib $destdir/$dlname'\'' || exit \$?;
+        fi'
+    else
+      postinstall_cmds='base_file=`basename \$file`~
+        dlpath=`$SHELL 2>&1 -c '\''. $dir/'\''\$base_file'\''i; echo \$dlname'\''`~
+        dldir=$destdir/`dirname \$dlpath`~
+        test -d \$dldir || mkdir -p \$dldir~
+        $install_prog $dir/$dlname \$dldir/$dlname~
+        chmod a+x \$dldir/$dlname~
+        if test -n '\''$stripme'\'' && test -n '\''$striplib'\''; then
+          eval '\''$striplib \$dldir/$dlname'\'' || exit \$?;
+        fi'
+    fi
     postuninstall_cmds='dldll=`$SHELL 2>&1 -c '\''. $file; echo \$dlname'\''`~
       dlpath=$dir/\$dldll~
        $RM \$dlpath'
@@ -16411,7 +14540,7 @@ cygwin* | mingw* | pw32* | cegcc*)
 
       sys_lib_search_path_spec="$sys_lib_search_path_spec /usr/lib/w32api"
       ;;
-    mingw* | cegcc*)
+    mingw* | windows* | cegcc*)
       # MinGW DLLs use traditional 'lib' prefix
       soname_spec='$libname`echo $release | $SED -e 's/[.]/-/g'`$versuffix$shared_ext'
       ;;
@@ -16430,7 +14559,7 @@ cygwin* | mingw* | pw32* | cegcc*)
     library_names_spec='$libname.dll.lib'
 
     case $build_os in
-    mingw*)
+    mingw* | windows*)
       sys_lib_search_path_spec=
       lt_save_ifs=$IFS
       IFS=';'
@@ -16537,7 +14666,28 @@ freebsd* | dragonfly* | midnightbsd*)
       need_version=yes
       ;;
   esac
+  case $host_cpu in
+    powerpc64)
+      # On FreeBSD bi-arch platforms, a different variable is used for 32-bit
+      # binaries.  See <https://man.freebsd.org/cgi/man.cgi?query=ld.so>.
+      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int test_pointer_size[sizeof (void *) - 5];
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
   shlibpath_var=LD_LIBRARY_PATH
+else case e in #(
+  e) shlibpath_var=LD_32_LIBRARY_PATH ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+      ;;
+    *)
+      shlibpath_var=LD_LIBRARY_PATH
+      ;;
+  esac
   case $host_os in
   freebsd2.*)
     shlibpath_overrides_runpath=yes
@@ -16567,8 +14717,9 @@ haiku*)
   soname_spec='$libname$release$shared_ext$major'
   shlibpath_var=LIBRARY_PATH
   shlibpath_overrides_runpath=no
-  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/common/lib /boot/system/lib'
-  hardcode_into_libs=yes
+  sys_lib_search_path_spec='/boot/system/non-packaged/develop/lib /boot/system/develop/lib'
+  sys_lib_dlsearch_path_spec='/boot/home/config/non-packaged/lib /boot/home/config/lib /boot/system/non-packaged/lib /boot/system/lib'
+  hardcode_into_libs=no
   ;;
 
 hpux9* | hpux10* | hpux11*)
@@ -16678,7 +14829,7 @@ linux*android*)
   version_type=none # Android doesn't support versioned libraries.
   need_lib_prefix=no
   need_version=no
-  library_names_spec='$libname$release$shared_ext'
+  library_names_spec='$libname$release$shared_ext $libname$shared_ext'
   soname_spec='$libname$release$shared_ext'
   finish_cmds=
   shlibpath_var=LD_LIBRARY_PATH
@@ -16690,8 +14841,9 @@ linux*android*)
   hardcode_into_libs=yes
 
   dynamic_linker='Android linker'
-  # Don't embed -rpath directories since the linker doesn't support them.
-  hardcode_libdir_flag_spec='-L$libdir'
+  # -rpath works at least for libraries that are not overridden by
+  # libraries installed in system locations.
+  hardcode_libdir_flag_spec='$wl-rpath $wl$libdir'
   ;;
 
 # This must be glibc/ELF.
@@ -16748,7 +14900,7 @@ fi
   # before this can be enabled.
   hardcode_into_libs=yes
 
-  # Ideally, we could use ldconfig to report *all* directores which are
+  # Ideally, we could use ldconfig to report *all* directories which are
   # searched for libraries, however this is still not possible.  Aside from not
   # being certain /sbin/ldconfig is available, command
   # 'ldconfig -N -X -v | grep ^/' on 64bit Fedora does not report /usr/lib64,
@@ -16768,6 +14920,18 @@ fi
   dynamic_linker='GNU/Linux ld.so'
   ;;
 
+netbsdelf*-gnu)
+  version_type=linux
+  need_lib_prefix=no
+  need_version=no
+  library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
+  soname_spec='$libname$release$shared_ext$major'
+  shlibpath_var=LD_LIBRARY_PATH
+  shlibpath_overrides_runpath=no
+  hardcode_into_libs=yes
+  dynamic_linker='NetBSD ld.elf_so'
+  ;;
+
 netbsd*)
   version_type=sunos
   need_lib_prefix=no
@@ -16783,6 +14947,18 @@ netbsd*)
   fi
   shlibpath_var=LD_LIBRARY_PATH
   shlibpath_overrides_runpath=yes
+  hardcode_into_libs=yes
+  ;;
+
+*-mlibc)
+  version_type=linux # correct to gnu/linux during the next big refactor
+  need_lib_prefix=no
+  need_version=no
+  library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
+  soname_spec='$libname$release$shared_ext$major'
+  dynamic_linker='mlibc ld.so'
+  shlibpath_var=LD_LIBRARY_PATH
+  shlibpath_overrides_runpath=no
   hardcode_into_libs=yes
   ;;
 
@@ -16805,7 +14981,7 @@ newsos6)
   dynamic_linker='ldqnx.so'
   ;;
 
-openbsd* | bitrig*)
+openbsd*)
   version_type=sunos
   sys_lib_dlsearch_path_spec=/usr/lib
   need_lib_prefix=no
@@ -16863,6 +15039,17 @@ osf3* | osf4* | osf5*)
 
 rdos*)
   dynamic_linker=no
+  ;;
+
+serenity*)
+  version_type=linux # correct to gnu/linux during the next big refactor
+  need_lib_prefix=no
+  need_version=no
+  library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
+  soname_spec='$libname$release$shared_ext$major'
+  shlibpath_var=LD_LIBRARY_PATH
+  shlibpath_overrides_runpath=no
+  dynamic_linker='SerenityOS LibELF'
   ;;
 
 solaris*)
@@ -16960,6 +15147,496 @@ uts4*)
   library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
   soname_spec='$libname$release$shared_ext$major'
   shlibpath_var=LD_LIBRARY_PATH
+  ;;
+
+emscripten*)
+  version_type=none
+  need_lib_prefix=no
+  need_version=no
+  library_names_spec='$libname$release$shared_ext'
+  soname_spec='$libname$release$shared_ext'
+  finish_cmds=
+  dynamic_linker="Emscripten linker"
+  lt_prog_compiler_wl=
+lt_prog_compiler_pic=
+lt_prog_compiler_static=
+
+
+  if test yes = "$GCC"; then
+    lt_prog_compiler_wl='-Wl,'
+    lt_prog_compiler_static='-static'
+
+    case $host_os in
+      aix*)
+      # All AIX code is PIC.
+      if test ia64 = "$host_cpu"; then
+	# AIX 5 now supports IA64 processor
+	lt_prog_compiler_static='-Bstatic'
+      fi
+      lt_prog_compiler_pic='-fPIC'
+      ;;
+
+    amigaos*)
+      case $host_cpu in
+      powerpc)
+            # see comment about AmigaOS4 .so support
+            lt_prog_compiler_pic='-fPIC'
+        ;;
+      m68k)
+            # FIXME: we need at least 68020 code to build shared libraries, but
+            # adding the '-m68020' flag to GCC prevents building anything better,
+            # like '-m68040'.
+            lt_prog_compiler_pic='-m68020 -resident32 -malways-restore-a4'
+        ;;
+      esac
+      ;;
+
+    beos* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
+      # PIC is the default for these OSes.
+      ;;
+
+    mingw* | windows* | cygwin* | pw32* | os2* | cegcc*)
+      # This hack is so that the source file can tell whether it is being
+      # built for inclusion in a dll (and should export symbols for example).
+      # Although the cygwin gcc ignores -fPIC, still need this for old-style
+      # (--disable-auto-import) libraries
+      lt_prog_compiler_pic='-DDLL_EXPORT'
+      case $host_os in
+      os2*)
+	lt_prog_compiler_static='$wl-static'
+	;;
+      esac
+      ;;
+
+    darwin* | rhapsody*)
+      # PIC is the default on this platform
+      # Common symbols not allowed in MH_DYLIB files
+      lt_prog_compiler_pic='-fno-common'
+      ;;
+
+    haiku*)
+      # PIC is the default for Haiku.
+      # The "-static" flag exists, but is broken.
+      lt_prog_compiler_static=
+      ;;
+
+    hpux*)
+      # PIC is the default for 64-bit PA HP-UX, but not for 32-bit
+      # PA HP-UX.  On IA64 HP-UX, PIC is the default but the pic flag
+      # sets the default TLS model and affects inlining.
+      case $host_cpu in
+      hppa*64*)
+	# +Z the default
+	;;
+      *)
+	lt_prog_compiler_pic='-fPIC'
+	;;
+      esac
+      ;;
+
+    interix[3-9]*)
+      # Interix 3.x gcc -fpic/-fPIC options generate broken code.
+      # Instead, we relocate shared libraries at runtime.
+      ;;
+
+    msdosdjgpp*)
+      # Just because we use GCC doesn't mean we suddenly get shared libraries
+      # on systems that don't support them.
+      lt_prog_compiler_can_build_shared=no
+      enable_shared=no
+      ;;
+
+    *nto* | *qnx*)
+      # QNX uses GNU C++, but need to define -shared option too, otherwise
+      # it will coredump.
+      lt_prog_compiler_pic='-fPIC -shared'
+      ;;
+
+    sysv4*MP*)
+      if test -d /usr/nec; then
+	lt_prog_compiler_pic=-Kconform_pic
+      fi
+      ;;
+
+    *)
+      lt_prog_compiler_pic='-fPIC'
+      ;;
+    esac
+
+    case $cc_basename in
+    nvcc*) # Cuda Compiler Driver 2.2
+      lt_prog_compiler_wl='-Xlinker '
+      if test -n "$lt_prog_compiler_pic"; then
+        lt_prog_compiler_pic="-Xcompiler $lt_prog_compiler_pic"
+      fi
+      ;;
+    esac
+  else
+    # PORTME Check for flag to pass linker flags through the system compiler.
+    case $host_os in
+    aix*)
+      lt_prog_compiler_wl='-Wl,'
+      if test ia64 = "$host_cpu"; then
+	# AIX 5 now supports IA64 processor
+	lt_prog_compiler_static='-Bstatic'
+      else
+	lt_prog_compiler_static='-bnso -bI:/lib/syscalls.exp'
+      fi
+      ;;
+
+    darwin* | rhapsody*)
+      # PIC is the default on this platform
+      # Common symbols not allowed in MH_DYLIB files
+      lt_prog_compiler_pic='-fno-common'
+      case $cc_basename in
+      nagfor*)
+        # NAG Fortran compiler
+        lt_prog_compiler_wl='-Wl,-Wl,,'
+        lt_prog_compiler_pic='-PIC'
+        lt_prog_compiler_static='-Bstatic'
+        ;;
+      esac
+      ;;
+
+    mingw* | windows* | cygwin* | pw32* | os2* | cegcc*)
+      # This hack is so that the source file can tell whether it is being
+      # built for inclusion in a dll (and should export symbols for example).
+      lt_prog_compiler_pic='-DDLL_EXPORT'
+      case $host_os in
+      os2*)
+	lt_prog_compiler_static='$wl-static'
+	;;
+      esac
+      ;;
+
+    hpux9* | hpux10* | hpux11*)
+      lt_prog_compiler_wl='-Wl,'
+      # PIC is the default for IA64 HP-UX and 64-bit HP-UX, but
+      # not for PA HP-UX.
+      case $host_cpu in
+      hppa*64*|ia64*)
+	# +Z the default
+	;;
+      *)
+	lt_prog_compiler_pic='+Z'
+	;;
+      esac
+      # Is there a better lt_prog_compiler_static that works with the bundled CC?
+      lt_prog_compiler_static='$wl-a ${wl}archive'
+      ;;
+
+    irix5* | irix6* | nonstopux*)
+      lt_prog_compiler_wl='-Wl,'
+      # PIC (with -KPIC) is the default.
+      lt_prog_compiler_static='-non_shared'
+      ;;
+
+    linux* | k*bsd*-gnu | kopensolaris*-gnu | gnu*)
+      case $cc_basename in
+      # old Intel for x86_64, which still supported -KPIC.
+      ecc*)
+	lt_prog_compiler_wl='-Wl,'
+	lt_prog_compiler_pic='-KPIC'
+	lt_prog_compiler_static='-static'
+        ;;
+      *flang* | ftn | f18* | f95*)
+        # Flang compiler.
+	lt_prog_compiler_wl='-Wl,'
+	lt_prog_compiler_pic='-fPIC'
+	lt_prog_compiler_static='-static'
+        ;;
+      # icc used to be incompatible with GCC.
+      # ICC 10 doesn't accept -KPIC any more.
+      icc* | ifort*)
+	lt_prog_compiler_wl='-Wl,'
+	lt_prog_compiler_pic='-fPIC'
+	lt_prog_compiler_static='-static'
+        ;;
+      # Lahey Fortran 8.1.
+      lf95*)
+	lt_prog_compiler_wl='-Wl,'
+	lt_prog_compiler_pic='--shared'
+	lt_prog_compiler_static='--static'
+	;;
+      nagfor*)
+	# NAG Fortran compiler
+	lt_prog_compiler_wl='-Wl,-Wl,,'
+	lt_prog_compiler_pic='-PIC'
+	lt_prog_compiler_static='-Bstatic'
+	;;
+      tcc*)
+	# Fabrice Bellard et al's Tiny C Compiler
+	lt_prog_compiler_wl='-Wl,'
+	lt_prog_compiler_pic='-fPIC'
+	lt_prog_compiler_static='-static'
+	;;
+      pgcc* | pgf77* | pgf90* | pgf95* | pgfortran*)
+        # Portland Group compilers (*not* the Pentium gcc compiler,
+	# which looks to be a dead project)
+	lt_prog_compiler_wl='-Wl,'
+	lt_prog_compiler_pic='-fpic'
+	lt_prog_compiler_static='-Bstatic'
+        ;;
+      ccc*)
+        lt_prog_compiler_wl='-Wl,'
+        # All Alpha code is PIC.
+        lt_prog_compiler_static='-non_shared'
+        ;;
+      xl* | bgxl* | bgf* | mpixl*)
+	# IBM XL C 8.0/Fortran 10.1, 11.1 on PPC and BlueGene
+	lt_prog_compiler_wl='-Wl,'
+	lt_prog_compiler_pic='-qpic'
+	lt_prog_compiler_static='-qstaticlink'
+	;;
+      *)
+	case `$CC -V 2>&1 | $SED 5q` in
+	*Sun\ Ceres\ Fortran* | *Sun*Fortran*\ [1-7].* | *Sun*Fortran*\ 8.[0-3]*)
+	  # Sun Fortran 8.3 passes all unrecognized flags to the linker
+	  lt_prog_compiler_pic='-KPIC'
+	  lt_prog_compiler_static='-Bstatic'
+	  lt_prog_compiler_wl=''
+	  ;;
+	*Sun\ F* | *Sun*Fortran*)
+	  lt_prog_compiler_pic='-KPIC'
+	  lt_prog_compiler_static='-Bstatic'
+	  lt_prog_compiler_wl='-Qoption ld '
+	  ;;
+	*Sun\ C*)
+	  # Sun C 5.9
+	  lt_prog_compiler_pic='-KPIC'
+	  lt_prog_compiler_static='-Bstatic'
+	  lt_prog_compiler_wl='-Wl,'
+	  ;;
+        *Intel*\ [CF]*Compiler*)
+	  lt_prog_compiler_wl='-Wl,'
+	  lt_prog_compiler_pic='-fPIC'
+	  lt_prog_compiler_static='-static'
+	  ;;
+	*Portland\ Group*)
+	  lt_prog_compiler_wl='-Wl,'
+	  lt_prog_compiler_pic='-fpic'
+	  lt_prog_compiler_static='-Bstatic'
+	  ;;
+	esac
+	;;
+      esac
+      ;;
+
+    newsos6)
+      lt_prog_compiler_pic='-KPIC'
+      lt_prog_compiler_static='-Bstatic'
+      ;;
+
+    *-mlibc)
+      lt_prog_compiler_wl='-Wl,'
+      lt_prog_compiler_pic='-fPIC'
+      lt_prog_compiler_static='-static'
+      ;;
+
+    *nto* | *qnx*)
+      # QNX uses GNU C++, but need to define -shared option too, otherwise
+      # it will coredump.
+      lt_prog_compiler_pic='-fPIC -shared'
+      ;;
+
+    osf3* | osf4* | osf5*)
+      lt_prog_compiler_wl='-Wl,'
+      # All OSF/1 code is PIC.
+      lt_prog_compiler_static='-non_shared'
+      ;;
+
+    rdos*)
+      lt_prog_compiler_static='-non_shared'
+      ;;
+
+    serenity*)
+      ;;
+
+    solaris*)
+      lt_prog_compiler_pic='-KPIC'
+      lt_prog_compiler_static='-Bstatic'
+      case $cc_basename in
+      f77* | f90* | f95* | sunf77* | sunf90* | sunf95*)
+	lt_prog_compiler_wl='-Qoption ld ';;
+      *)
+	lt_prog_compiler_wl='-Wl,';;
+      esac
+      ;;
+
+    sunos4*)
+      lt_prog_compiler_wl='-Qoption ld '
+      lt_prog_compiler_pic='-PIC'
+      lt_prog_compiler_static='-Bstatic'
+      ;;
+
+    sysv4 | sysv4.2uw2* | sysv4.3*)
+      lt_prog_compiler_wl='-Wl,'
+      lt_prog_compiler_pic='-KPIC'
+      lt_prog_compiler_static='-Bstatic'
+      ;;
+
+    sysv4*MP*)
+      if test -d /usr/nec; then
+	lt_prog_compiler_pic='-Kconform_pic'
+	lt_prog_compiler_static='-Bstatic'
+      fi
+      ;;
+
+    sysv5* | unixware* | sco3.2v5* | sco5v6* | OpenUNIX*)
+      lt_prog_compiler_wl='-Wl,'
+      lt_prog_compiler_pic='-KPIC'
+      lt_prog_compiler_static='-Bstatic'
+      ;;
+
+    unicos*)
+      lt_prog_compiler_wl='-Wl,'
+      lt_prog_compiler_can_build_shared=no
+      ;;
+
+    uts4*)
+      lt_prog_compiler_pic='-pic'
+      lt_prog_compiler_static='-Bstatic'
+      ;;
+
+    *)
+      lt_prog_compiler_can_build_shared=no
+      ;;
+    esac
+  fi
+
+case $host_os in
+  # For platforms that do not support PIC, -DPIC is meaningless:
+  *djgpp*)
+    lt_prog_compiler_pic=
+    ;;
+  *)
+    lt_prog_compiler_pic="$lt_prog_compiler_pic -DPIC"
+    ;;
+esac
+
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $compiler option to produce PIC" >&5
+printf %s "checking for $compiler option to produce PIC... " >&6; }
+if test ${lt_cv_prog_compiler_pic+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) lt_cv_prog_compiler_pic=$lt_prog_compiler_pic ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_prog_compiler_pic" >&5
+printf "%s\n" "$lt_cv_prog_compiler_pic" >&6; }
+lt_prog_compiler_pic=$lt_cv_prog_compiler_pic
+
+#
+# Check to make sure the PIC flag actually works.
+#
+if test -n "$lt_prog_compiler_pic"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if $compiler PIC flag $lt_prog_compiler_pic works" >&5
+printf %s "checking if $compiler PIC flag $lt_prog_compiler_pic works... " >&6; }
+if test ${lt_cv_prog_compiler_pic_works+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) lt_cv_prog_compiler_pic_works=no
+   ac_outfile=conftest.$ac_objext
+   echo "$lt_simple_compile_test_code" > conftest.$ac_ext
+   lt_compiler_flag="$lt_prog_compiler_pic -DPIC"  ## exclude from sc_useless_quotes_in_assignment
+   # Insert the option either (1) after the last *FLAGS variable, or
+   # (2) before a word containing "conftest.", or (3) at the end.
+   # Note that $ac_compile itself does not contain backslashes and begins
+   # with a dollar sign (not a hyphen), so the echo should work correctly.
+   # The option is referenced via a variable to avoid confusing sed.
+   lt_compile=`echo "$ac_compile" | $SED \
+   -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
+   -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+   -e 's:$: $lt_compiler_flag:'`
+   (eval echo "\"\$as_me:$LINENO: $lt_compile\"" >&5)
+   (eval "$lt_compile" 2>conftest.err)
+   ac_status=$?
+   cat conftest.err >&5
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   if (exit $ac_status) && test -s "$ac_outfile"; then
+     # The compiler can only warn and ignore the option if not recognized
+     # So say no if there are warnings other than the usual output.
+     $ECHO "$_lt_compiler_boilerplate" | $SED '/^$/d' >conftest.exp
+     $SED '/^$/d; /^ *+/d' conftest.err >conftest.er2
+     if test ! -s conftest.er2 || diff conftest.exp conftest.er2 >/dev/null; then
+       lt_cv_prog_compiler_pic_works=yes
+     fi
+   fi
+   $RM conftest*
+ ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_prog_compiler_pic_works" >&5
+printf "%s\n" "$lt_cv_prog_compiler_pic_works" >&6; }
+
+if test yes = "$lt_cv_prog_compiler_pic_works"; then
+    case $lt_prog_compiler_pic in
+     "" | " "*) ;;
+     *) lt_prog_compiler_pic=" $lt_prog_compiler_pic" ;;
+     esac
+else
+    lt_prog_compiler_pic=
+     lt_prog_compiler_can_build_shared=no
+fi
+
+fi
+
+
+
+
+
+#
+# Check to make sure the static flag actually works.
+#
+wl=$lt_prog_compiler_wl eval lt_tmp_static_flag=\"$lt_prog_compiler_static\"
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if $compiler static flag $lt_tmp_static_flag works" >&5
+printf %s "checking if $compiler static flag $lt_tmp_static_flag works... " >&6; }
+if test ${lt_cv_prog_compiler_static_works+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) lt_cv_prog_compiler_static_works=no
+   save_LDFLAGS=$LDFLAGS
+   LDFLAGS="$LDFLAGS $lt_tmp_static_flag"
+   echo "$lt_simple_link_test_code" > conftest.$ac_ext
+   if (eval $ac_link 2>conftest.err) && test -s conftest$ac_exeext; then
+     # The linker can only warn and ignore the option if not recognized
+     # So say no if there are warnings
+     if test -s conftest.err; then
+       # Append any errors to the config.log.
+       cat conftest.err 1>&5
+       $ECHO "$_lt_linker_boilerplate" | $SED '/^$/d' > conftest.exp
+       $SED '/^$/d; /^ *+/d' conftest.err >conftest.er2
+       if diff conftest.exp conftest.er2 >/dev/null; then
+         lt_cv_prog_compiler_static_works=yes
+       fi
+     else
+       lt_cv_prog_compiler_static_works=yes
+     fi
+   fi
+   $RM -r conftest*
+   LDFLAGS=$save_LDFLAGS
+ ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_prog_compiler_static_works" >&5
+printf "%s\n" "$lt_cv_prog_compiler_static_works" >&6; }
+
+if test yes = "$lt_cv_prog_compiler_static_works"; then
+    :
+else
+    lt_prog_compiler_static=
+fi
+
+
+
+='-fPIC'
+  archive_cmds='$CC -sSIDE_MODULE=2 -shared $libobjs $deplibs $compiler_flags -o $lib'
+  archive_expsym_cmds='$SED "s|^|_|" $export_symbols >$output_objdir/$soname.expsym~$CC -sSIDE_MODULE=2 -shared $libobjs $deplibs $compiler_flags -o $lib -s EXPORTED_FUNCTIONS=@$output_objdir/$soname.expsym'
+  archive_cmds_need_lc=no
+  no_undefined_flag=
   ;;
 
 *)
@@ -17146,7 +15823,7 @@ else
     lt_cv_dlopen_self=yes
     ;;
 
-  mingw* | pw32* | cegcc*)
+  mingw* | windows* | pw32* | cegcc*)
     lt_cv_dlopen=LoadLibrary
     lt_cv_dlopen_libs=
     ;;
@@ -17519,11 +16196,11 @@ else
 /* When -fvisibility=hidden is used, assume the code has been annotated
    correspondingly for the symbols needed.  */
 #if defined __GNUC__ && (((__GNUC__ == 3) && (__GNUC_MINOR__ >= 3)) || (__GNUC__ > 3))
-int fnord () __attribute__((visibility("default")));
+int fnord (void) __attribute__((visibility("default")));
 #endif
 
-int fnord () { return 42; }
-int main ()
+int fnord (void) { return 42; }
+int main (void)
 {
   void *self = dlopen (0, LT_DLGLOBAL|LT_DLLAZY_OR_NOW);
   int status = $lt_dlunknown;
@@ -17627,11 +16304,11 @@ else
 /* When -fvisibility=hidden is used, assume the code has been annotated
    correspondingly for the symbols needed.  */
 #if defined __GNUC__ && (((__GNUC__ == 3) && (__GNUC_MINOR__ >= 3)) || (__GNUC__ > 3))
-int fnord () __attribute__((visibility("default")));
+int fnord (void) __attribute__((visibility("default")));
 #endif
 
-int fnord () { return 42; }
-int main ()
+int fnord (void) { return 42; }
+int main (void)
 {
   void *self = dlopen (0, LT_DLGLOBAL|LT_DLLAZY_OR_NOW);
   int status = $lt_dlunknown;
@@ -20414,7 +19091,7 @@ if test yes = "$GCC"; then
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for ld used by $CC" >&5
 printf %s "checking for ld used by $CC... " >&6; }
   case $host in
-  *-*-mingw*)
+  *-*-mingw* | *-*-windows*)
     # gcc leaves a trailing carriage return, which upsets mingw
     ac_prog=`($CC -print-prog-name=ld) 2>&5 | tr -d '\015'` ;;
   *)
@@ -20529,8 +19206,7 @@ with_gnu_ld=$lt_cv_prog_gnu_ld
         wlarc='$wl'
 
         # ancient GNU ld didn't support --whole-archive et. al.
-        if eval "`$CC -print-prog-name=ld` --help 2>&1" |
-	  $GREP 'no-whole-archive' > /dev/null; then
+        if $LD --help 2>&1 | $GREP 'no-whole-archive' > /dev/null; then
           whole_archive_flag_spec_CXX=$wlarc'--whole-archive$convenience '$wlarc'--no-whole-archive'
         else
           whole_archive_flag_spec_CXX=
@@ -20550,7 +19226,7 @@ with_gnu_ld=$lt_cv_prog_gnu_ld
       # Commands to make compiler produce verbose output that lists
       # what "hidden" libraries, object files and flags are used when
       # linking a shared library.
-      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
+      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " [-]L"'
 
     else
       GXX=no
@@ -20850,7 +19526,7 @@ fi
         esac
         ;;
 
-      cygwin* | mingw* | pw32* | cegcc*)
+      cygwin* | mingw* | windows* | pw32* | cegcc*)
 	case $GXX,$cc_basename in
 	,cl* | no,cl* | ,icl* | no,icl*)
 	  # Native MSVC or ICC
@@ -20903,6 +19579,7 @@ fi
 	  allow_undefined_flag_CXX=unsupported
 	  always_export_symbols_CXX=no
 	  enable_shared_with_static_runtimes_CXX=yes
+	  file_list_spec_CXX='@'
 
 	  if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
 	    archive_cmds_CXX='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
@@ -20946,7 +19623,7 @@ fi
     module_cmds_CXX="\$CC \$allow_undefined_flag -o \$lib -bundle \$libobjs \$deplibs \$compiler_flags$_lt_dsymutil"
     archive_expsym_cmds_CXX="$SED 's|^|_|' < \$export_symbols > \$output_objdir/\$libname-symbols.expsym~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$libobjs \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring $_lt_dar_single_mod$_lt_dar_export_syms$_lt_dsymutil"
     module_expsym_cmds_CXX="$SED -e 's|^|_|' < \$export_symbols > \$output_objdir/\$libname-symbols.expsym~\$CC \$allow_undefined_flag -o \$lib -bundle \$libobjs \$deplibs \$compiler_flags$_lt_dar_export_syms$_lt_dsymutil"
-       if test yes != "$lt_cv_apple_cc_single_mod"; then
+       if test yes = "$_lt_dar_needs_single_mod" -a yes != "$lt_cv_apple_cc_single_mod"; then
       archive_cmds_CXX="\$CC -r -keep_private_externs -nostdlib -o \$lib-master.o \$libobjs~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$lib-master.o \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring$_lt_dsymutil"
       archive_expsym_cmds_CXX="$SED 's|^|_|' < \$export_symbols > \$output_objdir/\$libname-symbols.expsym~\$CC -r -keep_private_externs -nostdlib -o \$lib-master.o \$libobjs~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$lib-master.o \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring$_lt_dar_export_syms$_lt_dsymutil"
     fi
@@ -20981,7 +19658,7 @@ fi
 	  cat $export_symbols | $prefix_cmds >> $output_objdir/$libname.def~
 	  $CC -Zdll -Zcrtdll -o $output_objdir/$soname $libobjs $deplibs $compiler_flags $output_objdir/$libname.def~
 	  emximp -o $lib $output_objdir/$libname.def'
-	old_archive_From_new_cmds_CXX='emximp -o $output_objdir/${libname}_dll.a $output_objdir/$libname.def'
+	old_archive_from_new_cmds_CXX='emximp -o $output_objdir/${libname}_dll.a $output_objdir/$libname.def'
 	enable_shared_with_static_runtimes_CXX=yes
 	file_list_spec_CXX='@'
 	;;
@@ -21022,7 +19699,7 @@ fi
 
       haiku*)
         archive_cmds_CXX='$CC -shared $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
-        link_all_deplibs_CXX=yes
+        link_all_deplibs_CXX=no
         ;;
 
       hpux9*)
@@ -21049,7 +19726,7 @@ fi
             # explicitly linking system object files so we need to strip them
             # from the output so that they don't get included in the library
             # dependencies.
-            output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $EGREP "\-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
+            output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $EGREP "[-]L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
             ;;
           *)
             if test yes = "$GXX"; then
@@ -21114,7 +19791,7 @@ fi
 	    # explicitly linking system object files so we need to strip them
 	    # from the output so that they don't get included in the library
 	    # dependencies.
-	    output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $GREP "\-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
+	    output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $GREP " [-]L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
 	    ;;
           *)
 	    if test yes = "$GXX"; then
@@ -21346,6 +20023,10 @@ fi
 	esac
 	;;
 
+      *-mlibc)
+        ld_shlibs_CXX=yes
+	;;
+
       netbsd*)
         if echo __ELF__ | $CC -E - | $GREP __ELF__ >/dev/null; then
 	  archive_cmds_CXX='$LD -Bshareable  -o $lib $predep_objects $libobjs $deplibs $postdep_objects $linker_flags'
@@ -21362,7 +20043,7 @@ fi
         ld_shlibs_CXX=yes
 	;;
 
-      openbsd* | bitrig*)
+      openbsd*)
 	if test -f /usr/libexec/ld.so; then
 	  hardcode_direct_CXX=yes
 	  hardcode_shlibpath_var_CXX=no
@@ -21453,7 +20134,7 @@ fi
 	      # Commands to make compiler produce verbose output that lists
 	      # what "hidden" libraries, object files and flags are used when
 	      # linking a shared library.
-	      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
+	      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " [-]L"'
 
 	    else
 	      # FIXME: insert proper C++ library support
@@ -21466,6 +20147,9 @@ fi
       psos*)
         # FIXME: insert proper C++ library support
         ld_shlibs_CXX=no
+        ;;
+
+      serenity*)
         ;;
 
       sunos4*)
@@ -21537,7 +20221,7 @@ fi
 	        # Commands to make compiler produce verbose output that lists
 	        # what "hidden" libraries, object files and flags are used when
 	        # linking a shared library.
-	        output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
+	        output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " [-]L"'
 	      else
 	        # g++ 2.7 appears to require '-G' NOT '-shared' on this
 	        # platform.
@@ -21548,7 +20232,7 @@ fi
 	        # Commands to make compiler produce verbose output that lists
 	        # what "hidden" libraries, object files and flags are used when
 	        # linking a shared library.
-	        output_verbose_link_cmd='$CC -G $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
+	        output_verbose_link_cmd='$CC -G $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " [-]L"'
 	      fi
 
 	      hardcode_libdir_flag_spec_CXX='$wl-R $wl$libdir'
@@ -21691,10 +20375,11 @@ if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
     case $prev$p in
 
     -L* | -R* | -l*)
-       # Some compilers place space between "-{L,R}" and the path.
+       # Some compilers place space between "-{L,R,l}" and the path.
        # Remove the space.
-       if test x-L = "$p" ||
-          test x-R = "$p"; then
+       if test x-L = x"$p" ||
+          test x-R = x"$p" ||
+          test x-l = x"$p"; then
 	 prev=$p
 	 continue
        fi
@@ -21861,7 +20546,7 @@ lt_prog_compiler_static_CXX=
     beos* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
       # PIC is the default for these OSes.
       ;;
-    mingw* | cygwin* | os2* | pw32* | cegcc*)
+    mingw* | windows* | cygwin* | os2* | pw32* | cegcc*)
       # This hack is so that the source file can tell whether it is being
       # built for inclusion in a dll (and should export symbols for example).
       # Although the cygwin gcc ignores -fPIC, still need this for old-style
@@ -21936,7 +20621,7 @@ lt_prog_compiler_static_CXX=
 	  ;;
 	esac
 	;;
-      mingw* | cygwin* | os2* | pw32* | cegcc*)
+      mingw* | windows* | cygwin* | os2* | pw32* | cegcc*)
 	# This hack is so that the source file can tell whether it is being
 	# built for inclusion in a dll (and should export symbols for example).
 	lt_prog_compiler_pic_CXX='-DDLL_EXPORT'
@@ -22061,7 +20746,9 @@ lt_prog_compiler_static_CXX=
 	    ;;
 	esac
 	;;
-      netbsd*)
+      netbsd* | netbsdelf*-gnu)
+	;;
+      *-mlibc)
 	;;
       *qnx* | *nto*)
         # QNX uses GNU C++, but need to define -shared option too, otherwise
@@ -22091,6 +20778,8 @@ lt_prog_compiler_static_CXX=
 	;;
       psos*)
 	;;
+      serenity*)
+        ;;
       solaris*)
 	case $cc_basename in
 	  CC* | sunCC*)
@@ -22435,7 +21124,7 @@ printf %s "checking whether the $compiler linker ($LD) supports shared libraries
   pw32*)
     export_symbols_cmds_CXX=$ltdll_cmds
     ;;
-  cygwin* | mingw* | cegcc*)
+  cygwin* | mingw* | windows* | cegcc*)
     case $cc_basename in
     cl* | icl*)
       exclude_expsyms_CXX='_NULL_IMPORT_DESCRIPTOR|_IMPORT_DESCRIPTOR_.*'
@@ -22664,7 +21353,7 @@ aix[4-9]*)
     # Unfortunately, runtime linking may impact performance, so we do
     # not want this to be the default eventually. Also, we use the
     # versioned .so libs for executables only if there is the -brtl
-    # linker flag in LDFLAGS as well, or --with-aix-soname=svr4 only.
+    # linker flag in LDFLAGS as well, or --enable-aix-soname=svr4 only.
     # To allow for filename-based versioning support, we need to create
     # libNAME.so.V as an archive file, containing:
     # *) an Import File, referring to the versioned filename of the
@@ -22758,7 +21447,7 @@ bsdi[45]*)
   # libtool to hard-code these into programs
   ;;
 
-cygwin* | mingw* | pw32* | cegcc*)
+cygwin* | mingw* | windows* | pw32* | cegcc*)
   version_type=windows
   shrext_cmds=.dll
   need_version=no
@@ -22769,15 +21458,29 @@ cygwin* | mingw* | pw32* | cegcc*)
     # gcc
     library_names_spec='$libname.dll.a'
     # DLL is installed to $(libdir)/../bin by postinstall_cmds
-    postinstall_cmds='base_file=`basename \$file`~
-      dlpath=`$SHELL 2>&1 -c '\''. $dir/'\''\$base_file'\''i; echo \$dlname'\''`~
-      dldir=$destdir/`dirname \$dlpath`~
-      test -d \$dldir || mkdir -p \$dldir~
-      $install_prog $dir/$dlname \$dldir/$dlname~
-      chmod a+x \$dldir/$dlname~
-      if test -n '\''$stripme'\'' && test -n '\''$striplib'\''; then
-        eval '\''$striplib \$dldir/$dlname'\'' || exit \$?;
-      fi'
+    # If user builds GCC with multilib enabled,
+    # it should just install on $(libdir)
+    # not on $(libdir)/../bin or 32 bits dlls would override 64 bit ones.
+    if test xyes = x"$multilib"; then
+      postinstall_cmds='base_file=`basename \$file`~
+        dlpath=`$SHELL 2>&1 -c '\''. $dir/'\''\$base_file'\''i; echo \$dlname'\''`~
+        dldir=$destdir/`dirname \$dlpath`~
+        $install_prog $dir/$dlname $destdir/$dlname~
+        chmod a+x $destdir/$dlname~
+        if test -n '\''$stripme'\'' && test -n '\''$striplib'\''; then
+          eval '\''$striplib $destdir/$dlname'\'' || exit \$?;
+        fi'
+    else
+      postinstall_cmds='base_file=`basename \$file`~
+        dlpath=`$SHELL 2>&1 -c '\''. $dir/'\''\$base_file'\''i; echo \$dlname'\''`~
+        dldir=$destdir/`dirname \$dlpath`~
+        test -d \$dldir || mkdir -p \$dldir~
+        $install_prog $dir/$dlname \$dldir/$dlname~
+        chmod a+x \$dldir/$dlname~
+        if test -n '\''$stripme'\'' && test -n '\''$striplib'\''; then
+          eval '\''$striplib \$dldir/$dlname'\'' || exit \$?;
+        fi'
+    fi
     postuninstall_cmds='dldll=`$SHELL 2>&1 -c '\''. $file; echo \$dlname'\''`~
       dlpath=$dir/\$dldll~
        $RM \$dlpath'
@@ -22789,7 +21492,7 @@ cygwin* | mingw* | pw32* | cegcc*)
       soname_spec='`echo $libname | $SED -e 's/^lib/cyg/'``echo $release | $SED -e 's/[.]/-/g'`$versuffix$shared_ext'
 
       ;;
-    mingw* | cegcc*)
+    mingw* | windows* | cegcc*)
       # MinGW DLLs use traditional 'lib' prefix
       soname_spec='$libname`echo $release | $SED -e 's/[.]/-/g'`$versuffix$shared_ext'
       ;;
@@ -22808,7 +21511,7 @@ cygwin* | mingw* | pw32* | cegcc*)
     library_names_spec='$libname.dll.lib'
 
     case $build_os in
-    mingw*)
+    mingw* | windows*)
       sys_lib_search_path_spec=
       lt_save_ifs=$IFS
       IFS=';'
@@ -22914,7 +21617,28 @@ freebsd* | dragonfly* | midnightbsd*)
       need_version=yes
       ;;
   esac
+  case $host_cpu in
+    powerpc64)
+      # On FreeBSD bi-arch platforms, a different variable is used for 32-bit
+      # binaries.  See <https://man.freebsd.org/cgi/man.cgi?query=ld.so>.
+      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+int test_pointer_size[sizeof (void *) - 5];
+
+_ACEOF
+if ac_fn_cxx_try_compile "$LINENO"
+then :
   shlibpath_var=LD_LIBRARY_PATH
+else case e in #(
+  e) shlibpath_var=LD_32_LIBRARY_PATH ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+      ;;
+    *)
+      shlibpath_var=LD_LIBRARY_PATH
+      ;;
+  esac
   case $host_os in
   freebsd2.*)
     shlibpath_overrides_runpath=yes
@@ -22944,8 +21668,9 @@ haiku*)
   soname_spec='$libname$release$shared_ext$major'
   shlibpath_var=LIBRARY_PATH
   shlibpath_overrides_runpath=no
-  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/common/lib /boot/system/lib'
-  hardcode_into_libs=yes
+  sys_lib_search_path_spec='/boot/system/non-packaged/develop/lib /boot/system/develop/lib'
+  sys_lib_dlsearch_path_spec='/boot/home/config/non-packaged/lib /boot/home/config/lib /boot/system/non-packaged/lib /boot/system/lib'
+  hardcode_into_libs=no
   ;;
 
 hpux9* | hpux10* | hpux11*)
@@ -23055,7 +21780,7 @@ linux*android*)
   version_type=none # Android doesn't support versioned libraries.
   need_lib_prefix=no
   need_version=no
-  library_names_spec='$libname$release$shared_ext'
+  library_names_spec='$libname$release$shared_ext $libname$shared_ext'
   soname_spec='$libname$release$shared_ext'
   finish_cmds=
   shlibpath_var=LD_LIBRARY_PATH
@@ -23067,8 +21792,9 @@ linux*android*)
   hardcode_into_libs=yes
 
   dynamic_linker='Android linker'
-  # Don't embed -rpath directories since the linker doesn't support them.
-  hardcode_libdir_flag_spec_CXX='-L$libdir'
+  # -rpath works at least for libraries that are not overridden by
+  # libraries installed in system locations.
+  hardcode_libdir_flag_spec_CXX='$wl-rpath $wl$libdir'
   ;;
 
 # This must be glibc/ELF.
@@ -23125,7 +21851,7 @@ fi
   # before this can be enabled.
   hardcode_into_libs=yes
 
-  # Ideally, we could use ldconfig to report *all* directores which are
+  # Ideally, we could use ldconfig to report *all* directories which are
   # searched for libraries, however this is still not possible.  Aside from not
   # being certain /sbin/ldconfig is available, command
   # 'ldconfig -N -X -v | grep ^/' on 64bit Fedora does not report /usr/lib64,
@@ -23145,6 +21871,18 @@ fi
   dynamic_linker='GNU/Linux ld.so'
   ;;
 
+netbsdelf*-gnu)
+  version_type=linux
+  need_lib_prefix=no
+  need_version=no
+  library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
+  soname_spec='$libname$release$shared_ext$major'
+  shlibpath_var=LD_LIBRARY_PATH
+  shlibpath_overrides_runpath=no
+  hardcode_into_libs=yes
+  dynamic_linker='NetBSD ld.elf_so'
+  ;;
+
 netbsd*)
   version_type=sunos
   need_lib_prefix=no
@@ -23160,6 +21898,18 @@ netbsd*)
   fi
   shlibpath_var=LD_LIBRARY_PATH
   shlibpath_overrides_runpath=yes
+  hardcode_into_libs=yes
+  ;;
+
+*-mlibc)
+  version_type=linux # correct to gnu/linux during the next big refactor
+  need_lib_prefix=no
+  need_version=no
+  library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
+  soname_spec='$libname$release$shared_ext$major'
+  dynamic_linker='mlibc ld.so'
+  shlibpath_var=LD_LIBRARY_PATH
+  shlibpath_overrides_runpath=no
   hardcode_into_libs=yes
   ;;
 
@@ -23182,7 +21932,7 @@ newsos6)
   dynamic_linker='ldqnx.so'
   ;;
 
-openbsd* | bitrig*)
+openbsd*)
   version_type=sunos
   sys_lib_dlsearch_path_spec=/usr/lib
   need_lib_prefix=no
@@ -23240,6 +21990,17 @@ osf3* | osf4* | osf5*)
 
 rdos*)
   dynamic_linker=no
+  ;;
+
+serenity*)
+  version_type=linux # correct to gnu/linux during the next big refactor
+  need_lib_prefix=no
+  need_version=no
+  library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
+  soname_spec='$libname$release$shared_ext$major'
+  shlibpath_var=LD_LIBRARY_PATH
+  shlibpath_overrides_runpath=no
+  dynamic_linker='SerenityOS LibELF'
   ;;
 
 solaris*)
@@ -23337,6 +22098,479 @@ uts4*)
   library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
   soname_spec='$libname$release$shared_ext$major'
   shlibpath_var=LD_LIBRARY_PATH
+  ;;
+
+emscripten*)
+  version_type=none
+  need_lib_prefix=no
+  need_version=no
+  library_names_spec='$libname$release$shared_ext'
+  soname_spec='$libname$release$shared_ext'
+  finish_cmds=
+  dynamic_linker="Emscripten linker"
+  lt_prog_compiler_wl_CXX=
+lt_prog_compiler_pic_CXX=
+lt_prog_compiler_static_CXX=
+
+
+  # C++ specific cases for pic, static, wl, etc.
+  if test yes = "$GXX"; then
+    lt_prog_compiler_wl_CXX='-Wl,'
+    lt_prog_compiler_static_CXX='-static'
+
+    case $host_os in
+    aix*)
+      # All AIX code is PIC.
+      if test ia64 = "$host_cpu"; then
+	# AIX 5 now supports IA64 processor
+	lt_prog_compiler_static_CXX='-Bstatic'
+      fi
+      lt_prog_compiler_pic_CXX='-fPIC'
+      ;;
+
+    amigaos*)
+      case $host_cpu in
+      powerpc)
+            # see comment about AmigaOS4 .so support
+            lt_prog_compiler_pic_CXX='-fPIC'
+        ;;
+      m68k)
+            # FIXME: we need at least 68020 code to build shared libraries, but
+            # adding the '-m68020' flag to GCC prevents building anything better,
+            # like '-m68040'.
+            lt_prog_compiler_pic_CXX='-m68020 -resident32 -malways-restore-a4'
+        ;;
+      esac
+      ;;
+
+    beos* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
+      # PIC is the default for these OSes.
+      ;;
+    mingw* | windows* | cygwin* | os2* | pw32* | cegcc*)
+      # This hack is so that the source file can tell whether it is being
+      # built for inclusion in a dll (and should export symbols for example).
+      # Although the cygwin gcc ignores -fPIC, still need this for old-style
+      # (--disable-auto-import) libraries
+      lt_prog_compiler_pic_CXX='-DDLL_EXPORT'
+      case $host_os in
+      os2*)
+	lt_prog_compiler_static_CXX='$wl-static'
+	;;
+      esac
+      ;;
+    darwin* | rhapsody*)
+      # PIC is the default on this platform
+      # Common symbols not allowed in MH_DYLIB files
+      lt_prog_compiler_pic_CXX='-fno-common'
+      ;;
+    *djgpp*)
+      # DJGPP does not support shared libraries at all
+      lt_prog_compiler_pic_CXX=
+      ;;
+    haiku*)
+      # PIC is the default for Haiku.
+      # The "-static" flag exists, but is broken.
+      lt_prog_compiler_static_CXX=
+      ;;
+    interix[3-9]*)
+      # Interix 3.x gcc -fpic/-fPIC options generate broken code.
+      # Instead, we relocate shared libraries at runtime.
+      ;;
+    sysv4*MP*)
+      if test -d /usr/nec; then
+	lt_prog_compiler_pic_CXX=-Kconform_pic
+      fi
+      ;;
+    hpux*)
+      # PIC is the default for 64-bit PA HP-UX, but not for 32-bit
+      # PA HP-UX.  On IA64 HP-UX, PIC is the default but the pic flag
+      # sets the default TLS model and affects inlining.
+      case $host_cpu in
+      hppa*64*)
+	;;
+      *)
+	lt_prog_compiler_pic_CXX='-fPIC'
+	;;
+      esac
+      ;;
+    *qnx* | *nto*)
+      # QNX uses GNU C++, but need to define -shared option too, otherwise
+      # it will coredump.
+      lt_prog_compiler_pic_CXX='-fPIC -shared'
+      ;;
+    *)
+      lt_prog_compiler_pic_CXX='-fPIC'
+      ;;
+    esac
+  else
+    case $host_os in
+      aix[4-9]*)
+	# All AIX code is PIC.
+	if test ia64 = "$host_cpu"; then
+	  # AIX 5 now supports IA64 processor
+	  lt_prog_compiler_static_CXX='-Bstatic'
+	else
+	  lt_prog_compiler_static_CXX='-bnso -bI:/lib/syscalls.exp'
+	fi
+	;;
+      chorus*)
+	case $cc_basename in
+	cxch68*)
+	  # Green Hills C++ Compiler
+	  # _LT_TAGVAR(lt_prog_compiler_static, CXX)="--no_auto_instantiation -u __main -u __premain -u _abort -r $COOL_DIR/lib/libOrb.a $MVME_DIR/lib/CC/libC.a $MVME_DIR/lib/classix/libcx.s.a"
+	  ;;
+	esac
+	;;
+      mingw* | windows* | cygwin* | os2* | pw32* | cegcc*)
+	# This hack is so that the source file can tell whether it is being
+	# built for inclusion in a dll (and should export symbols for example).
+	lt_prog_compiler_pic_CXX='-DDLL_EXPORT'
+	;;
+      dgux*)
+	case $cc_basename in
+	  ec++*)
+	    lt_prog_compiler_pic_CXX='-KPIC'
+	    ;;
+	  ghcx*)
+	    # Green Hills C++ Compiler
+	    lt_prog_compiler_pic_CXX='-pic'
+	    ;;
+	  *)
+	    ;;
+	esac
+	;;
+      freebsd* | dragonfly* | midnightbsd*)
+	# FreeBSD uses GNU C++
+	;;
+      hpux9* | hpux10* | hpux11*)
+	case $cc_basename in
+	  CC*)
+	    lt_prog_compiler_wl_CXX='-Wl,'
+	    lt_prog_compiler_static_CXX='$wl-a ${wl}archive'
+	    if test ia64 != "$host_cpu"; then
+	      lt_prog_compiler_pic_CXX='+Z'
+	    fi
+	    ;;
+	  aCC*)
+	    lt_prog_compiler_wl_CXX='-Wl,'
+	    lt_prog_compiler_static_CXX='$wl-a ${wl}archive'
+	    case $host_cpu in
+	    hppa*64*|ia64*)
+	      # +Z the default
+	      ;;
+	    *)
+	      lt_prog_compiler_pic_CXX='+Z'
+	      ;;
+	    esac
+	    ;;
+	  *)
+	    ;;
+	esac
+	;;
+      interix*)
+	# This is c89, which is MS Visual C++ (no shared libs)
+	# Anyone wants to do a port?
+	;;
+      irix5* | irix6* | nonstopux*)
+	case $cc_basename in
+	  CC*)
+	    lt_prog_compiler_wl_CXX='-Wl,'
+	    lt_prog_compiler_static_CXX='-non_shared'
+	    # CC pic flag -KPIC is the default.
+	    ;;
+	  *)
+	    ;;
+	esac
+	;;
+      linux* | k*bsd*-gnu | kopensolaris*-gnu | gnu*)
+	case $cc_basename in
+	  KCC*)
+	    # KAI C++ Compiler
+	    lt_prog_compiler_wl_CXX='--backend -Wl,'
+	    lt_prog_compiler_pic_CXX='-fPIC'
+	    ;;
+	  ecpc* )
+	    # old Intel C++ for x86_64, which still supported -KPIC.
+	    lt_prog_compiler_wl_CXX='-Wl,'
+	    lt_prog_compiler_pic_CXX='-KPIC'
+	    lt_prog_compiler_static_CXX='-static'
+	    ;;
+	  icpc* )
+	    # Intel C++, used to be incompatible with GCC.
+	    # ICC 10 doesn't accept -KPIC any more.
+	    lt_prog_compiler_wl_CXX='-Wl,'
+	    lt_prog_compiler_pic_CXX='-fPIC'
+	    lt_prog_compiler_static_CXX='-static'
+	    ;;
+	  pgCC* | pgcpp*)
+	    # Portland Group C++ compiler
+	    lt_prog_compiler_wl_CXX='-Wl,'
+	    lt_prog_compiler_pic_CXX='-fpic'
+	    lt_prog_compiler_static_CXX='-Bstatic'
+	    ;;
+	  cxx*)
+	    # Compaq C++
+	    # Make sure the PIC flag is empty.  It appears that all Alpha
+	    # Linux and Compaq Tru64 Unix objects are PIC.
+	    lt_prog_compiler_pic_CXX=
+	    lt_prog_compiler_static_CXX='-non_shared'
+	    ;;
+	  xlc* | xlC* | bgxl[cC]* | mpixl[cC]*)
+	    # IBM XL 8.0, 9.0 on PPC and BlueGene
+	    lt_prog_compiler_wl_CXX='-Wl,'
+	    lt_prog_compiler_pic_CXX='-qpic'
+	    lt_prog_compiler_static_CXX='-qstaticlink'
+	    ;;
+	  *)
+	    case `$CC -V 2>&1 | $SED 5q` in
+	    *Sun\ C*)
+	      # Sun C++ 5.9
+	      lt_prog_compiler_pic_CXX='-KPIC'
+	      lt_prog_compiler_static_CXX='-Bstatic'
+	      lt_prog_compiler_wl_CXX='-Qoption ld '
+	      ;;
+	    esac
+	    ;;
+	esac
+	;;
+      lynxos*)
+	;;
+      m88k*)
+	;;
+      mvs*)
+	case $cc_basename in
+	  cxx*)
+	    lt_prog_compiler_pic_CXX='-W c,exportall'
+	    ;;
+	  *)
+	    ;;
+	esac
+	;;
+      netbsd* | netbsdelf*-gnu)
+	;;
+      *-mlibc)
+	;;
+      *qnx* | *nto*)
+        # QNX uses GNU C++, but need to define -shared option too, otherwise
+        # it will coredump.
+        lt_prog_compiler_pic_CXX='-fPIC -shared'
+        ;;
+      osf3* | osf4* | osf5*)
+	case $cc_basename in
+	  KCC*)
+	    lt_prog_compiler_wl_CXX='--backend -Wl,'
+	    ;;
+	  RCC*)
+	    # Rational C++ 2.4.1
+	    lt_prog_compiler_pic_CXX='-pic'
+	    ;;
+	  cxx*)
+	    # Digital/Compaq C++
+	    lt_prog_compiler_wl_CXX='-Wl,'
+	    # Make sure the PIC flag is empty.  It appears that all Alpha
+	    # Linux and Compaq Tru64 Unix objects are PIC.
+	    lt_prog_compiler_pic_CXX=
+	    lt_prog_compiler_static_CXX='-non_shared'
+	    ;;
+	  *)
+	    ;;
+	esac
+	;;
+      psos*)
+	;;
+      serenity*)
+        ;;
+      solaris*)
+	case $cc_basename in
+	  CC* | sunCC*)
+	    # Sun C++ 4.2, 5.x and Centerline C++
+	    lt_prog_compiler_pic_CXX='-KPIC'
+	    lt_prog_compiler_static_CXX='-Bstatic'
+	    lt_prog_compiler_wl_CXX='-Qoption ld '
+	    ;;
+	  gcx*)
+	    # Green Hills C++ Compiler
+	    lt_prog_compiler_pic_CXX='-PIC'
+	    ;;
+	  *)
+	    ;;
+	esac
+	;;
+      sunos4*)
+	case $cc_basename in
+	  CC*)
+	    # Sun C++ 4.x
+	    lt_prog_compiler_pic_CXX='-pic'
+	    lt_prog_compiler_static_CXX='-Bstatic'
+	    ;;
+	  lcc*)
+	    # Lucid
+	    lt_prog_compiler_pic_CXX='-pic'
+	    ;;
+	  *)
+	    ;;
+	esac
+	;;
+      sysv5* | unixware* | sco3.2v5* | sco5v6* | OpenUNIX*)
+	case $cc_basename in
+	  CC*)
+	    lt_prog_compiler_wl_CXX='-Wl,'
+	    lt_prog_compiler_pic_CXX='-KPIC'
+	    lt_prog_compiler_static_CXX='-Bstatic'
+	    ;;
+	esac
+	;;
+      tandem*)
+	case $cc_basename in
+	  NCC*)
+	    # NonStop-UX NCC 3.20
+	    lt_prog_compiler_pic_CXX='-KPIC'
+	    ;;
+	  *)
+	    ;;
+	esac
+	;;
+      vxworks*)
+	;;
+      *)
+	lt_prog_compiler_can_build_shared_CXX=no
+	;;
+    esac
+  fi
+
+case $host_os in
+  # For platforms that do not support PIC, -DPIC is meaningless:
+  *djgpp*)
+    lt_prog_compiler_pic_CXX=
+    ;;
+  *)
+    lt_prog_compiler_pic_CXX="$lt_prog_compiler_pic_CXX -DPIC"
+    ;;
+esac
+
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $compiler option to produce PIC" >&5
+printf %s "checking for $compiler option to produce PIC... " >&6; }
+if test ${lt_cv_prog_compiler_pic_CXX+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) lt_cv_prog_compiler_pic_CXX=$lt_prog_compiler_pic_CXX ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_prog_compiler_pic_CXX" >&5
+printf "%s\n" "$lt_cv_prog_compiler_pic_CXX" >&6; }
+lt_prog_compiler_pic_CXX=$lt_cv_prog_compiler_pic_CXX
+
+#
+# Check to make sure the PIC flag actually works.
+#
+if test -n "$lt_prog_compiler_pic_CXX"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if $compiler PIC flag $lt_prog_compiler_pic_CXX works" >&5
+printf %s "checking if $compiler PIC flag $lt_prog_compiler_pic_CXX works... " >&6; }
+if test ${lt_cv_prog_compiler_pic_works_CXX+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) lt_cv_prog_compiler_pic_works_CXX=no
+   ac_outfile=conftest.$ac_objext
+   echo "$lt_simple_compile_test_code" > conftest.$ac_ext
+   lt_compiler_flag="$lt_prog_compiler_pic_CXX -DPIC"  ## exclude from sc_useless_quotes_in_assignment
+   # Insert the option either (1) after the last *FLAGS variable, or
+   # (2) before a word containing "conftest.", or (3) at the end.
+   # Note that $ac_compile itself does not contain backslashes and begins
+   # with a dollar sign (not a hyphen), so the echo should work correctly.
+   # The option is referenced via a variable to avoid confusing sed.
+   lt_compile=`echo "$ac_compile" | $SED \
+   -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
+   -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+   -e 's:$: $lt_compiler_flag:'`
+   (eval echo "\"\$as_me:$LINENO: $lt_compile\"" >&5)
+   (eval "$lt_compile" 2>conftest.err)
+   ac_status=$?
+   cat conftest.err >&5
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   if (exit $ac_status) && test -s "$ac_outfile"; then
+     # The compiler can only warn and ignore the option if not recognized
+     # So say no if there are warnings other than the usual output.
+     $ECHO "$_lt_compiler_boilerplate" | $SED '/^$/d' >conftest.exp
+     $SED '/^$/d; /^ *+/d' conftest.err >conftest.er2
+     if test ! -s conftest.er2 || diff conftest.exp conftest.er2 >/dev/null; then
+       lt_cv_prog_compiler_pic_works_CXX=yes
+     fi
+   fi
+   $RM conftest*
+ ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_prog_compiler_pic_works_CXX" >&5
+printf "%s\n" "$lt_cv_prog_compiler_pic_works_CXX" >&6; }
+
+if test yes = "$lt_cv_prog_compiler_pic_works_CXX"; then
+    case $lt_prog_compiler_pic_CXX in
+     "" | " "*) ;;
+     *) lt_prog_compiler_pic_CXX=" $lt_prog_compiler_pic_CXX" ;;
+     esac
+else
+    lt_prog_compiler_pic_CXX=
+     lt_prog_compiler_can_build_shared_CXX=no
+fi
+
+fi
+
+
+
+
+
+#
+# Check to make sure the static flag actually works.
+#
+wl=$lt_prog_compiler_wl_CXX eval lt_tmp_static_flag=\"$lt_prog_compiler_static_CXX\"
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if $compiler static flag $lt_tmp_static_flag works" >&5
+printf %s "checking if $compiler static flag $lt_tmp_static_flag works... " >&6; }
+if test ${lt_cv_prog_compiler_static_works_CXX+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) lt_cv_prog_compiler_static_works_CXX=no
+   save_LDFLAGS=$LDFLAGS
+   LDFLAGS="$LDFLAGS $lt_tmp_static_flag"
+   echo "$lt_simple_link_test_code" > conftest.$ac_ext
+   if (eval $ac_link 2>conftest.err) && test -s conftest$ac_exeext; then
+     # The linker can only warn and ignore the option if not recognized
+     # So say no if there are warnings
+     if test -s conftest.err; then
+       # Append any errors to the config.log.
+       cat conftest.err 1>&5
+       $ECHO "$_lt_linker_boilerplate" | $SED '/^$/d' > conftest.exp
+       $SED '/^$/d; /^ *+/d' conftest.err >conftest.er2
+       if diff conftest.exp conftest.er2 >/dev/null; then
+         lt_cv_prog_compiler_static_works_CXX=yes
+       fi
+     else
+       lt_cv_prog_compiler_static_works_CXX=yes
+     fi
+   fi
+   $RM -r conftest*
+   LDFLAGS=$save_LDFLAGS
+ ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $lt_cv_prog_compiler_static_works_CXX" >&5
+printf "%s\n" "$lt_cv_prog_compiler_static_works_CXX" >&6; }
+
+if test yes = "$lt_cv_prog_compiler_static_works_CXX"; then
+    :
+else
+    lt_prog_compiler_static_CXX=
+fi
+
+
+
+='-fPIC'
+  archive_cmds_CXX='$CC -sSIDE_MODULE=2 -shared $libobjs $deplibs $compiler_flags -o $lib'
+  archive_expsym_cmds_CXX='$SED "s|^|_|" $export_symbols >$output_objdir/$soname.expsym~$CC -sSIDE_MODULE=2 -shared $libobjs $deplibs $compiler_flags -o $lib -s EXPORTED_FUNCTIONS=@$output_objdir/$soname.expsym'
+  archive_cmds_need_lc_CXX=no
+  no_undefined_flag_CXX=
   ;;
 
 *)
@@ -23537,12 +22771,6 @@ printf %s "checking for TeX specific libraries to build... " >&6; }
 echo 'tldbg:_KPSE_RECURSE called: list=texlibs, text=TeX specific libraries, cond=test "x$with_system_[]Kpse_pkg" != xyes && test "x$need_[]Kpse_pkg" = xyes, prefix=texk/.' >&5
 MAKE_SUBDIRS=
 CONF_SUBDIRS=
-if test -x $srcdir/texk/ptexenc/configure; then
-  test "x$with_system_ptexenc" != xyes && test "x$need_ptexenc" = xyes && MAKE_SUBDIRS="texk/ptexenc $MAKE_SUBDIRS"
-  CONF_SUBDIRS="texk/ptexenc $CONF_SUBDIRS"
-else
-  echo 'tldbg:_KPSE_RECURSE skipping subdir, no (executable) configure: '"$srcdir"'/texk/ptexenc/configure' >&5
-fi
 if test -x $srcdir/texk/kpathsea/configure; then
   test "x$with_system_kpathsea" != xyes && test "x$need_kpathsea" = xyes && MAKE_SUBDIRS="texk/kpathsea $MAKE_SUBDIRS"
   CONF_SUBDIRS="texk/kpathsea $CONF_SUBDIRS"
@@ -24268,38 +23496,6 @@ rm -f core conftest.err conftest.$ac_objext conftest.beam \
 printf "%s\n" "$kpse_res" >&6; }
 fi
 
-## texk/ptexenc/ac/ptexenc.ac: configure.ac fragment for the TeX Live subdirectory texk/ptexenc/
-## basic check of system ptexenc
-if test "x$need_ptexenc:$with_system_ptexenc" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`ptexenc' library" >&5
-printf %s "checking requested system \`ptexenc' library... " >&6; }
-  CPPFLAGS="$PTEXENC_INCLUDES $CPPFLAGS"
-  LIBS="$PTEXENC_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <ptexenc/ptexenc.h>
-int
-main (void)
-{
-const char *version = ptexenc_version_string;
-set_enc_string("prog", "name");
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-
 ## libs/zlib/ac/zlib.ac: configure.ac fragment for the TeX Live subdirectory libs/zlib/
 ## basic check of system zlib
 if test "x$need_zlib:$with_system_zlib" = xyes:yes; then
@@ -24316,37 +23512,6 @@ main (void)
 z_stream stream;
 const char *version = zlibVersion();
 deflate(&stream, 0);
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-
-## libs/libpaper/ac/libpaper.ac: configure.ac fragment for the TeX Live subdirectory libs/libpaper/
-## basic check of system libpaper
-if test "x$need_libpaper:$with_system_libpaper" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`libpaper' library" >&5
-printf %s "checking requested system \`libpaper' library... " >&6; }
-  CPPFLAGS="$LIBPAPER_INCLUDES $CPPFLAGS"
-  LIBS="$LIBPAPER_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <paper.h>
-int
-main (void)
-{
-const char *v = defaultpapername();
   ;
   return 0;
 }
@@ -24395,268 +23560,6 @@ rm -f core conftest.err conftest.$ac_objext conftest.beam \
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
 printf "%s\n" "$kpse_res" >&6; }
 fi
-
-## libs/freetype2/ac/freetype2.ac: configure.ac fragment for the TeX Live subdirectory libs/freetype2/
-## basic check of system freetype2
-if test "x$need_freetype2:$with_system_freetype2" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`freetype2' library" >&5
-printf %s "checking requested system \`freetype2' library... " >&6; }
-  CPPFLAGS="$FREETYPE2_INCLUDES $CPPFLAGS"
-  LIBS="$FREETYPE2_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <ft2build.h>
-#include FT_FREETYPE_H
-int
-main (void)
-{
-FT_Library library; FT_Init_FreeType(&library);
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-
-## libs/potrace/ac/potrace.ac: configure.ac fragment for the TeX Live subdirectory libs/potrace/
-## basic check of system potrace
-if test "x$need_potrace:$with_system_potrace" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`potrace' library" >&5
-printf %s "checking requested system \`potrace' library... " >&6; }
-  CPPFLAGS="$POTRACE_INCLUDES $CPPFLAGS"
-  LIBS="$POTRACE_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <potracelib.h>
-int
-main (void)
-{
-potrace_state_t st;
-const char *version = potrace_version();
-potrace_state_free(&st);
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-
-## libs/gd/ac/gd.ac: configure.ac fragment for the TeX Live subdirectory libs/gd/
-## basic check of system gd
-if test "x$need_gd:$with_system_gd" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`gd' library" >&5
-printf %s "checking requested system \`gd' library... " >&6; }
-  CPPFLAGS="$GD_INCLUDES $CPPFLAGS"
-  LIBS="$GD_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <gd.h>
-int
-main (void)
-{
-gdImageCreate(1, 2);
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-
-## libs/pixman/ac/pixman.ac: configure.ac fragment for the TeX Live subdirectory libs/pixman/
-## basic check of system pixman
-if test "x$need_pixman:$with_system_pixman" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`pixman' library" >&5
-printf %s "checking requested system \`pixman' library... " >&6; }
-  CPPFLAGS="$PIXMAN_INCLUDES $CPPFLAGS"
-  LIBS="$PIXMAN_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <pixman.h>
-int
-main (void)
-{
-const char *s = pixman_version_string();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-
-## libs/cairo/ac/cairo.ac: configure.ac fragment for the TeX Live subdirectory libs/cairo/
-## basic check of system cairo
-if test "x$need_cairo:$with_system_cairo" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`cairo' library" >&5
-printf %s "checking requested system \`cairo' library... " >&6; }
-  CPPFLAGS="$CAIRO_INCLUDES $CPPFLAGS"
-  LIBS="$CAIRO_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <cairo.h>
-int
-main (void)
-{
-const char *s = cairo_version_string();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-
-## libs/gmp/ac/gmp.ac: configure.ac fragment for the TeX Live subdirectory libs/gmp/
-## basic check of system gmp
-if test "x$need_gmp:$with_system_gmp" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`gmp' library" >&5
-printf %s "checking requested system \`gmp' library... " >&6; }
-  CPPFLAGS="$GMP_INCLUDES $CPPFLAGS"
-  LIBS="$GMP_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <gmp.h>
-int
-main (void)
-{
-const char *s = gmp_version;
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-
-## libs/mpfr/ac/mpfr.ac: configure.ac fragment for the TeX Live subdirectory libs/mpfr/
-## basic check of system mpfr
-if test "x$need_mpfr:$with_system_mpfr" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`mpfr' library" >&5
-printf %s "checking requested system \`mpfr' library... " >&6; }
-  CPPFLAGS="$MPFR_INCLUDES $CPPFLAGS"
-  LIBS="$MPFR_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <mpfr.h>
-int
-main (void)
-{
-const char *s = mpfr_get_version();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-
-## libs/xpdf/ac/xpdf.ac: configure.ac fragment for the TeX Live subdirectory libs/xpdf/
-## basic check of system xpdf (a.k.a. poppler, no longer supported in
-## TL sources)
-ac_ext=cpp
-ac_cpp='$CXXCPP $CPPFLAGS'
-ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
-if test "x$need_xpdf:$with_system_xpdf" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`xpdf' library" >&5
-printf %s "checking requested system \`xpdf' library... " >&6; }
-  CPPFLAGS="$XPDF_INCLUDES $CPPFLAGS"
-  LIBS="$XPDF_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <GfxFont.h>
-int
-main (void)
-{
-GfxFont *gfxFont; gfxFont->decRefCnt();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_cxx_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-ac_ext=c
-ac_cpp='$CPP $CPPFLAGS'
-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 ## libs/zziplib/ac/zziplib.ac: configure.ac fragment for the TeX Live subdirectory libs/zziplib/
 ## basic check of system zziplib
@@ -24720,89 +23623,6 @@ rm -f core conftest.err conftest.$ac_objext conftest.beam \
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
 printf "%s\n" "$kpse_res" >&6; }
 fi
-
-## libs/teckit/ac/teckit.ac: configure.ac fragment for the TeX Live subdirectory libs/teckit/
-## basic check of system teckit
-ac_ext=cpp
-ac_cpp='$CXXCPP $CPPFLAGS'
-ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
-if test "x$need_teckit:$with_system_teckit" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`teckit' library" >&5
-printf %s "checking requested system \`teckit' library... " >&6; }
-  CPPFLAGS="$TECKIT_INCLUDES $CPPFLAGS"
-  LIBS="$TECKIT_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <teckit/TECkit_Engine.h>
-int
-main (void)
-{
-TECkit_Converter converter; TECkit_DisposeConverter(converter);
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_cxx_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-ac_ext=c
-ac_cpp='$CPP $CPPFLAGS'
-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_c_compiler_gnu
-
-## libs/icu/ac/icu.ac: configure.ac fragment for the TeX Live subdirectory libs/icu/
-## basic check of system icu
-ac_ext=cpp
-ac_cpp='$CXXCPP $CPPFLAGS'
-ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
-if test "x$need_icu:$with_system_icu" = xyes:yes; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking requested system \`icu' library" >&5
-printf %s "checking requested system \`icu' library... " >&6; }
-  CPPFLAGS="$ICU_INCLUDES $CPPFLAGS"
-  LIBS="$ICU_LIBS $LIBS"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <unicode/ustring.h>
-int
-main (void)
-{
-UErrorCode code; const UChar *src; UChar *dst;
-u_strToLower(dst, -1, src, -1, NULL, &code);
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_cxx_try_link "$LINENO"
-then :
-  syslib_used=yes kpse_res=ok
-else case e in #(
-  e) syslib_status=no kpse_res=failed ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $kpse_res" >&5
-printf "%s\n" "$kpse_res" >&6; }
-fi
-ac_ext=c
-ac_cpp='$CPP $CPPFLAGS'
-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 ## libs/harfbuzz/ac/harfbuzz.ac: configure.ac fragment for the TeX Live subdirectory libs/harfbuzz/
 ## basic check of system harfbuzz
@@ -26562,19 +25382,18 @@ See 'config.log' for more details" "$LINENO" 5; }
     cat <<_LT_EOF >> "$cfgfile"
 #! $SHELL
 # Generated automatically by $as_me ($PACKAGE) $VERSION
-# Libtool was configured on host `(hostname || uname -n) 2>/dev/null | sed 1q`:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 
 # Provide generalized library-building support services.
 # Written by Gordon Matzigkeit, 1996
 
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2024 Free Software Foundation, Inc.
 # This is free software; see the source for copying conditions.  There is NO
 # warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # GNU Libtool is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of of the License, or
+# the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 #
 # As a special exception to the GNU General Public License, if you
@@ -26958,7 +25777,7 @@ hardcode_direct=$hardcode_direct
 
 # Set to "yes" if using DIR/libNAME\$shared_ext during linking hardcodes
 # DIR into the resulting binary and the resulting library dependency is
-# "absolute",i.e impossible to change by setting \$shlibpath_var if the
+# "absolute",i.e. impossible to change by setting \$shlibpath_var if the
 # library is relocated.
 hardcode_direct_absolute=$hardcode_direct_absolute
 
@@ -27201,7 +26020,7 @@ hardcode_direct=$hardcode_direct_CXX
 
 # Set to "yes" if using DIR/libNAME\$shared_ext during linking hardcodes
 # DIR into the resulting binary and the resulting library dependency is
-# "absolute",i.e impossible to change by setting \$shlibpath_var if the
+# "absolute",i.e. impossible to change by setting \$shlibpath_var if the
 # library is relocated.
 hardcode_direct_absolute=$hardcode_direct_absolute_CXX
 
