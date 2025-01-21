@@ -1,4 +1,4 @@
-% $Id: mpmathinterval.w 69812 2024-02-11 23:09:24Z karl $
+% $Id: mpmathinterval.w 71144 2024-05-01 17:04:18Z lscarso $
 %
 % This file is part of MetaPost;
 % the MetaPost program is in the public domain.
