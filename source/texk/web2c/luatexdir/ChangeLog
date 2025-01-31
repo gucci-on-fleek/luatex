@@ -1,6 +1,6 @@
-2025-01-19 Luigi Scarso <luigi.scarso@gmail.com>
+2025-01-31 Luigi Scarso <luigi.scarso@gmail.com>
+	* In read_tfm_info avoid scaling fonts to >= 2048pt, which can cause overflow (TeXLive rev. 73614)
 	* \ignoreprimitiveerror as in pdftex
-
 
 
 2025-01-19 Luigi Scarso <luigi.scarso@gmail.com>
