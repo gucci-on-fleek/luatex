@@ -1,4 +1,9 @@
 2025-01-19 Luigi Scarso <luigi.scarso@gmail.com>
+	* \ignoreprimitiveerror as in pdftex
+
+
+
+2025-01-19 Luigi Scarso <luigi.scarso@gmail.com>
 	* Fixed \shapemode does not reset at end of paragraphs (thanks to udifoglle@gmail.com)
 
 
