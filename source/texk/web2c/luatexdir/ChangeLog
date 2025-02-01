@@ -12,29 +12,29 @@
 	* LuaTeX 1.20.5
 
 
-2025-01-04 Luigi Scarso <luigi.scarso@gmail.com>
+2025-01-11 Luigi Scarso <luigi.scarso@gmail.com>
 	* fixed "unexpected delimiter construction with classic tfm cmex font", 
 	  see https://tex.stackexchange.com/a/734734/1090 (HH)
 	* LuaTeX 1.20.4
 
 
-2025-01-04 Luigi Scarso <luigi.scarso@gmail.com>
+2025-01-09 Luigi Scarso <luigi.scarso@gmail.com>
 	* replaced # error with # define UNSUPPORTED_ARCH in ffi.[ch]
 	* LuaTeX 1.20.3
 
 
-2025-01-04 Luigi Scarso <luigi.scarso@gmail.com>
+2025-01-06 Luigi Scarso <luigi.scarso@gmail.com>
 	* ffi.h: do not assume that struct cdata is aligned(16). 
 	* More fixes for luaffi.
 	* LuaTeX 1.20.2
 
 
-2025-01-06 Luigi Scarso <luigi.scarso@gmail.com>
+2025-01-04 Luigi Scarso <luigi.scarso@gmail.com>
 	* Clean-up ffi.h
 	* LuaTeX 1.20.1
 
 
-2025-01-01 Luigi Scarso <luigi.scarso@gmail.com>
+2025-01-02 Luigi Scarso <luigi.scarso@gmail.com>
 	* New luaffi, support for aarch64.
 	* LuaTeX 1.20.0
 
