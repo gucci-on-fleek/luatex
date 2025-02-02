@@ -227,7 +227,11 @@ int LJ_FASTCALL lj_prng_seed_secure(PRNGState *rs)
   ** or the OS ran out of file descriptors.
   */
   {
+#ifdef O_CLOEXEC
     int fd = open("/dev/urandom", O_RDONLY|O_CLOEXEC);
+#else
+    int fd = open("/dev/urandom", O_RDONLY);
+#endif
     if (fd != -1) {
       ssize_t n = read(fd, rs->u, sizeof(rs->u));
       (void)close(fd);

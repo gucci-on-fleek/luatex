@@ -1,3 +1,4 @@
+diff -bu a/source/libs/luajit/LuaJIT-src/src/lib_package.c  b/source/libs/luajit/LuaJIT-src/src/lib_package.c 
 --- a/source/libs/luajit/LuaJIT-src/src/lib_package.c
 +++ b/source/libs/luajit/LuaJIT-src/src/lib_package.c
 @@ -378,6 +378,29 @@
