@@ -1,3 +1,7 @@
+2025-02-02 Luigi Scarso <luigi.scarso@gmail.com>
+	* Fixed subtype of beforedisplaypenalty (thanks to udifoglle@gmail.com)
+
+
 2025-02-01 Luigi Scarso <luigi.scarso@gmail.com>
 	* LuaJIT 2.1.1736781742 (work in progress)
 	* LuaTeX 1.21.0

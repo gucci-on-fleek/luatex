@@ -2510,7 +2510,7 @@ static void finish_displayed_math(boolean l, pointer eqno_box, pointer p)
                 if (type(p) == glue_node)
                     d = 0;
     }
-    tail_append(new_penalty(pre_display_penalty_par,after_display_penalty));
+    tail_append(new_penalty(pre_display_penalty_par,before_display_penalty));
 
     /* tex
        By default the short skip detection is not adapted to r2l typesetting and that
