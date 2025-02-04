@@ -1,3 +1,8 @@
+2025-02-05 Luigi Scarso <luigi.scarso@gmail.com>
+	* add mathemptydisplaymode primitive, 
+	* fix nodes leak in end_graf (thanks to udifoglle@gmail.com)
+
+
 2025-02-02 Luigi Scarso <luigi.scarso@gmail.com>
 	* Fixed subtype of beforedisplaypenalty (thanks to udifoglle@gmail.com)
 
