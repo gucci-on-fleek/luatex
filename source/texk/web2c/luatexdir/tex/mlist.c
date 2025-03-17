@@ -19,15 +19,17 @@ LuaTeX; if not, see <http://www.gnu.org/licenses/>.
 
 /*tex
 
-    These are now obsolete: 
-    
+    These are now obsolete:
+
     \starttyping
     \Umathnolimitsupfactor
     \Umathnolimitsubfactor
-    \mathnolimitsmode 
-    \mathitalicssmode 
+    \mathnolimitsmode
+    \mathitalicssmode
     \mathoption
     \stoptyping
+
+*/
 
 /*tex
 
@@ -70,25 +72,69 @@ LuaTeX; if not, see <http://www.gnu.org/licenses/>.
     italics. Axis are another area of concern, as it looks like opentype math
     fonts often already apply that shift.
 
-    The first public font that we tested was Latin Modern. Here again italic 
-    correction is present. The same is true for later fonts, like Pagella. This 
-    presents a problem: we need to add the correction but then also ignore it 
-    when we have a large operator that has limits or no limits, something that 
-    needs to be known explicitly. We used to have a few modes to control this, 
-    one that controlled the anchoring of sub scripts, as these depend on the 
-    italic correction, and one for dealing with the operators. In the end we 
-    decided to ditch these because there is no way to consistently set up the 
-    engine, we now just accept the fact that fonts are a mixed bag: traditional 
-    width plus italic as well as italic used for limits. However, for opentype 
-    fonts we have a code path that compensates for the width.
+*/
+
+/*tex
+
+    This is the state per early 2025:
+
+    When we started with \OPENTYPE\ math (2005) there was only cambria. The only
+    way to test with e.g. Computer Modern was to make a virtual font. One of the
+    complications we ran into is italic correction and because the specification
+    explicitly binds italic correction to (1) a sequence of text (!) glyphs and
+    (2) anchoring limits (as there's only a top anchor and no bttom anchor
+    field), we ended up with a split code path. This is also due to the fact that
+    when Latin Modern showed up, we wanted to make sure that it rendered okay.
+
+    However, when the \TEX\ Gyre fonts were introduced, and other fonts used
+    those as template, the heuristics for Latin Modern were sub optimal so we
+    introduced ways to control the distance between super and subscript as well
+    as limit anchoring for large operators (these cannot really be identified).
+    Keep in mind that the italic correction in large operators is not used as
+    correction but for anchoring while the \TEX\ machinery always adds italic
+    correction to the width and selectively removes it. There is also the fact
+    that we don't know to what extend users mix \OPENTYPE\ fonts with traditional
+    ones.
+
+    In the end we decided to just drop that control, and assume that \OPENTYPE\
+    math fonts are expected to behave like traditional \TEX\ fonts, or: just
+    forget about what the specification says about italic correction. As a side
+    note: in \CONTEXT\ we already moved on and started treating fonts (in the
+    \LUAMETATEX\ default setup) as glyph providers and forget about italic
+    correction and the on the average unreliable and often wrong staircase kerns.
+    There we take whatever information fits our purpose and assume fonts to be a
+    mixed bag.
+
+    The result is that math renders similar to traditional (eight bit) rendering
+    but that Latin Modern can look kind of bad but as (non \CONTEXT) users are
+    accustomed to correcting spacing manually (with |\,| and |\!| etc.) that is
+    what is expected. We just fix the fonts runtime.
+
+    So, we ditched the control options, went for a hard coded traditional font
+    approach and likely will never look back: this is what one gets,
+    irrespectable of the specification. A side effect is that in some cases
+    \CONTEXT\ users will get worse results but because most already switched to
+    \LUAMETATEX\ the impact is not that large.
+
+    In 2005 and following years no one could have predicted that the majority of
+    math fonts would be designed as traditional \TEX\ fonts and less like the
+    reference Cambria font and that anchoring scripts would therefore be italic
+    correction driven (also for non italic shapes). So, in retrospect one can
+    argue that following the specification was a waste of time although it
+    eventually lead to detailed control over these things in the follow up
+    engine. However, there we might eventually completely remove all traces of
+    italic correction because we don't need it, but that's another story and
+    only relevant for \CONTEXT\ \LMTX.
 
 */
 
 /*tex
+
     These macros are used to determine if we need to pick up parameters from the
     opentype table or the traditional parameter array. We noticed that some macro
     packages set both tables so we cannot use that for determining if we have a new
     or old font. It's a bit guesswork especially when it comes to italics.
+
 */
 
 #define is_new_mathfont(A)   ((font_math_params(A) > 0))
@@ -3123,7 +3169,7 @@ static scaled make_op(pointer q, int cur_style)
     /*tex dimensions for box calculation */
     scaled shift_up, shift_down;
     boolean axis_shift = false;
-    int opentype = assume_new_math(cur_f);
+    int opentype = 0;
     scaled ok_size;
     if ((subtype(q) == op_noad_type_normal) && (cur_style < text_style)) {
         subtype(q) = op_noad_type_limits;
@@ -3190,11 +3236,12 @@ static scaled make_op(pointer q, int cur_style)
         type(nucleus(q)) = sub_box_node;
         math_list(nucleus(q)) = x;
     }
+    opentype = assume_new_math(cur_f);
     /*tex we now handle op_nod_type_no_limits here too */
     if (subtype(q) == op_noad_type_no_limits) {
         /*tex similar code then the caller (before CHECK_DIMENSIONS) */
         p = check_nucleus_complexity(q, &delta, cur_style, NULL);
-        if (opentype) { 
+        if (opentype) {
             width(p) -= delta;
         }
         if ((subscr(q) == null) && (supscr(q) == null)) {
@@ -3228,14 +3275,14 @@ static scaled make_op(pointer q, int cur_style)
         x = rebox(x, width(v));
         y = rebox(y, width(v));
         z = rebox(z, width(v));
-        shift_amount(x) = half(delta); /* sup */
-        shift_amount(z) = -shift_amount(x);
+        shift_amount(x) = half(delta);      /* sup */
+        shift_amount(z) = -shift_amount(x); /* sub */
         /*tex v is the still empty target */
         height(v) = height(y);
         depth(v) = depth(y);
-        if (opentype) { 
-            width(v) -= delta; 
-            delta = 0;
+        if (opentype) {
+            width(v) -= delta;
+         // delta = 0;
         }
         /*tex
 
