@@ -216,6 +216,7 @@ The following top|-|level keys can be present inside a character hash:
 \NC \type{right_protruding} \NC no  \NC no  \NC maybe \NC number  \NC character's \lpr {rpcode} \NC\NR
 \NC \type{expansion_factor} \NC no  \NC no  \NC maybe \NC number  \NC character's \lpr {efcode} \NC\NR
 \NC \type{tounicode}        \NC no  \NC no  \NC maybe \NC string  \NC character's \UNICODE\ equivalent(s), in \UTF|-|16BE hexadecimal format \NC\NR
+\NC                         \NC     \NC     \NC       \NC table   \NC character's \UNICODE\ equivalent, as an array of (integer) \UNICODE\ codepoints \NC\NR
 \NC \type{next}             \NC no  \NC yes \NC yes   \NC number  \NC the \quote {next larger} character index \NC\NR
 \NC \type{extensible}       \NC no  \NC yes \NC yes   \NC table   \NC the constituent parts of an extensible recipe \NC\NR
 \NC \type{vert_variants}    \NC no  \NC no  \NC yes   \NC table   \NC constituent parts of a vertical variant set \NC \NR
