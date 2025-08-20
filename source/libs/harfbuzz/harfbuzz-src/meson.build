@@ -1,6 +1,6 @@
 project('harfbuzz', ['c', 'cpp'],
   meson_version: '>= 0.60.0',
-  version: '11.2.1',
+  version: '11.4.1',
   default_options: [
     'cpp_eh=none',          # Just to support msvc, we are passing -fno-exceptions also anyway
     # 'cpp_rtti=false',     # Do NOT enable, wraps inherit it and ICU needs RTTI
@@ -103,6 +103,7 @@ check_funcs = [
   ['isatty', {'prefix': '#include <unistd.h>'}],
   ['uselocale', {'prefix': '#include <locale.h>'}],
   ['newlocale', {'prefix': '#include <locale.h>'}],
+  ['sincos', {'prefix': '#define _GNU_SOURCE\n#include <math.h>'}],
   ['sincosf', {'prefix': '#define _GNU_SOURCE\n#include <math.h>'}],
 ]
 
@@ -205,10 +206,15 @@ if get_option('fontations').enabled()
   fontations_dep_found = true
 endif
 
-harfruzz_dep_found = false
-if get_option('harfruzz').enabled()
+harfrust_dep_found = false
+if get_option('harfrust').enabled()
   add_languages(['rust'], native: false, required : true)
-  harfruzz_dep_found = true
+  harfrust_dep_found = true
+endif
+
+kbts_dep = null_dep
+if get_option('kbts').enabled()
+  kbts_dep = subproject('kbts').get_variable('kbts_dep')
 endif
 
 conf = configuration_data()
@@ -256,8 +262,12 @@ if fontations_dep_found
   conf.set('HAVE_FONTATIONS', 1)
 endif
 
-if harfruzz_dep_found
-  conf.set('HAVE_HARFRUZZ', 1)
+if harfrust_dep_found
+  conf.set('HAVE_HARFRUST', 1)
+endif
+
+if kbts_dep.found()
+  conf.set('HAVE_KBTS', 1)
 endif
 
 if wasm_dep.found()
@@ -487,14 +497,16 @@ build_summary = {
     {'Graphite2': conf.get('HAVE_GRAPHITE2', 0) == 1,
      'WebAssembly (experimental)': conf.get('HAVE_WASM', 0) == 1,
     },
-  'Platform shapers (not normally needed)':
+  'Platform / other shapers (not normally needed)':
     {'CoreText': conf.get('HAVE_CORETEXT', 0) == 1,
      'DirectWrite': conf.get('HAVE_DIRECTWRITE', 0) == 1,
      'GDI/Uniscribe': (conf.get('HAVE_GDI', 0) == 1) and (conf.get('HAVE_UNISCRIBE', 0) == 1),
-     'HarfRuzz': conf.get('HAVE_HARFRUZZ', 0) == 1,
+     'HarfRust': conf.get('HAVE_HARFRUST', 0) == 1,
+     'kbts': conf.get('HAVE_KBTS', 0) == 1,
     },
   'Other features':
-    {'Documentation': conf.get('HAVE_GTK_DOC', 0) == 1,
+    {'Utilities': not get_option('utilities').disabled(),
+     'Documentation': conf.get('HAVE_GTK_DOC', 0) == 1,
      'GObject bindings': conf.get('HAVE_GOBJECT', 0) == 1,
      'Cairo integration': conf.get('HAVE_CAIRO', 0) == 1,
      'Introspection': conf.get('HAVE_INTROSPECTION', 0) == 1,
