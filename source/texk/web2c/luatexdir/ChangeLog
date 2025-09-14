@@ -1,6 +1,11 @@
+2025-09-14  Luigi Scarso  <luigi.scarso@gmail.com>
+	* Fixed read_img, it  now checks --output-dir (thanks to reescf@gmail.com)
+	* Added the (ENVLUATEXCPPFLAGS) and $(ENVLUAJITEXCPPFLAGS) variables to libluatex.am
+	  to add compiler switches from the environment.
+
 2025-09-02  Luigi Scarso  <luigi.scarso@gmail.com>
 	* Fix field names of mplib.stats (thanks to Josef Friedrich)
-          Fixed a wrong date in luatex-nodes.tex.
+        * Fixed a wrong date in luatex-nodes.tex.
 
 
 2025-09-01 Luigi Scarso  <luigi.scarso@gmail.com>
