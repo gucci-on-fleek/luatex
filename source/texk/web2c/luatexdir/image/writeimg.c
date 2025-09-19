@@ -21,6 +21,7 @@ LuaTeX; if not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "ptexlib.h"
+#include <kpathsea/absolute.h>
 #include <kpathsea/c-auto.h>
 #include <kpathsea/c-memstr.h>
 
