@@ -1,4 +1,4 @@
-## $Id: Makefile.am 76016 2025-08-10 03:33:31Z takuji $
+## $Id: Makefile.am 77088 2025-12-13 09:43:39Z kakuto $
 ## Makefile.am for the TeX Live subdirectory texk/web2c/.
 ##
 ## Copyright 2017-2024 Karl Berry <tex-live@tug.org>

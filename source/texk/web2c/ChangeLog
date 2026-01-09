@@ -1,3 +1,22 @@
+2026-01-08  Karl Berry  <karl@freefriends.org>
+
+	* doc/web2c.texi: updates for memory dumps, LuaTeX, Metafont
+	windows, mft -metapost option.
+
+2026-01-06  Andreas Scherer  <https://ascherer.github.io>
+
+	* weav-twill.ch,
+	* weave.ch: Fix a few typos.
+
+2025-12-13  Akira Kakuto  <kakuto@jcom.zaq.ne.jp>
+
+	* Makefile.am: sync with the upstream luatex.
+
+2025-12-11  Andreas Scherer  <https://ascherer.github.io>
+
+	* ctangleboot.cin,
+	* cwebboot.cin: Avoid spurious spaces in macro output.
+
 2025-11-30  Karl Berry  <karl@freefriends.org>
 
 	* configure.ac (XETEX_MACOSX): check for enable_xetex=yes
