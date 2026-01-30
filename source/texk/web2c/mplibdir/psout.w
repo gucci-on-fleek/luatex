@@ -43,8 +43,6 @@
 @d number_positive(A)		       number_greater(A, zero_t)		       
 @d number_to_scaled(A)		       (((math_data *)(mp->math))->to_scaled)(A)		       
 @d round_unscaled(A)		       (((math_data *)(mp->math))->round_unscaled)(A)		       
-@d true 1
-@d false 0
 @d null_font 0
 @d null 0
 @d unity   1.0 /* $2^{16}$, represents 1.00000 */
@@ -55,6 +53,7 @@
 @d max_quarterword 0x3FFF /* largest allowable value in a |quarterword| */
 
 @c
+#include "mpconfig.h"
 #include <w2c/config.h>
 #include <stdio.h>
 #include <stdlib.h>

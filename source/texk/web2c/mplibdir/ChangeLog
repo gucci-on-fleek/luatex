@@ -1,3 +1,11 @@
+2026-01-24  Karl Berry  <karl@freefriends.org>
+
+	* MetaPost 3.0a
+	* mp_number_to_scaled returns a 64bit signed integer instead of int
+          to solve the issue  reported at 
+              [metapost] Limit of arclength when calculating intersectiontimes ?
+	* code cleanup
+
 2025-11-10  Karl Berry  <karl@freefriends.org>
 
 	* mpxout.w: typo.

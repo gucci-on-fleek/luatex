@@ -71,12 +71,11 @@ undergoes any modifications, so that it will be clear which version of
 @^extensions to \MP@>
 @^system dependencies@>
 
-@d default_banner "This is MetaPost, Version 2.12" /* printed when \MP\ starts */
-@d true 1
-@d false 0
+@d default_banner "This is MetaPost, Version 3.0a" /* printed when \MP\ starts */
+
 
 @<\MP\ version header@>=
-#define metapost_version "2.12"
+#define metapost_version "3.0a"
 
 @ The external library header for \MP\ is |mplib.h|. It contains a
 few typedefs and the header defintions for the externally used
@@ -93,6 +92,7 @@ large |MP_instance| structure.
 #ifndef HAVE_BOOLEAN
 typedef int boolean;
 #endif
+
 @<\MP\ version header@>@;
 typedef struct MP_instance *MP;
 @<Exported types@>@;
@@ -127,17 +127,18 @@ typedef int boolean;
 typedef int integer;
 #define MPOST_ABS abs
 #else
-/* See \.{source/texk/web2c/w2c/config.h} */
-#if INTEGER_MAX == LONG_MAX /* this should mean |INTEGER_TYPE == long| */
-#ifdef HAVE_LABS
-#define MPOST_ABS labs
-#else
-#define MPOST_ABS abs
-#endif
-#else
-#define MPOST_ABS abs
-#endif /* |if INTEGER_TYPE == long| */
+#define MPOST_ABS llabs
 #endif /* |ifndef INTEGER_TYPE| */
+/* integer64 should be alredy defined in source/texk/web2c/w2c/config.h */
+/* but just in case */
+#ifndef integer64 
+# if defined(WIN32)
+  typedef __int64 integer64;
+# else
+  typedef int64_t integer64;
+# endif
+#endif 
+typedef int16_t QUARTERWORD; /* Same as quarterword.*/
 
 
 @<Declare helpers@>@;
@@ -175,7 +176,8 @@ static int MPOST_DEBUG_ENVELOPECOUNTER=0;
 			  dbg_n(q->left_x);  dbg_n(q->left_y);  \
 			  dbg_n(q->x_coord); dbg_n(q->y_coord)@;
 #endif
-#define KPATHSEA_DEBUG_H 1
+#define KPATHSEA_DEBUG_H   1
+#include "mpconfig.h"
 #include <w2c/config.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -351,7 +353,7 @@ MP_options *mp_options (void) {
 |left_point| and |right_point| of a number |a| simply return |a|, while
 |interval_set| of the pair |(a,b)|  returns the mid point.
 
-@s mp_number int
+@s mp_number integer64
 
 @<Declarations@>=
 static void mp_stub_m_get_left_endpoint(MP mp, mp_number * r, mp_number a);
@@ -441,7 +443,7 @@ typedef enum {
 typedef union {
   void *num;
   double dval;
-  int val;
+  integer64 val;
 } mp_number_store;
 typedef struct mp_number_data {
   mp_number_store data;
@@ -461,16 +463,16 @@ typedef void @[@] (*n_arg_func) (MP mp, mp_number *r, mp_number a, mp_number b);
 typedef void @[@] (*velocity_func) (MP mp, mp_number *r, mp_number a, mp_number b, mp_number c, mp_number d, mp_number e);
 typedef void @[@] (*ab_vs_cd_func) (MP mp, mp_number *r, mp_number a, mp_number b, mp_number c, mp_number d);
 typedef void @[@] (*crossing_point_func) (MP mp, mp_number *r, mp_number a, mp_number b, mp_number c);
-typedef void @[@] (*number_from_int_func) (mp_number *A, int B);
-typedef void @[@] (*number_from_boolean_func) (mp_number *A, int B);
-typedef void @[@] (*number_from_scaled_func) (mp_number *A, int B);
+typedef void @[@] (*number_from_int_func) (mp_number *A, integer64 B);
+typedef void @[@] (*number_from_boolean_func) (mp_number *A, integer64 B);
+typedef void @[@] (*number_from_scaled_func) (mp_number *A, integer64 B);
 typedef void @[@] (*number_from_double_func) (mp_number *A, double B);
 typedef void @[@] (*number_from_addition_func) (mp_number *A, mp_number B, mp_number C);
 typedef void @[@] (*number_from_substraction_func) (mp_number *A, mp_number B, mp_number C);
 typedef void @[@] (*number_from_div_func) (mp_number *A, mp_number B, mp_number C);
 typedef void @[@] (*number_from_mul_func) (mp_number *A, mp_number B, mp_number C);
-typedef void @[@] (*number_from_int_div_func) (mp_number *A, mp_number B, int C);
-typedef void @[@] (*number_from_int_mul_func) (mp_number *A, mp_number B, int C);
+typedef void @[@] (*number_from_int_div_func) (mp_number *A, mp_number B, integer64 C);
+typedef void @[@] (*number_from_int_mul_func) (mp_number *A, mp_number B, integer64 C);
 typedef void @[@] (*number_from_oftheway_func) (MP mp, mp_number *A, mp_number t, mp_number B, mp_number C);
 typedef void @[@] (*number_negate_func) (mp_number *A);
 typedef void @[@] (*number_add_func) (mp_number *A, mp_number B);
@@ -482,13 +484,13 @@ typedef void @[@] (*number_double_func) (mp_number *A);
 typedef void @[@] (*number_abs_func) (mp_number *A);
 typedef void @[@] (*number_clone_func) (mp_number *A, mp_number B);
 typedef void @[@] (*number_swap_func) (mp_number *A, mp_number *B);
-typedef void @[@] (*number_add_scaled_func) (mp_number *A, int b);
-typedef void @[@] (*number_multiply_int_func) (mp_number *A, int b);
-typedef void @[@] (*number_divide_int_func) (mp_number *A, int b);
-typedef int @[@] (*number_to_int_func) (mp_number A);
-typedef int @[@] (*number_to_boolean_func) (mp_number A);
-typedef int @[@] (*number_to_scaled_func) (mp_number A);
-typedef int @[@] (*number_round_func) (mp_number A);
+typedef void @[@] (*number_add_scaled_func) (mp_number *A, integer64 b);
+typedef void @[@] (*number_multiply_int_func) (mp_number *A, integer64 b);
+typedef void @[@] (*number_divide_int_func) (mp_number *A, integer64 b);
+typedef integer64 @[@] (*number_to_int_func) (mp_number A);
+typedef integer64 @[@] (*number_to_boolean_func) (mp_number A);
+typedef integer64 @[@] (*number_to_scaled_func) (mp_number A);
+typedef integer64 @[@] (*number_round_func) (mp_number A);
 typedef void @[@] (*number_floor_func) (mp_number *A);
 typedef double @[@] (*number_to_double_func) (mp_number A);
 typedef int @[@] (*number_odd_func) (mp_number A);
@@ -509,7 +511,7 @@ typedef void @[@] (*free_number_func) (MP mp, mp_number *n);
 typedef void @[@] (*fraction_to_round_scaled_func) (mp_number *n);
 typedef void @[@] (*print_func) (MP mp, mp_number A);
 typedef char * (*tostring_func) (MP mp, mp_number A);
-typedef void @[@] (*scan_func) (MP mp, int A);
+typedef void @[@] (*scan_func) (MP mp, integer64 A);
 typedef void @[@] (*mp_free_func) (MP mp);
 typedef void @[@] (*set_precision_func) (MP mp);
 /* math interval new primitives */
@@ -857,8 +859,7 @@ mp->bad = 0;
 @d incr(A)   (A)=(A)+1 /* increase a variable by unity */
 @d decr(A)   (A)=(A)-1 /* decrease a variable by unity */
 @d negate(A) (A)=-(A) /* change the sign of a variable */
-@d double(A) (A)=(A)+(A)
-@d odd(A)   (abs(A)%2==1)
+@d odd(A)   (MPOST_ABS(A)%2==1)
 
 @* The character set.
 In order to make \MP\ readily portable to a wide variety of
@@ -973,7 +974,7 @@ differentiate file searches if a library like kpathsea is used,
 the fopen mode is passed along for the same reason.
 
 @<Types...@>=
-typedef unsigned char eight_bits;       /* unsigned one-byte quantity */
+typedef uint8_t eight_bits;       /* unsigned one-byte quantity */
 
 @ @<Exported types@>=
 enum mp_filetype {
@@ -1036,7 +1037,8 @@ static char *mp_run_script (MP mp, const char *str, size_t len) {
 
 @ @c
 static char *mp_make_text (MP mp, const char *str, size_t len, int mode) {
-  (void) mp;
+  (void)mp;
+  (void)mode;
   return mp_strldup (str, len);
 }
 
@@ -2103,7 +2105,9 @@ in reverse order, i.e., with |help_line[0]| appearing last.
 @c
 void mp_error (MP mp, const char *msg, const char **hlp, boolean deletions_allowed) {
   ASCII_code c; /* what the user types */
-  integer s1, s2;       /* used to save global variables when deleting tokens */
+  //uint32_t s1; 
+  quarterword s1; 
+  integer s2;       /* used to save global variables when deleting tokens */
   mp_sym s3;    /* likewise */
   int i = 0;
   const char *help_line[6];       /* helps for the next |error| */
@@ -2117,7 +2121,7 @@ void mp_error (MP mp, const char *msg, const char **hlp, boolean deletions_allow
     }
     cnt = hlp;
   }
-  help_ptr=i;
+  help_ptr=(unsigned int)i;
   while (i>0) {
     help_line[--i]= *cnt++;
   }
@@ -2172,7 +2176,7 @@ edited and the relevant line number.
 @^system dependencies@>
 
 @<Exported types@>=
-typedef void @[@] (*mp_editor_cmd) (MP, char *, int);
+typedef void @[@] (*mp_editor_cmd) (MP, char *, integer);
 
 @ @<Option variables@>=
 mp_editor_cmd run_editor;
@@ -2181,12 +2185,12 @@ mp_editor_cmd run_editor;
 set_callback_option (run_editor);
 
 @ @<Declarations@>=
-static void mp_run_editor (MP mp, char *fname, int fline);
+static void mp_run_editor (MP mp, char *fname, integer fline);
 
 @ @c
-void mp_run_editor (MP mp, char *fname, int fline) {
+void mp_run_editor (MP mp, char *fname, integer fline) {
   char *s = xmalloc (256, 1);
-  mp_snprintf (s, 256, "You want to edit file %s at line %d\n", fname, fline);
+  mp_snprintf (s, 256, "You want to edit file %s at line %" PRId64 "\n", fname, fline);
   wterm_ln (s);
 @.You want to edit file x@>
 }
@@ -2851,11 +2855,11 @@ from quarterwords. These are legacy macros.
 typedef struct mp_value_node_data *mp_value_node;
 typedef struct mp_node_data *mp_node;
 typedef struct mp_symbol_entry *mp_sym;
-typedef short quarterword;      /* 1/4 of a word */
-typedef int halfword;   /* 1/2 of a word */
+typedef int16_t quarterword;      /* 1/4 of a word */
+typedef int32_t halfword;   /* 1/2 of a word */
 typedef struct {
   integer scale; /* only for |indep_scale|, used together with |serial| */
-  integer serial; /* only for |indep_value|, used together with |scale| */
+  halfword serial; /* only for |indep_value|, used together with |scale| */
 } mp_independent_data;
 typedef struct {
   mp_independent_data indep;
@@ -3057,7 +3061,7 @@ control of what error messages the user receives.
 #define NODE_BODY                       \
   mp_variable_type type;                \
   mp_name_type_type name_type;          \
-  unsigned short has_number;		\
+  uint16_t has_number;		        \
   struct mp_node_data *link@;
 @#@t\2\2\4\4@>
 typedef struct mp_node_data {
@@ -3306,7 +3310,11 @@ At any rate, here is the list, for future reference.
 
 
 @<Enumeration types@>=
-typedef enum {
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >=202311L)
+typedef enum mp_command_code: QUARTERWORD {
+#else 
+typedef enum  {
+#endif
 mp_start_tex=1, /* begin \TeX\ material (\&{btex}, \&{verbatimtex}) */
 mp_etex_marker, /* end \TeX\ material (\&{etex}) */
 mp_mpx_break, /* stop reading an \.{MPX} file (\&{mpxbreak}) */
@@ -3414,7 +3422,11 @@ and |string_type| in that order.
   case mp_unknown_pen: case mp_unknown_picture: case mp_unknown_path
 
 @<Enumeration types@>=
-typedef enum {
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >=202311L)
+typedef enum mp_variable_type: QUARTERWORD {
+#else 
+typedef enum  {
+#endif
   mp_undefined = 0,       /* no type has been declared */
   mp_vacuous,                   /* no expression was present */
   mp_boolean_type,              /* \&{boolean} with a known value */
@@ -4478,7 +4490,7 @@ static void mp_fix_date_and_time (MP mp) {
   source_date_epoch = getenv("SOURCE_DATE_EPOCH");
   if (source_date_epoch) {
     errno = 0;
-    epoch = strtoull(source_date_epoch, &endptr, 10);
+    epoch = (time_t)strtoull(source_date_epoch, &endptr, 10);
     if (*endptr != '\0' || errno != 0) {
       FATAL1("invalid epoch-seconds-timezone value for environment variable $SOURCE_DATE_EPOCH: %s",
               source_date_epoch);
@@ -5427,11 +5439,11 @@ static mp_knot do_get_value_knot (MP mp, mp_token_node A) {
   FUNCTION_TRACE3 ("%p = get_value_knot(%p)\n", A->data.p, A);
   return  A->data.p ;
 }
-/* static mp_number do_get_value_number (MP mp, mp_token_node A) { */
+/* static mp_number do_get_value_number (MP mp, mp_token_node A) \{ */
 /*   assert (A->type != mp_structured); */
 /*   FUNCTION_TRACE3 ("%d = get_value_number(%p)\n", A->data.n.type, A); */
 /*   return  A->data.n ; */
-/* } */
+/* \} */
 #endif
 
 @ @<Declarations@>=
@@ -8033,7 +8045,7 @@ coordinates of $z\k-z_k$, and the magnitude of this vector will be
 and $z\k-z_k$ will be stored in |psi[k]|.
 
 @<Glob...@>=
-int path_size;  /* maximum number of knots between breakpoints of a path */
+integer path_size;  /* maximum number of knots between breakpoints of a path */
 mp_number *delta_x;
 mp_number *delta_y;
 mp_number *delta;  /* knot differences */
@@ -8783,7 +8795,7 @@ do {
   number_substract (arg, mp->theta[k + 1]);
   n_sin_cos (arg, mp->cf, mp->sf);
   mp_set_controls (mp, s, t, k);
-  incr (k);
+  incr (k); 
   s = t;
 } while (k != n);
 free_number (arg);
@@ -9301,16 +9313,17 @@ void mp_free_path (MP mp, mp_knot p);
 @ Simple accessors for |mp_knot|.
 
 @c
-mp_number mp_knot_x_coord(MP mp, mp_knot p) { return p->x_coord; }
-mp_number mp_knot_y_coord(MP mp, mp_knot p) { return p->y_coord; }
-mp_number mp_knot_left_x (MP mp, mp_knot p) { return p->left_x;  }
-mp_number mp_knot_left_y (MP mp, mp_knot p) { return p->left_y;  }
-mp_number mp_knot_right_x(MP mp, mp_knot p) { return p->right_x;  }
-mp_number mp_knot_right_y(MP mp, mp_knot p) { return p->right_y;  }
-int mp_knot_right_type(MP mp, mp_knot p) { return mp_right_type(p);}
-int mp_knot_left_type (MP mp, mp_knot p) { return mp_left_type(p);}
-mp_knot mp_knot_next (MP mp, mp_knot p)  { return p->next; }
+mp_number mp_knot_x_coord(MP mp, mp_knot p) { (void)mp; return p->x_coord; }
+mp_number mp_knot_y_coord(MP mp, mp_knot p) { (void)mp; return p->y_coord; }
+mp_number mp_knot_left_x (MP mp, mp_knot p) { (void)mp; return p->left_x;  }
+mp_number mp_knot_left_y (MP mp, mp_knot p) { (void)mp; return p->left_y;  }
+mp_number mp_knot_right_x(MP mp, mp_knot p) { (void)mp; return p->right_x;  }
+mp_number mp_knot_right_y(MP mp, mp_knot p) { (void)mp; return p->right_y;  }
+int mp_knot_right_type(MP mp, mp_knot p) { (void)mp; return mp_right_type(p);}
+int mp_knot_left_type (MP mp, mp_knot p) { (void)mp; return mp_left_type(p);}
+mp_knot mp_knot_next (MP mp, mp_knot p)  { (void)mp; return p->next; }
 double mp_number_as_double(MP mp, mp_number n) {
+  (void)mp; 
   return number_to_double(n);
 }
 
@@ -13376,7 +13389,7 @@ static mp_knot mp_offset_prep (MP mp, mp_knot c, mp_knot h) {
   int k_needed;     /* amount to be added to |mp_info(p)| when it is computed */
   mp_knot w0;   /* a pointer to pen offset to use just before |p| */
   mp_number dxin, dyin;    /* the direction into knot |p| */
-  int turn_amt;     /* change in pen offsets for the current cubic */
+  integer turn_amt;     /* change in pen offsets for the current cubic */
   mp_number max_coef;       /* used while scaling */
   mp_number ss;
   @<Other local variables for |offset_prep|@>;
@@ -17567,7 +17580,7 @@ activities, and there is a finite state control for each level of the
 input mechanism. These stacks record the current state of an implicitly
 recursive process, but the |get_next| procedure is not recursive.
 
-@d cur_cmd() (unsigned)(mp->cur_mod_->type)
+@d cur_cmd() (unsigned)(mp->cur_mod_->type) /* TODO: In C23 check if we can remove (unsigned) */
 @d set_cur_cmd(A) mp->cur_mod_->type=(A)
 @d cur_mod_int() number_to_int (mp->cur_mod_->data.n) /* operand of current command */
 @d cur_mod() number_to_scaled (mp->cur_mod_->data.n) /* operand of current command */
@@ -19336,7 +19349,7 @@ void mp_print_sym  (mp_sym sym) {
     sym->v.data.n.type, (void*)sym->v.data.str, (void *)sym->v.data.sym, (void *)sym->v.data.node, (void *)sym->v.data.p, (void *)sym->text);
   if (is_number(sym->v.data.n)) {
       mp_number n = sym->v.data.n;
-      printf("{data = {dval = %f, val = %d}, type = %d}\n", n.data.dval, n.data.val, n.type);
+      printf("{data = {dval = %f, val = %"PRId64"}, type = %d}\n", n.data.dval, n.data.val, n.type);
   }
   if (sym->text != NULL) {
      mp_string t = sym->text;
@@ -20080,7 +20093,7 @@ or at the beginning of a line.
 {
     char *txt = NULL;
     char *ptr = NULL;
-    int slin = line;
+    integer slin = line;
     int size = 0;
     int done = 0;
     int mode = round_unscaled(internal_value(mp_texscriptmode)) ; /* default: 1 */
@@ -20228,7 +20241,7 @@ or at the beginning of a line.
         if (slin > 0) {
             mp_snprintf(msg, 256, "No matching 'etex' for '%stex'.", verb ? "verbatim" : "b");
         } else {
-            mp_snprintf(msg, 256, "No matching 'etex' for '%stex' in line %d.", verb ? "verbatim" : "b",slin);
+            mp_snprintf(msg, 256, "No matching 'etex' for '%stex' in line %"PRId64".", verb ? "verbatim" : "b",slin);
         }
         mp_error (mp, msg, hlp, false);
         free(txt);
@@ -20922,7 +20935,7 @@ void mp_pass_text (MP mp) {
 
 
 @ @<Decrease the string reference count...@>=
-if (cur_cmd() == mp_string_token) {
+if ((QUARTERWORD)(cur_cmd()) == (QUARTERWORD)mp_string_token) {
   delete_str_ref (cur_mod_str());
 }
 
@@ -30922,7 +30935,7 @@ if (!mp->ini_version) {
 mp_fix_date_and_time (mp);
 if (mp->random_seed == 0)
   mp->random_seed =
-    (number_to_scaled (internal_value (mp_time)) / number_to_scaled (unity_t)) + number_to_scaled (internal_value (mp_day));
+   (int)((number_to_scaled (internal_value (mp_time)) / number_to_scaled (unity_t)) + number_to_scaled (internal_value (mp_day)));
 init_randoms (mp->random_seed);
 initialize_print_selector();
 mp_open_log_file (mp);
@@ -35732,7 +35745,7 @@ But when we finish this part of the program, \MP\ is ready to call on the
 mp->buffer[limit] = (ASCII_code) '%';
 mp_fix_date_and_time (mp);
 if (mp->random_seed == 0)
-  mp->random_seed = (number_to_scaled (internal_value (mp_time)) / number_to_scaled (unity_t)) + number_to_scaled (internal_value (mp_day));
+  mp->random_seed = (int)((number_to_scaled (internal_value (mp_time)) / number_to_scaled (unity_t)) + number_to_scaled (internal_value (mp_day)));
 init_randoms (mp->random_seed);
 initialize_print_selector();
 mp_normalize_selector (mp);

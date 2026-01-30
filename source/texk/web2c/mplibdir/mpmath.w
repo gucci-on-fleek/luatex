@@ -16,7 +16,8 @@
 
 @ Introduction.
 
-@c 
+@c
+#include "mpconfig.h"
 #include <w2c/config.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,8 +42,8 @@
 @ Here are the functions that are static as they are not used elsewhere
 
 @<Declarations@>=
-static void mp_scan_fractional_token (MP mp, int n);
-static void mp_scan_numeric_token (MP mp, int n);
+static void mp_scan_fractional_token (MP mp, integer64 n);
+static void mp_scan_numeric_token (MP mp, integer64 n);
 static void mp_ab_vs_cd (MP mp, mp_number *ret, mp_number a, mp_number b, mp_number c, mp_number d);
 static void mp_crossing_point (MP mp, mp_number *ret, mp_number a, mp_number b, mp_number c);
 static void mp_number_modulo (mp_number *a, mp_number b);
@@ -63,16 +64,16 @@ static void mp_m_log (MP mp, mp_number *ret, mp_number x_orig);
 static void mp_pyth_sub (MP mp, mp_number *r, mp_number a, mp_number b);
 static void mp_n_arg (MP mp, mp_number *ret, mp_number x, mp_number y);
 static void mp_velocity (MP mp, mp_number *ret, mp_number st, mp_number ct, mp_number sf,  mp_number cf, mp_number t);
-static void mp_set_number_from_int(mp_number *A, int B);
-static void mp_set_number_from_boolean(mp_number *A, int B);
-static void mp_set_number_from_scaled(mp_number *A, int B);
-static void mp_set_number_from_boolean(mp_number *A, int B);
+static void mp_set_number_from_int(mp_number *A, integer64 B);
+static void mp_set_number_from_boolean(mp_number *A, integer64 B);
+static void mp_set_number_from_scaled(mp_number *A, integer64 B);
+static void mp_set_number_from_boolean(mp_number *A, integer64 B);
 static void mp_set_number_from_addition(mp_number *A, mp_number B, mp_number C);
 static void mp_set_number_from_substraction (mp_number *A, mp_number B, mp_number C);
 static void mp_set_number_from_div(mp_number *A, mp_number B, mp_number C);
 static void mp_set_number_from_mul(mp_number *A, mp_number B, mp_number C);
-static void mp_set_number_from_int_div(mp_number *A, mp_number B, int C);
-static void mp_set_number_from_int_mul(mp_number *A, mp_number B, int C);
+static void mp_set_number_from_int_div(mp_number *A, mp_number B, integer64 C);
+static void mp_set_number_from_int_mul(mp_number *A, mp_number B, integer64 C);
 static void mp_set_number_from_of_the_way(MP mp, mp_number *A, mp_number t, mp_number B, mp_number C);
 static void mp_number_negate(mp_number *A);
 static void mp_number_add(mp_number *A, mp_number B);
@@ -80,16 +81,16 @@ static void mp_number_substract(mp_number *A, mp_number B);
 static void mp_number_half(mp_number *A);
 static void mp_number_halfp(mp_number *A);
 static void mp_number_double(mp_number *A);
-static void mp_number_add_scaled(mp_number *A, int B); /* also for negative B */
-static void mp_number_multiply_int(mp_number *A, int B);
-static void mp_number_divide_int(mp_number *A, int B);
+static void mp_number_add_scaled(mp_number *A, integer64 B); /* also for negative B */
+static void mp_number_multiply_int(mp_number *A, integer64 B);
+static void mp_number_divide_int(mp_number *A, integer64 B);
 static void mp_number_abs(mp_number *A);   
 static void mp_number_clone(mp_number *A, mp_number B);
 static void mp_number_swap(mp_number *A, mp_number *B);
-static int mp_round_unscaled(mp_number x_orig);
-static int mp_number_to_scaled(mp_number A);
-static int mp_number_to_boolean(mp_number A);
-static int mp_number_to_int(mp_number A);
+static integer64 mp_round_unscaled(mp_number x_orig);
+static integer64 mp_number_to_scaled(mp_number A);
+static integer64 mp_number_to_boolean(mp_number A);
+static integer64 mp_number_to_int(mp_number A);
 static int mp_number_odd(mp_number A);
 static int mp_number_equal(mp_number A, mp_number B);
 static int mp_number_greater(mp_number A, mp_number B);
@@ -280,6 +281,7 @@ void * mp_initialize_scaled_math (MP mp) {
 }
 
 void mp_scaled_set_precision (MP mp) {
+(void)mp;
 }
 
 void mp_free_scaled_math (MP mp) {
@@ -339,13 +341,13 @@ void mp_free_number (MP mp, mp_number *n) {
 @ Here are the low-level functions on |mp_number| items, setters first.
 
 @c 
-void mp_set_number_from_int(mp_number *A, int B) {
+void mp_set_number_from_int(mp_number *A, integer64 B) {
   A->data.val = B;
 }
-void mp_set_number_from_boolean(mp_number *A, int B) {
+void mp_set_number_from_boolean(mp_number *A, integer64 B) {
   A->data.val = B;
 }
-void mp_set_number_from_scaled(mp_number *A, int B) {
+void mp_set_number_from_scaled(mp_number *A, integer64 B) {
   A->data.val = B;
 }
 void mp_set_number_from_double(mp_number *A, double B) {
@@ -363,10 +365,10 @@ void mp_set_number_from_div(mp_number *A, mp_number B, mp_number C) {
 void mp_set_number_from_mul(mp_number *A, mp_number B, mp_number C) {
   A->data.val = B.data.val * C.data.val;
 }
-void mp_set_number_from_int_div(mp_number *A, mp_number B, int C) {
+void mp_set_number_from_int_div(mp_number *A, mp_number B, integer64 C) {
   A->data.val = B.data.val / C;
 }
-void mp_set_number_from_int_mul(mp_number *A, mp_number B, int C) {
+void mp_set_number_from_int_mul(mp_number *A, mp_number B, integer64 C) {
   A->data.val = B.data.val * C;
 }
 void mp_set_number_from_of_the_way(MP mp, mp_number *A, mp_number t, mp_number B, mp_number C) {
@@ -390,23 +392,23 @@ void mp_number_halfp(mp_number *A) {
 void mp_number_double(mp_number *A) {
   A->data.val = A->data.val + A->data.val;
 }
-void mp_number_add_scaled(mp_number *A, int B) { /* also for negative B */
+void mp_number_add_scaled(mp_number *A, integer64 B) { /* also for negative B */
   A->data.val = A->data.val + B;
 }
-void mp_number_multiply_int(mp_number *A, int B) {
+void mp_number_multiply_int(mp_number *A, integer64 B) {
   A->data.val = B * A->data.val;
 }
-void mp_number_divide_int(mp_number *A, int B) {
+void mp_number_divide_int(mp_number *A, integer64 B) {
   A->data.val = A->data.val / B;
 }
 void mp_number_abs(mp_number *A) {   
-  A->data.val = abs(A->data.val);
+  A->data.val = MPOST_ABS(A->data.val);
 }
 void mp_number_clone(mp_number *A, mp_number B) {
   A->data.val = B.data.val;
 }
 void mp_number_swap(mp_number *A, mp_number *B) {
-  int swap_tmp = A->data.val;
+  integer64 swap_tmp = A->data.val;
   A->data.val = B->data.val;
   B->data.val = swap_tmp;
 }
@@ -435,17 +437,17 @@ void mp_number_scaled_to_angle (mp_number *A) {
 @ Query functions
 
 @c
-int mp_number_to_int(mp_number A) {
+integer64 mp_number_to_int(mp_number A) {
   return A.data.val;
 }
-int mp_number_to_scaled(mp_number A) {
+integer64 mp_number_to_scaled(mp_number A) {
   return A.data.val;
 }
-int mp_number_to_boolean(mp_number A) {
+integer64 mp_number_to_boolean(mp_number A) {
   return A.data.val;
 }
 double mp_number_to_double(mp_number A) {
-  return (A.data.val/65536.0);
+  return ((double)A.data.val/65536.0);
 }
 int mp_number_odd(mp_number A) {
   return odd(A.data.val);
@@ -460,7 +462,7 @@ int mp_number_less(mp_number A, mp_number B) {
   return (A.data.val<B.data.val);
 }
 int mp_number_nonequalabs(mp_number A, mp_number B) {
-  return (!(abs(A.data.val)==abs(B.data.val)));
+  return (!(MPOST_ABS(A.data.val)==MPOST_ABS(B.data.val)));
 }
 
 @ Fixed-point arithmetic is done on {\sl scaled integers\/} that are multiples
@@ -507,12 +509,12 @@ We can stop if and only if $f=0$ satisfies this condition; the loop will
 terminate before $s$ can possibly become zero.
 
 @<Declarations@>=
-static void mp_print_scaled (MP mp, int s); /* scaled */
-static char *mp_string_scaled (MP mp, int s);
+static void mp_print_scaled (MP mp, integer64 s); /* scaled */
+static char *mp_string_scaled (MP mp, integer64 s);
 
 @ @c
-static void mp_print_scaled (MP mp, int s) {  /* s=scaled prints scaled real, rounded to five  digits */
-  int delta; /* amount of allowable inaccuracy, scaled */
+static void mp_print_scaled (MP mp, integer64 s) {  /* s=scaled prints scaled real, rounded to five  digits */
+  integer64 delta; /* amount of allowable inaccuracy, scaled */
   if (s < 0) {
     mp_print_char (mp, xord ('-'));
     s = -s;                 /* print the sign, if negative */
@@ -532,16 +534,16 @@ static void mp_print_scaled (MP mp, int s) {  /* s=scaled prints scaled real, ro
   }
 }
 
-static  char *mp_string_scaled (MP mp, int s) {    /* s=scaled prints scaled real, rounded to five  digits */
-  static char scaled_string[32];
-  int delta; /* amount of allowable inaccuracy, scaled */
+static  char *mp_string_scaled (MP mp, integer64 s) {    /* s=scaled prints scaled real, rounded to five  digits */
+  static char scaled_string[64];
+  integer64 delta; /* amount of allowable inaccuracy, scaled */
   int i = 0;
   if (s < 0) {
     scaled_string[i++] = xord ('-');
     s = -s;                 /* print the sign, if negative */
   }
   /* print the integer part */
-  mp_snprintf ((scaled_string+i), 12, "%d", (int) (s / unity));
+  mp_snprintf ((scaled_string+i), 12, "%" PRId64, (s / unity));
   while (*(scaled_string+i)) i++;
 
   s = 10 * (s % unity) + 5;
@@ -684,10 +686,10 @@ time during typical jobs, so a machine-language substitute is advisable.
 
 @<Internal library declarations@>=
 /* still in use by tfmin.w */
-integer mp_take_fraction (MP mp, integer q, int f);
+integer mp_take_fraction (MP mp, integer q, integer64 f);
 
 @ @c
-integer mp_take_fraction (MP mp, integer p, int q) { /* q = fraction */
+integer mp_take_fraction (MP mp, integer p, integer64 q) { /* q = fraction */
   register double d;
   register integer i;
   d = (double) p *(double) q *TWEXP_28;
@@ -730,10 +732,10 @@ when the Computer Modern fonts are being generated.
 @^inner loop@>
 
 @<Declarations@>=
-static integer mp_take_scaled (MP mp, integer q, int f);
+static integer mp_take_scaled (MP mp, integer q, integer64 f);
 
 @ @c
-static integer mp_take_scaled (MP mp, integer p, int q) { /* q = scaled */
+static integer mp_take_scaled (MP mp, integer p, integer64 q) { /* q = scaled */
   register double d;
   register integer i;
   d = (double) p *(double) q *TWEXP_16;
@@ -773,10 +775,10 @@ so it is not part of \MP's inner loop.)
 
 @<Internal library ...@>=
 /* still in use by svgout.w */
-int mp_make_scaled (MP mp, integer p, integer q);
+integer64 mp_make_scaled (MP mp, integer p, integer q);
 
 @ @c
-int mp_make_scaled (MP mp, integer p, integer q) { /* return scaled */
+integer64 mp_make_scaled (MP mp, integer p, integer q) { /* return scaled */
   register integer i;
   if (q == 0)
     mp_confusion (mp, "/");
@@ -815,10 +817,10 @@ void mp_number_make_scaled (MP mp, mp_number *ret, mp_number p_orig, mp_number q
 fraction $(.d_0d_1\ldots d_{k-1})$, where |0<=k<=17|.
 
 @<Declarations@>=
-static int mp_round_decimals (MP mp, unsigned char *b, quarterword k);
+static integer64 mp_round_decimals (MP mp, unsigned char *b, quarterword k);
 
 @ @c
-static int mp_round_decimals (MP mp, unsigned char *b, quarterword k) { /* return: scaled */
+static integer64 mp_round_decimals (MP mp, unsigned char *b, quarterword k) { /* return: scaled */
   /* converts a decimal fraction */
   unsigned a = 0;       /* the accumulator */
   int l = 0;
@@ -827,7 +829,7 @@ static int mp_round_decimals (MP mp, unsigned char *b, quarterword k) { /* retur
     if (l<16)    /* digits for |k>=17| cannot affect the result */
       a = (a + (unsigned) (*(b+l) - '0') * two) / 10;
   }
-  return (int) halfp (a + 1);
+  return (integer64) halfp (a + 1);
 }
 
 @* Scanning numbers in the input.
@@ -838,11 +840,11 @@ The definitions below are temporarily here.
 @d set_cur_mod(A) mp->cur_mod_->data.n.data.val=(A)
 
 @<Declarations...@>=
-static void mp_wrapup_numeric_token(MP mp, int n, int f);
+static void mp_wrapup_numeric_token(MP mp, integer64 n, integer64 f);
 
 @ @c
-static void mp_wrapup_numeric_token(MP mp, int n, int f) { /* n,f: scaled */
-  int mod ; /* scaled */
+static void mp_wrapup_numeric_token(MP mp, integer64 n, integer64 f) { /* n,f: scaled */
+  integer64 mod ; /* scaled */
   if (n < 32768) {
     mod = (n * unity + f);
     set_cur_mod(mod);
@@ -871,8 +873,8 @@ static void mp_wrapup_numeric_token(MP mp, int n, int f) { /* n,f: scaled */
 }
 
 @ @c
-void mp_scan_fractional_token (MP mp, int n) { /* n: scaled */
-  int f; /* scaled */
+void mp_scan_fractional_token (MP mp, integer64 n) { /* n: scaled */
+  integer64 f; /* scaled */
   int k = 0;
   do {
     k++;
@@ -888,7 +890,7 @@ void mp_scan_fractional_token (MP mp, int n) { /* n: scaled */
 
 
 @ @c
-void mp_scan_numeric_token (MP mp, int n) { /* n: scaled */
+void mp_scan_numeric_token (MP mp, integer64 n) { /* n: scaled */
   while (mp->char_class[mp->buffer[mp->cur_input.loc_field]] == digit_class) {
     if (n < 32768)
       n = 10 * n + mp->buffer[mp->cur_input.loc_field] - '0';
@@ -1074,6 +1076,7 @@ $a<2^{30}$, $\vert a-b\vert<2^{30}$, and $\vert b-c\vert<2^{30}$.
 
 @c
 static void mp_crossing_point (MP mp, mp_number *ret, mp_number aa, mp_number bb, mp_number cc) {
+  (void)mp;
   integer a,b,c;
   integer d;    /* recursive counter */
   integer x, xx, x0, x1, x2;    /* temporary registers for bisection */
@@ -1137,8 +1140,8 @@ and truncation operations.
 
 @ |round_unscaled| rounds a |scaled| and converts it to |int|
 @c
-int mp_round_unscaled(mp_number x_orig) {
-  int x = x_orig.data.val;
+integer64 mp_round_unscaled(mp_number x_orig) {
+  integer64 x = x_orig.data.val;
   if (x >= 32768) {
     return 1+((x-32768) / 65536);
   } else if ( x>=-32768) {
@@ -1158,7 +1161,7 @@ void mp_number_floor (mp_number *i) {
 @ |fraction_to_scaled| rounds a |fraction| and converts it to |scaled|
 @c
 void mp_fraction_to_round_scaled (mp_number *x_orig) {
-  int x = x_orig->data.val;
+  integer x = x_orig->data.val;
   x_orig->type = mp_scaled_type;
   x_orig->data.val = (x>=2048 ? 1+((x-2048) / 4096)  : ( x>=-2048 ? 0 : -(1+((-(x+1)-2048) / 4096))));
 }
@@ -1258,11 +1261,11 @@ smaller argument decreases.
 
 @c
 void mp_pyth_add (MP mp, mp_number *ret, mp_number a_orig, mp_number b_orig) {
-  int a, b; /* a,b : scaled */
-  int r;   /* register used to transform |a| and |b|, fraction */
+  integer64 a, b; /* a,b : scaled */
+  integer r;   /* register used to transform |a| and |b|, fraction */
   boolean big;  /* is the result dangerously near $2^{31}$? */
-  a = abs (a_orig.data.val);
-  b = abs (b_orig.data.val);
+  a = MPOST_ABS (a_orig.data.val);
+  b = MPOST_ABS (b_orig.data.val);
   if (a < b) {
     r = b;
     b = a;
@@ -1310,11 +1313,11 @@ It converges slowly when $b$ is near $a$, but otherwise it works fine.
 
 @c
 void mp_pyth_sub (MP mp, mp_number *ret, mp_number a_orig, mp_number b_orig) {
-  int a, b; /* a,b: scaled */
-  int r;   /* register used to transform |a| and |b|, fraction */
+  integer a, b; /* a,b: scaled */
+  integer r;   /* register used to transform |a| and |b|, fraction */
   boolean big;  /* is the result dangerously near $2^{31}$? */
-  a = abs (a_orig.data.val);
-  b = abs (b_orig.data.val);
+  a = MPOST_ABS (a_orig.data.val);
+  b = MPOST_ABS (b_orig.data.val);
   if (a <= b) {
     @<Handle erroneous |pyth_sub| and set |a:=0|@>;
   } else {
@@ -1397,7 +1400,7 @@ not~100, because we want to add~4 for rounding before the final division by~8.)
 
 @c
 void mp_m_log (MP mp, mp_number *ret, mp_number x_orig) { /* return, x: scaled */
-  int x;
+  integer x;
   integer y, z; /* auxiliary registers */
   integer k;    /* iteration counter */
   x = x_orig.data.val;
@@ -1456,7 +1459,7 @@ $2^{16}\exp(x/2^{24})$, when |x| is regarded as an integer.
 void mp_m_exp (MP mp, mp_number *ret, mp_number x_orig) {
   quarterword k;        /* loop control index */
   integer y, z; /* auxiliary registers */
-  int x;
+  integer x;
   x = x_orig.data.val;
   if (x > 174436200) {
     /* $2^{24}\ln((2^{31}-1)/2^{16})\approx 174436199.51$ */
@@ -1685,16 +1688,16 @@ any loss of accuracy. Then |x| and~|y| are divided by~|r|.
 @d one_eighty_deg 01320000000 /* $180\cdot2^{20}$, represents $180^\circ$ */
 @d three_sixty_deg 02640000000 /* $360\cdot2^{20}$, represents $360^\circ$ */
 
-@d odd(A)   (abs(A)%2==1)
+@d odd(A)   (MPOST_ABS(A)%2==1)
 
 @ Compute a multiple of the sine and cosine
 
 @c
 void mp_n_sin_cos (MP mp, mp_number z_orig, mp_number *n_cos, mp_number *n_sin) {
   quarterword k;        /* loop control variable */
-  int q;        /* specifies the quadrant */
+  integer q;        /* specifies the quadrant */
   integer x, y, t;      /* temporary registers */
-  int z; /* scaled */
+  integer z; /* scaled */
   mp_number x_n, y_n, ret;
   new_number (ret);
   new_number (x_n);
