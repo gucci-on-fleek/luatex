@@ -469,14 +469,14 @@ int mp_number_nonequalabs(mp_number A, mp_number B) {
 of $2^{-16}$. In other words, a binary point is assumed to be sixteen bit
 positions from the right end of a binary computer word.
 
-@d unity   0x10000 /* $2^{16}$, represents 1.00000 */
+@d unity   (mpinteger64)(0x10000) /* $2^{16}$, represents 1.00000 */
 @d two (2*unity) /* $2^{17}$, represents 2.00000 */
 @d three (3*unity) /* $2^{17}+2^{16}$, represents 3.00000 */
 @d half_unit   (unity/2) /* $2^{15}$, represents 0.50000 */
 @d three_quarter_unit (3*(unity/4)) /* $3\cdot2^{14}$, represents 0.75000 */
 
-@d EL_GORDO   0x7fffffff /* $2^{31}-1$, the largest value that \MP\ likes */
-@d one_third_EL_GORDO 05252525252
+@d EL_GORDO   (mpinteger64)(0x7fffffff) /* $2^{31}-1$, the largest value that \MP\ likes */
+@d one_third_EL_GORDO (mpinteger64)(05252525252)
 
 @ One of \MP's most common operations is the calculation of
 $\lfloor{a+b\over2}\rfloor$,
@@ -492,7 +492,7 @@ only be trusted to work on positive numbers, there is also a macro |halfp|
 that is used only when the quantity being halved is known to be positive
 or zero.
 
-@d halfp(A) (integer)((unsigned)(A) >> 1)
+@d halfp(A) (mpinteger64)((unsigned)(A) >> 1)
 
 @ Here is a procedure analogous to |print_int|. If the output
 of this procedure is subsequently read by \MP\ and converted by the
@@ -568,7 +568,7 @@ is used.
 
 @c
 void mp_slow_add (MP mp, mp_number *ret, mp_number x_orig, mp_number y_orig) {
-  integer x, y;
+  mpinteger64 x, y;
   x = x_orig.data.val;
   y = y_orig.data.val;
   if (x >= 0) {
@@ -634,8 +634,8 @@ preferable to trickery, unless the cost is too high.
 
 
 @c
-static integer mp_make_fraction (MP mp, integer p, integer q) {
-  integer i;
+static mpinteger64 mp_make_fraction (MP mp, mpinteger64 p, mpinteger64 q) {
+  mpinteger64 i;
   if (q == 0)
     mp_confusion (mp, "/");
 @:this can't happen /}{\quad \./@> 
@@ -649,7 +649,7 @@ static integer mp_make_fraction (MP mp, integer p, integer q) {
         i = EL_GORDO;
         goto RETURN;
       }
-      i = (integer) d;
+      i = (mpinteger64) d;
       if (d == (double) i && (((q > 0 ? -q : q) & 077777)
                               * (((i & 037777) << 1) - 1) & 04000) != 0)
         --i;
@@ -660,7 +660,7 @@ static integer mp_make_fraction (MP mp, integer p, integer q) {
         i = -EL_GORDO;
         goto RETURN;
       }
-      i = (integer) d;
+      i = (mpinteger64) d;
       if (d == (double) i && (((q > 0 ? q : -q) & 077777)
                               * (((i & 037777) << 1) + 1) & 04000) != 0)
         ++i;
@@ -686,12 +686,12 @@ time during typical jobs, so a machine-language substitute is advisable.
 
 @<Internal library declarations@>=
 /* still in use by tfmin.w */
-integer mp_take_fraction (MP mp, integer q, integer64 f);
+mpinteger64 mp_take_fraction (MP mp, mpinteger64 q, integer64 f);
 
 @ @c
-integer mp_take_fraction (MP mp, integer p, integer64 q) { /* q = fraction */
+mpinteger64 mp_take_fraction (MP mp, mpinteger64 p, integer64 q) { /* q = fraction */
   register double d;
-  register integer i;
+  register mpinteger64 i;
   d = (double) p *(double) q *TWEXP_28;
   if ((p ^ q) >= 0) {
     d += 0.5;
@@ -700,7 +700,7 @@ integer mp_take_fraction (MP mp, integer p, integer64 q) { /* q = fraction */
         mp->arith_error = true;
       return EL_GORDO;
     }
-    i = (integer) d;
+    i = (mpinteger64) d;
     if (d == (double) i && (((p & 077777) * (q & 077777)) & 040000) != 0)
       --i;
   } else {
@@ -710,7 +710,7 @@ integer mp_take_fraction (MP mp, integer p, integer64 q) { /* q = fraction */
         mp->arith_error = true;
       return -EL_GORDO;
     }
-    i = (integer) d;
+    i = (mpinteger64) d;
     if (d == (double) i && ((-(p & 077777) * (q & 077777)) & 040000) != 0)
       ++i;
   }
@@ -732,12 +732,12 @@ when the Computer Modern fonts are being generated.
 @^inner loop@>
 
 @<Declarations@>=
-static integer mp_take_scaled (MP mp, integer q, integer64 f);
+static mpinteger64 mp_take_scaled (MP mp, mpinteger64 q, integer64 f);
 
 @ @c
-static integer mp_take_scaled (MP mp, integer p, integer64 q) { /* q = scaled */
+static mpinteger64 mp_take_scaled (MP mp, mpinteger64 p, integer64 q) { /* q = scaled */
   register double d;
-  register integer i;
+  register mpinteger64 i;
   d = (double) p *(double) q *TWEXP_16;
   if ((p ^ q) >= 0) {
     d += 0.5;
@@ -746,7 +746,7 @@ static integer mp_take_scaled (MP mp, integer p, integer64 q) { /* q = scaled */
         mp->arith_error = true;
       return EL_GORDO;
     }
-    i = (integer) d;
+    i = (mpinteger64) d;
     if (d == (double) i && (((p & 077777) * (q & 077777)) & 040000) != 0)
       --i;
   } else {
@@ -756,7 +756,7 @@ static integer mp_take_scaled (MP mp, integer p, integer64 q) { /* q = scaled */
         mp->arith_error = true;
       return -EL_GORDO;
     }
-    i = (integer) d;
+    i = (mpinteger64) d;
     if (d == (double) i && ((-(p & 077777) * (q & 077777)) & 040000) != 0)
       ++i;
   }
@@ -775,11 +775,11 @@ so it is not part of \MP's inner loop.)
 
 @<Internal library ...@>=
 /* still in use by svgout.w */
-integer64 mp_make_scaled (MP mp, integer p, integer q);
+integer64 mp_make_scaled (MP mp, mpinteger64 p, mpinteger64 q);
 
 @ @c
-integer64 mp_make_scaled (MP mp, integer p, integer q) { /* return scaled */
-  register integer i;
+integer64 mp_make_scaled (MP mp, mpinteger64 p, mpinteger64 q) { /* return scaled */
+  register mpinteger64 i;
   if (q == 0)
     mp_confusion (mp, "/");
 @:this can't happen /}{\quad \./@> {
@@ -791,7 +791,7 @@ integer64 mp_make_scaled (MP mp, integer p, integer q) { /* return scaled */
         mp->arith_error = true;
         return EL_GORDO;
       }
-      i = (integer) d;
+      i = (mpinteger64) d;
       if (d == (double) i && (((q > 0 ? -q : q) & 077777)
                               * (((i & 037777) << 1) - 1) & 04000) != 0)
         --i;
@@ -801,7 +801,7 @@ integer64 mp_make_scaled (MP mp, integer p, integer q) { /* return scaled */
         mp->arith_error = true;
         return -EL_GORDO;
       }
-      i = (integer) d;
+      i = (mpinteger64) d;
       if (d == (double) i && (((q > 0 ? q : -q) & 077777)
                               * (((i & 037777) << 1) + 1) & 04000) != 0)
         ++i;
@@ -943,7 +943,7 @@ $\sin\phi$, and $\cos\phi$, respectively.
 @c
 void mp_velocity (MP mp, mp_number *ret, mp_number st, mp_number ct, mp_number sf,
                   mp_number cf, mp_number t) {
-  integer acc, num, denom;      /* registers for intermediate calculations */
+  mpinteger64 acc, num, denom;      /* registers for intermediate calculations */
   acc = mp_take_fraction (mp, st.data.val - (sf.data.val / 16), sf.data.val - (st.data.val / 16));
   acc = mp_take_fraction (mp, acc, ct.data.val - cf.data.val);
   num = fraction_two + mp_take_fraction (mp, acc, 379625062);
@@ -972,8 +972,8 @@ The result is $+1$, 0, or~$-1$ in the three respective cases.
 
 @c
 static void mp_ab_vs_cd (MP mp, mp_number *ret, mp_number a_orig, mp_number b_orig, mp_number c_orig, mp_number d_orig) {
-  integer q, r; /* temporary registers */
-  integer a, b, c, d;
+  mpinteger64 q, r; /* temporary registers */
+  mpinteger64 a, b, c, d;
   (void)mp;
   a = a_orig.data.val;
   b = b_orig.data.val;
@@ -1077,9 +1077,9 @@ $a<2^{30}$, $\vert a-b\vert<2^{30}$, and $\vert b-c\vert<2^{30}$.
 @c
 static void mp_crossing_point (MP mp, mp_number *ret, mp_number aa, mp_number bb, mp_number cc) {
   (void)mp;
-  integer a,b,c;
-  integer d;    /* recursive counter */
-  integer x, xx, x0, x1, x2;    /* temporary registers for bisection */
+  mpinteger64 a,b,c;
+  mpinteger64 d;    /* recursive counter */
+  mpinteger64 x, xx, x0, x1, x2;    /* temporary registers for bisection */
   a = aa.data.val;
   b = bb.data.val;
   c = cc.data.val;
@@ -1161,7 +1161,7 @@ void mp_number_floor (mp_number *i) {
 @ |fraction_to_scaled| rounds a |fraction| and converts it to |scaled|
 @c
 void mp_fraction_to_round_scaled (mp_number *x_orig) {
-  integer x = x_orig->data.val;
+  mpinteger64 x = x_orig->data.val;
   x_orig->type = mp_scaled_type;
   x_orig->data.val = (x>=2048 ? 1+((x-2048) / 4096)  : ( x>=-2048 ? 0 : -(1+((-(x+1)-2048) / 4096))));
 }
@@ -1182,10 +1182,10 @@ might, however, be zero at the start of the first iteration.
 
 @c
 void mp_square_rt (MP mp, mp_number *ret, mp_number x_orig) { /* return, x: scaled */
-  integer x;
+  mpinteger64 x;
   quarterword k;        /* iteration control counter */
-  integer y;    /* register for intermediate calculations */
-  integer q;    /* register for intermediate calculations */
+  mpinteger64 y;    /* register for intermediate calculations */
+  mpinteger64 q;    /* register for intermediate calculations */
   x = x_orig.data.val;
   if (x <= 0) {
     @<Handle square root of zero or negative argument@>;
@@ -1262,7 +1262,7 @@ smaller argument decreases.
 @c
 void mp_pyth_add (MP mp, mp_number *ret, mp_number a_orig, mp_number b_orig) {
   integer64 a, b; /* a,b : scaled */
-  integer r;   /* register used to transform |a| and |b|, fraction */
+  mpinteger64 r;   /* register used to transform |a| and |b|, fraction */
   boolean big;  /* is the result dangerously near $2^{31}$? */
   a = MPOST_ABS (a_orig.data.val);
   b = MPOST_ABS (b_orig.data.val);
@@ -1313,8 +1313,8 @@ It converges slowly when $b$ is near $a$, but otherwise it works fine.
 
 @c
 void mp_pyth_sub (MP mp, mp_number *ret, mp_number a_orig, mp_number b_orig) {
-  integer a, b; /* a,b: scaled */
-  integer r;   /* register used to transform |a| and |b|, fraction */
+  mpinteger64 a, b; /* a,b: scaled */
+  mpinteger64 r;   /* register used to transform |a| and |b|, fraction */
   boolean big;  /* is the result dangerously near $2^{31}$? */
   a = MPOST_ABS (a_orig.data.val);
   b = MPOST_ABS (b_orig.data.val);
@@ -1377,7 +1377,7 @@ nearest integer.
 @d two_to_the(A) (1<<(unsigned)(A))
 
 @<Declarations@>=
-static const integer spec_log[29] = { 0,        /* special logarithms */
+static const mpinteger64 spec_log[29] = { 0,        /* special logarithms */
   93032640, 38612034, 17922280, 8662214, 4261238, 2113709,
   1052693, 525315, 262400, 131136, 65552, 32772, 16385,
   8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 1
@@ -1400,9 +1400,9 @@ not~100, because we want to add~4 for rounding before the final division by~8.)
 
 @c
 void mp_m_log (MP mp, mp_number *ret, mp_number x_orig) { /* return, x: scaled */
-  integer x;
-  integer y, z; /* auxiliary registers */
-  integer k;    /* iteration counter */
+  mpinteger64 x;
+  mpinteger64 y, z; /* auxiliary registers */
+  mpinteger64 k;    /* iteration counter */
   x = x_orig.data.val;
   if (x <= 0) {
     @<Handle non-positive logarithm@>;
@@ -1458,8 +1458,8 @@ $2^{16}\exp(x/2^{24})$, when |x| is regarded as an integer.
 @c
 void mp_m_exp (MP mp, mp_number *ret, mp_number x_orig) {
   quarterword k;        /* loop control index */
-  integer y, z; /* auxiliary registers */
-  integer x;
+  mpinteger64 y, z; /* auxiliary registers */
+  mpinteger64 x;
   x = x_orig.data.val;
   if (x > 174436200) {
     /* $2^{24}\ln((2^{31}-1)/2^{16})\approx 174436199.51$ */
@@ -1544,11 +1544,11 @@ to be computationally simplest.
 
 @c
 void mp_n_arg (MP mp, mp_number *ret, mp_number x_orig, mp_number y_orig) {
-  integer z;      /* auxiliary register */
-  integer t;    /* temporary storage */
+  mpinteger64 z;      /* auxiliary register */
+  mpinteger64 t;    /* temporary storage */
   quarterword k;        /* loop counter */
   int octant;   /* octant code */
-  integer x, y;
+  mpinteger64 x, y;
   x = x_orig.data.val;
   y = y_orig.data.val;
   if (x >= 0) {
@@ -1695,9 +1695,9 @@ any loss of accuracy. Then |x| and~|y| are divided by~|r|.
 @c
 void mp_n_sin_cos (MP mp, mp_number z_orig, mp_number *n_cos, mp_number *n_sin) {
   quarterword k;        /* loop control variable */
-  integer q;        /* specifies the quadrant */
-  integer x, y, t;      /* temporary registers */
-  integer z; /* scaled */
+  mpinteger64 q;        /* specifies the quadrant */
+  mpinteger64 x, y, t;      /* temporary registers */
+  mpinteger64 z; /* scaled */
   mp_number x_n, y_n, ret;
   new_number (ret);
   new_number (x_n);

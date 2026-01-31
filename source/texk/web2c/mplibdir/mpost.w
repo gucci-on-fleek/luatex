@@ -142,7 +142,7 @@ Isspace (char c)
   return (c == ' ' || c == '\t');
 }
 #endif 
-static void mpost_run_editor (MP mp, char *fname, integer fline) {
+static void mpost_run_editor (MP mp, char *fname, integer64 fline) {
   char *temp, *command, *fullcmd, *edit_value;
   char c;
   boolean sdone, ddone;

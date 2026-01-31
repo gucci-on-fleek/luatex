@@ -1848,9 +1848,9 @@ given integer |n|, assumes that all integers fit nicely into a |int|.
 @^system dependencies@>
 
 @<Basic print...@>=
-void mp_print_int (MP mp, integer n) {                               /* prints an integer in decimal form */
+void mp_print_int (MP mp, mpinteger64 n) {                               /* prints an integer in decimal form */
   char s[12];
-  mp_snprintf (s, 12, "%d", (int) n);
+  mp_snprintf (s, 12, "%" PRId64,  n);
   mp_print (mp, s);
 }
 void mp_print_pointer (MP mp, void *n) {                               /* prints an pointer in hexadecimal form */
@@ -1860,14 +1860,14 @@ void mp_print_pointer (MP mp, void *n) {                               /* prints
 }
 
 @ @<Internal library ...@>=
-void mp_print_int (MP mp, integer n);
+void mp_print_int (MP mp, mpinteger64 n);
 void mp_print_pointer (MP mp, void *n);
 
 @ \MP\ also makes use of a trivial procedure to print two digits. The
 following subroutine is usually called with a parameter in the range |0<=n<=99|.
 
 @c
-static void mp_print_dd (MP mp, integer n) {                               /* prints two least significant digits */
+static void mp_print_dd (MP mp, mpinteger64 n) {                               /* prints two least significant digits */
   n = MPOST_ABS (n) % 100;
   mp_print_char (mp, xord ('0' + (n / 10)));
   mp_print_char (mp, xord ('0' + (n % 10)));
@@ -1875,7 +1875,7 @@ static void mp_print_dd (MP mp, integer n) {                               /* pr
 
 
 @ @<Declarations@>=
-static void mp_print_dd (MP mp, integer n);
+static void mp_print_dd (MP mp, mpinteger64 n);
 
 @ Here is a procedure that asks the user to type a line of input,
 assuming that the |selector| setting is either |term_only| or |term_and_log|.
@@ -1942,7 +1942,7 @@ enum mp_interaction_mode {
 };
 
 @ @<Option variables@>=
-int interaction;        /* current level of interaction */
+integer64 interaction;        /* current level of interaction */
 int noninteractive;     /* do we have a terminal? */
 int extensions;
 
@@ -2107,7 +2107,7 @@ void mp_error (MP mp, const char *msg, const char **hlp, boolean deletions_allow
   ASCII_code c; /* what the user types */
   //uint32_t s1; 
   quarterword s1; 
-  integer s2;       /* used to save global variables when deleting tokens */
+  mpinteger64 s2;       /* used to save global variables when deleting tokens */
   mp_sym s3;    /* likewise */
   int i = 0;
   const char *help_line[6];       /* helps for the next |error| */
@@ -2176,7 +2176,7 @@ edited and the relevant line number.
 @^system dependencies@>
 
 @<Exported types@>=
-typedef void @[@] (*mp_editor_cmd) (MP, char *, integer);
+typedef void @[@] (*mp_editor_cmd) (MP, char *, integer64);
 
 @ @<Option variables@>=
 mp_editor_cmd run_editor;
@@ -2185,10 +2185,10 @@ mp_editor_cmd run_editor;
 set_callback_option (run_editor);
 
 @ @<Declarations@>=
-static void mp_run_editor (MP mp, char *fname, integer fline);
+static void mp_run_editor (MP mp, char *fname, integer64 fline);
 
 @ @c
-void mp_run_editor (MP mp, char *fname, integer fline) {
+void mp_run_editor (MP mp, char *fname, integer64 fline) {
   char *s = xmalloc (256, 1);
   mp_snprintf (s, 256, "You want to edit file %s at line %" PRId64 "\n", fname, fline);
   wterm_ln (s);
@@ -16033,10 +16033,10 @@ split |cubic_intersection| up into two procedures.
 @<Glob...@>=
 mp_number delx;
 mp_number dely;   /* the components of $\Delta=2^l(w_0-z_0)$ */
-integer tol;    /* bound on the uncertainty in the overlap test */
-integer uv;
-integer xy;     /* pointers to the current packets of interest */
-integer three_l;        /* |tol_step| times the bisection level */
+mpinteger64 tol;    /* bound on the uncertainty in the overlap test */
+mpinteger64 uv;
+mpinteger64 xy;     /* pointers to the current packets of interest */
+mpinteger64 three_l;        /* |tol_step| times the bisection level */
 mp_number appr_t;
 mp_number appr_tt;        /* best approximations known to the answers */
 
@@ -17370,6 +17370,7 @@ static mp_value_node divide_p_by_2_n (MP mp, mp_value_node p, integer n) {
 
 @ @c
 static void change_to_known (MP mp, mp_value_node p, mp_node x, mp_value_node final_node, integer n) {
+  (void)n;
   if (dep_info (p) == NULL) {
     mp_number absx;
     new_number (absx);
@@ -17614,10 +17615,10 @@ all of this procedure appears elsewhere in the program, together with the
 corresponding |primitive| calls.
 
 @<Declarations@>=
-static void mp_print_cmd_mod (MP mp, integer c, integer m);
+static void mp_print_cmd_mod (MP mp, mpinteger64 c, mpinteger64 m);
 
 @ @c
-void mp_print_cmd_mod (MP mp, integer c, integer m) {
+void mp_print_cmd_mod (MP mp, mpinteger64 c, mpinteger64 m) {
   switch (c) {
     @t\4@>@<Cases of |print_cmd_mod| for symbolic printing of primitives@>@;
   default:
@@ -17633,7 +17634,7 @@ user's transcript file.
 @d show_cur_cmd_mod mp_show_cmd_mod(mp, cur_cmd(),cur_mod())
 
 @c
-static void mp_show_cmd_mod (MP mp, integer c, integer m) {
+static void mp_show_cmd_mod (MP mp, mpinteger64 c, mpinteger64 m) {
   mp_begin_diagnostic (mp);
   mp_print_nl (mp, "{");
   mp_print_cmd_mod (mp, c, m);
@@ -17770,7 +17771,7 @@ integer in_open;        /* the number of lines in the buffer, less one */
 integer in_open_max;    /* highest value of |in_open| ever seen */
 unsigned int open_parens;       /* the number of open text files */
 void **input_file;
-integer *line_stack;    /* the line number for each file */
+mpinteger64 *line_stack;    /* the line number for each file */
 char **inext_stack;     /* used for naming \.{MPX} files */
 char **iname_stack;     /* used for naming \.{MPX} files */
 char **iarea_stack;     /* used for naming \.{MPX} files */
@@ -17784,7 +17785,7 @@ static void mp_reallocate_input_stack (MP mp, int newsize) {
   int k;
   int n = newsize +1;
   XREALLOC (mp->input_file, n, void *);
-  XREALLOC (mp->line_stack, n, integer);
+  XREALLOC (mp->line_stack, n, mpinteger64);
   XREALLOC (mp->inext_stack, n, char *);
   XREALLOC (mp->iname_stack, n, char *);
   XREALLOC (mp->iarea_stack, n, char *);
@@ -17922,10 +17923,10 @@ compute it as well.
 @^system dependencies@>
 
 @<Declarations@>=
-static integer mp_true_line (MP mp);
+static mpinteger64 mp_true_line (MP mp);
 
 @ @c
-integer mp_true_line (MP mp) {
+mpinteger64 mp_true_line (MP mp) {
   int k;        /* an index into the input stack */
   if (file_state && (name > max_spec_src)) {
     return line;
@@ -18554,7 +18555,7 @@ name of a macro whose replacement text is being scanned.
 integer scanner_status; /* are we scanning at high speed? */
 mp_sym warning_info;    /* if so, what else do we need to know,
                            in case an error occurs? */
-integer warning_line;
+mpinteger64 warning_line;
 mp_node warning_info_node;
 
 @ @<Initialize the input routines@>=
@@ -19099,7 +19100,7 @@ static void mp_start_mpx_input (MP mp);
 @ @c
 static void mp_t_next (MP mp) {
   int old_status;       /* saves the |scanner_status| */
-  integer old_info;     /* saves the |warning_info| */
+  mpinteger64 old_info;     /* saves the |warning_info| */
 
 if ((mp->extensions == 1) && (cur_cmd() == mp_start_tex))
     @<Pass \&{btex} ... \&{etex} to script@>@;
@@ -19570,10 +19571,10 @@ tokens is seen, its meaning has already become undefined.
 
 @c
 static void mp_scan_def (MP mp) {
-  int m;        /* the type of definition */
+  mpinteger64 m;        /* the type of definition */
   int n;        /* the number of special suffix parameters */
   int k;        /* the total number of parameters */
-  int c;        /* the kind of macro we're defining */
+  mpinteger64 c;        /* the kind of macro we're defining */
   mp_subst_list_item *r = NULL, *rp = NULL;     /* parameter-substitution list */
   mp_node q;    /* tail of the macro token list */
   mp_node p;    /* temporary storage */
@@ -20093,10 +20094,10 @@ or at the beginning of a line.
 {
     char *txt = NULL;
     char *ptr = NULL;
-    integer slin = line;
+    mpinteger64 slin = line;
     int size = 0;
     int done = 0;
-    int mode = round_unscaled(internal_value(mp_texscriptmode)) ; /* default: 1 */
+    mpinteger64 mode = round_unscaled(internal_value(mp_texscriptmode)) ; /* default: 1 */
     int verb = cur_mod() == verbatim_code;
     int first;
     /* we had a (mandate) trailing space */
@@ -20845,7 +20846,7 @@ corresponding |if_line|.
 @<MPlib internal header stuff@>=
 typedef struct mp_if_node_data {
   NODE_BODY;@+@t}\6{@>
-  int if_line_field_;
+  mpinteger64 if_line_field_;
 } mp_if_node_data;
 typedef struct mp_if_node_data *mp_if_node;
 
@@ -20863,7 +20864,7 @@ static mp_node mp_get_if_node (MP mp) {
 mp_node cond_ptr;       /* top of the condition stack */
 integer if_limit;       /* upper bound on |fi_or_else| codes */
 quarterword cur_if;     /* type of conditional being worked on */
-integer if_line;        /* line where that conditional began */
+mpinteger64 if_line;        /* line where that conditional began */
 
 @ @<Set init...@>=
 mp->cond_ptr = NULL;
@@ -22109,9 +22110,9 @@ it catch up to what has previously been printed on the terminal.
 @c
 void mp_open_log_file (MP mp) {
   unsigned old_setting; /* previous |selector| setting */
-  int k;        /* index into |months| and |buffer| */
+  mpinteger64 k;        /* index into |months| and |buffer| */
   int l;        /* end of first input line */
-  integer m;    /* the current month */
+  mpinteger64 m;    /* the current month */
   const char *months = "JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC";
   /* abbreviations of month names */
   if (mp->log_opened)
@@ -25812,7 +25813,7 @@ static void mp_do_unary (MP mp, quarterword c) {
     if (mp->cur_exp.type != mp_known) {
       mp_bad_unary (mp, mp_char_op);
     } else {
-      int vv = round_unscaled (cur_exp_value_number ()) % 256;
+      mpinteger64 vv = round_unscaled (cur_exp_value_number ()) % 256;
       set_cur_exp_value_scaled (vv);
       mp->cur_exp.type = mp_string_type;
       if (number_negative(cur_exp_value_number ())) {
@@ -29456,10 +29457,10 @@ static void mp_set_up_glyph_infont (MP mp, mp_node p) {
   f = mp_ps_font_parse (mp, (int) mp_find_font (mp, n));
   if (f != NULL) {
     if (mp_type (p) == mp_known) {
-      int v = round_unscaled (value_number (p));
+      mpinteger64 v = round_unscaled (value_number (p));
       if (v < 0 || v > 255) {
         char msg[256];
-        mp_snprintf (msg, 256, "glyph index too high (%d)", v);
+        mp_snprintf (msg, 256, "glyph index too high (%" PRId64 ")", v);
         mp_error (mp, msg, NULL, true);
       } else {
         h = mp_ps_font_charstring (mp, f, v);
@@ -31107,7 +31108,7 @@ void mp_do_random_seed (MP mp) {
 
 @ @<Initialize the random seed to |cur_exp|@>=
 {
-  init_randoms (number_to_scaled(cur_exp_value_number ()));
+  init_randoms ((int)number_to_scaled(cur_exp_value_number ()));
   if (mp->selector >= log_only && mp->selector < write_file) {
     mp->old_setting = mp->selector;
     mp->selector = log_only;
@@ -31173,7 +31174,7 @@ static void mp_do_protection (MP mp);
 
 @ @c
 void mp_do_protection (MP mp) {
-  int m;        /* 0 to unprotect, 1 to protect */
+  mpinteger64 m;        /* 0 to unprotect, 1 to protect */
   halfword t;   /* the |eq_type| before we change it */
   m = cur_mod();
   do {
@@ -32287,7 +32288,7 @@ void mp_do_bounds (MP mp) {
   mp_node lhv;     /* variable on left, the corresponding edge structure */
   mp_edge_header_node lhe;
   mp_node p;    /* for list manipulation */
-  integer m;    /* initial value of |cur_mod| */
+  mpinteger64 m;    /* initial value of |cur_mod| */
   m = cur_mod();
   lhv = mp_start_draw_cmd (mp, mp_to_token);
   if (lhv != NULL) {
@@ -32459,7 +32460,7 @@ static void mp_do_ship_out (MP mp);
 
 @ @c
 void mp_do_ship_out (MP mp) {
-  integer c;    /* the character code */
+  mpinteger64 c;    /* the character code */
   mp_value new_expr;
   memset(&new_expr,0,sizeof(mp_value));
   new_number(new_expr.data.n);
@@ -32550,7 +32551,7 @@ static void mp_do_message (MP mp);
 
 @ @c
 void mp_do_message (MP mp) {
-  int m;        /* the type of message */
+  mpinteger64  m;        /* the type of message */
   mp_value new_expr;
   m = cur_mod();
   memset(&new_expr,0,sizeof(mp_value));
@@ -33067,7 +33068,7 @@ short nd;
 short ni;       /* sizes of \.{TFM} subtables */
 short skip_table[TFM_ITEMS];    /* local label status */
 boolean lk_started;     /* has there been a lig/kern step in this command yet? */
-integer bchar;  /* right boundary character */
+mpinteger64 bchar;  /* right boundary character */
 short bch_label;        /* left boundary starting location */
 short ll;
 short lll;      /* registers used for lig/kern processing */
@@ -33225,7 +33226,7 @@ static eight_bits mp_get_code (MP mp);
 
 @ @c
 eight_bits mp_get_code (MP mp) {                               /* scans a character code value */
-  integer c;    /* the code value found */
+  mpinteger64 c;    /* the code value found */
   mp_value new_expr;
   const char *hlp[] = {
          "I was looking for a number between 0 and 255, or for a",
@@ -33307,7 +33308,7 @@ static void mp_do_tfm_command (MP mp);
 
 @ @c
 void mp_do_tfm_command (MP mp) {
-  int c, cc;    /* character codes */
+  mpinteger64 c, cc;    /* character codes */
   int k;        /* index into the |kern| array */
   int j;        /* index into |header_byte| or |param| */
   mp_value new_expr;
@@ -33982,7 +33983,7 @@ static void mp_fix_design_size (MP mp) {
   }
   if (mp->header_byte[4] == 0 && mp->header_byte[5] == 0 &&
       mp->header_byte[6] == 0 && mp->header_byte[7] == 0) {
-    integer dd = number_to_scaled (d);
+    mpinteger64 dd = number_to_scaled (d);
     mp->header_byte[4] = (char) (dd / 04000000);
     mp->header_byte[5] = (char) ((dd / 4096) % 256);
     mp->header_byte[6] = (char) ((dd / 16) % 256);
@@ -34730,7 +34731,7 @@ static void mp_append_to_template (MP mp, integer ff, integer c, boolean roundin
     mp_print (mp, ss);
   } else if (internal_type (c) == mp_known) {
     if (rounding) {
-      int cc = round_unscaled (internal_value (c));
+      mpinteger64 cc = round_unscaled (internal_value (c));
       print_with_leading_zeroes (cc, ff);
     } else {
       print_number (internal_value (c));
@@ -34917,7 +34918,7 @@ char *mp_get_output_file_name (MP mp) {
 }
 void mp_open_output_file (MP mp) {
   char *ss;     /* filename extension proposal */
-  int c;    /* \&{charcode} rounded to the nearest integer */
+  mpinteger64 c;    /* \&{charcode} rounded to the nearest integer */
   c = round_unscaled (internal_value (mp_char_code));
   ss = mp_set_output_file_name (mp, c);
   while (!mp_open_out (mp, (void *) &mp->output_file, mp_filetype_postscript))

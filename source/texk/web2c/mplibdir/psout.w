@@ -3588,7 +3588,7 @@ mp_edge_object *mp_ps_do_font_charstring (MP mp, mp_ps_font *f, char *nam) {
   return h;
 }
 
-mp_edge_object *mp_ps_font_charstring (MP mp, mp_ps_font *f, int c) {
+mp_edge_object *mp_ps_font_charstring (MP mp, mp_ps_font *f, mpinteger64 c) {
   char *s = NULL;
   if (f != NULL && f->t1_glyph_names != NULL && c>=0 && c<256) 
     s = f->t1_glyph_names[c];
@@ -3598,7 +3598,7 @@ mp_edge_object *mp_ps_font_charstring (MP mp, mp_ps_font *f, int c) {
 
 
 @ @<Exported function headers@>=
-mp_edge_object *mp_ps_font_charstring (MP mp, mp_ps_font *f, int c);
+mp_edge_object *mp_ps_font_charstring (MP mp, mp_ps_font *f, mpinteger64 c);
 mp_edge_object *mp_ps_do_font_charstring (MP mp, mp_ps_font *f, char *n);
 
 

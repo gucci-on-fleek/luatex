@@ -1,15 +1,16 @@
 #ifndef METAPOST_MPCONFIG_H
 #define METAPOST_MPCONFIG_H
 
-/* We define our own INTEGER_TYPE,  */
-/* see source/texk/web2c/w2c/config.h */
+#include <stdint.h>
+
+/* For the moment distinct from integer64 but same type */
+
 #if defined(WIN32)
-#define INTEGER_TYPE __int64 
+typedef __int64 mpinteger64;
 #else
-#define INTEGER_TYPE int64_t
-# endif  
-# define INTEGER_MAX INT64_MAX
-# define INTEGER_MIN INT64_MIN
+typedef int64_t mpinteger64;
+#endif
+
 
 /* In C23 true and false are keywords */
 /* and  the value of the macro  __STDC_VERSION__ is 202311L */
