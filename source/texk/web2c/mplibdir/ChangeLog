@@ -1,3 +1,7 @@
+2026-02-15  Luigi Scarso <luigi.scarso@gmail.com>
+	* MetaPost 3.00
+
+
 2026-02-08  Luigi Scarso <luigi.scarso@gmail.com>
 	* Purge 'mpconfig.h' from export list 'mp_c_h' (thanks to A. Scherer)
 
