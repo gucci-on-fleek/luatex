@@ -391,6 +391,7 @@ void luainterpreter(void)
     luaopen_pdfe(L);
     luaopen_pdfscanner(L);
     luaopen_img(L);
+    luaopen_hydrogen(L);
     lua_createtable(L, 0, 0);
     lua_setglobal(L, "texconfig");
     Luas = L;

@@ -203,7 +203,7 @@ in the following order:
    Also from version 1.18.0 and if  \KPATHSEA\ is used, the functions
    \type{os.rename},\type{os.remove}, \type{lfs.attributes}, \type{lfs.chdir},
    \type{lfs.lock_dir}, \type{lfs.dir}, \type{lfs.link}, \type{lfs.mkdir}, \type{lfs.mkdirp},
-   \type{lfs.rmdir}, \type{lfs.symlinkattributes}, \type{lfs.touch} 
+   \type{lfs.rmdir}, \type{lfs.symlinkattributes}, \type{lfs.touch}
    return \type{true} if both \type{kpse.in_name_ok_silent_extended} and
    \type{kpse.out_name_ok_silent_extended} validate the pathname;
    \type{lfs.attributes}, \type{lfs.dir} and  \type{lfs.symlinkattributes} are validated
@@ -224,7 +224,7 @@ in the following order:
     \stoptyping
 
     The \type {--nosocket} or \type {--no-socket} option makes the socket library
-    unavailable, so that \LUA\ cannot use networking;  
+    unavailable, so that \LUA\ cannot use networking;
     \type {--socket} option makes the socket library available.
 
     The switches \type {--[no-]shell-escape}, \type {--[enable|disable]-write18}, and
@@ -802,6 +802,186 @@ Some modules that are normally external to \LUA\ are statically linked in with
 \stopitem
 
 \stopitemize
+
+\startsection[title={Cryptography with \type {libhydrogen}}]
+
+\topicindex {libhydrogen}
+
+There are no pure-\LUA\ libraries implementing elliptic curve signatures, so
+\LUATEX\ includes the \type {libhydrogen} library, by Frank Denis,
+\hyphenatedurl {https://libhydrogen.org/}. Only the signature, hashing, and
+random number generation functions are included.
+
+In general, most functions have the signature
+
+\startfunctioncall
+<string> out =
+    libhydrogen.<function>(<string> message, <string> key,
+        <options>...[, <string> context])
+\stopfunctioncall
+
+where \type {context} is an optional 8-byte string describing the context of the
+operation. For futher details, refer to the upstream documentation of \type
+{libhydrogen}.
+
+\startsubsection[title={Public key signatures}]
+
+\startsubsubsection[title={\type {sign_keygen}}]
+
+\libindex {sign_keygen}
+
+\startfunctioncall
+<string> public_key, <string> secret_key =
+    libhydrogen.sign_keygen()
+\stopfunctioncall
+
+Generates a new public and secret key pair for signing. The public key is 32
+bytes long, is used for signature verification, and can be shared publicly. The
+secret key is 64 bytes long, is used for signing messages, and must be kept
+secret.
+
+\stopsubsubsection
+
+\startsubsubsection[title={\type {sign_create}}]
+
+\libindex {sign_create}
+
+\startfunctioncall
+<string> signature = 
+    libhydrogen.sign_create(<string> message, <string> secret_key
+        [, <string> context])
+\stopfunctioncall
+
+Generates a signature for the given message using the provided secret key. The
+signature is 64 bytes long. Only the holder of the secret key can create valid
+signatures for messages. This function is randomized, so signing the same
+message multiple times will yield different signatures.
+
+If you use a context here, you must also use the same context when verifying the
+signature.
+
+\stopsubsubsection
+
+\startsubsubsection[title={\type {sign_verify}}]
+
+\libindex {sign_verify}
+
+\startfunctioncall
+<boolean> is_valid = 
+    libhydrogen.sign_verify(<string> message, <string> signature,
+        <string> public_key [, <string> context])
+\stopfunctioncall
+
+Verifies that the provided signature is valid for the given message and public
+key. Returns \type {true} if the signature is valid, and \type {false}
+otherwise.
+
+\stopsubsubsection
+
+\stopsubsection
+
+\startsubsection[title={Hashing}]
+
+\startsubsubsection[title={\type {hash}}]
+
+\libindex {hash}
+
+\startfunctioncall
+    <string> result = 
+        libhydrogen.hash(<string> message[, <integer> length_bytes
+            [, <string> context]])
+\stopfunctioncall
+
+Generates a hash of the given message. When using identical arguments, this
+function will always return the same hash. The default length of the hash result
+is 32 bytes (256 bits), but you can specify any length between 16 and 65535
+bytes. The input message can be of any length. To provide a context, you must
+also provide a length.
+
+Internally, this function uses the KMAC construction with the Gimli permutation.
+
+\stopsubsubsection
+
+\startsubsubsection[title={\type {hash_keygen}}]
+
+\libindex {hash_keygen}
+
+\startfunctioncall
+<string> secret_key = libhydrogen.hash_keygen()
+\stopfunctioncall
+
+Generates a secret key suitable for use with the \type {hash_keyed} function.
+The secret key is 32 bytes long and must be kept secret.
+
+\stopsubsubsection
+
+\startsubsubsection[title={\type {hash_keyed}}]
+
+\libindex {hash_keyed}
+
+\startfunctioncall
+<string> result = 
+    libhydrogen.hash_keyed(<string> message, <string> secret_key
+        [, <integer> length_bytes [, <string> context]])
+\stopfunctioncall
+
+The same as \type {hash}, but with the addition of a secret key. Only someone
+with the secret key can generate the same hash result for a given message.
+However, unlike the signature functions, the secret key must be shared with
+anyone who needs to verify the hash.
+
+This function provides similar properties as an HMAC.
+
+\stopsubsubsection
+
+\stopsubsection
+
+\startsubsection[title={Random number generation}]
+
+\LUA's built-in random number generator (\type {math.random}) is sufficient for
+most purposes, but it is not cryptographically secure, and therefore should
+never be used for cryptographic purposes. The following functions \emph {are}
+cryptographically secure, and can be used for generating random keys, nonces,
+salts, etc.
+
+If you are generating secret keys for use with the signature and hashing
+functions, you should instead use the \type{_keygen} functions provided.
+
+\startsubsubsection[title={\type {random_bytes}}]
+
+\libindex {random_bytes}
+
+\startfunctioncall
+<string> data = 
+    libhydrogen.random_bytes(<integer> length_bytes)
+\stopfunctioncall
+
+This function returns a string of the specified length containing random bytes.
+The random bytes are generated using a cryptographically secure random number
+generator, and the length must be between 1 byte and 128 mebibytes.
+
+\stopsubsubsection
+
+\startsubsubsection[title={\type {random_integer}}]
+
+\libindex {random_integer}
+
+\startfunctioncall
+<integer> value = 
+    libhydrogen.random_integer(<integer> minimum, <integer> maximum)
+\stopfunctioncall
+
+This function returns a random integer between (inclusive) the specified minimum
+and maximum values. The random integer is generated using a cryptographically
+secure random number generator. The minimum and maximum values must be between $-2^{63} - 1$
+and $2^{63} - 1$, and the difference between them must be less than $2^{32} -
+1$.
+
+\stopsubsubsection
+
+\stopsubsection
+
+\stopsection
 
 \stopsection
 

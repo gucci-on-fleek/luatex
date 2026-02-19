@@ -176,6 +176,8 @@ extern int luaopen_node(lua_State * L);
 extern void nodelist_to_lua(lua_State * L, int n);
 extern int nodelist_from_lua(lua_State * L, int n);
 
+extern int luaopen_hydrogen(lua_State * L);
+
 extern int dimen_to_number(lua_State * L, const char *s);
 
 extern int get_command_id(const char *s);
